@@ -3,8 +3,8 @@
 ////////////////////////////////////////////
 if (typeof DEBUG!=='undefined' && DEBUG==1) {function debug(s){console.log(s);}} else {function debug(s){}}
 ////////////////////////////////////////////
-meSpeak.loadConfig('https://dwn.github.io/common/public/json/mespeak_config.json');
-meSpeak.loadVoice('https://dwn.github.io/common/public/json/en.json');
+meSpeak.loadConfig('http://dwn.github.io/common/public/json/mespeak_config.json');
+meSpeak.loadVoice('http://dwn.github.io/common/public/json/en.json');
 ////////////////////////////////////////////
 var tmpTxt;
 var arrTxt;
