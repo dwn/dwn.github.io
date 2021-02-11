@@ -158,7 +158,7 @@ function phProcessHelper() {
      { 'src': /L/g, 'dest': 'j' }, //Exact sound not available
      { 'src': /ѨѨѨѨѨ/g, 'dest': '@r' }, //Evaluting r
      { 'src': /@@/g, 'dest': '@' }, //Fixing any doubled schwas
-     { 'src': /,/g, 'dest': '____________' }, //Pause on comma
+     { 'src': /,/g, 'dest': '____' }, //Pause on comma
     ];
     for (var i = 0; i < mappings.length; i++) {
       uipa = uipa.replace(mappings[i].src, mappings[i].dest);
