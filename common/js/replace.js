@@ -117,7 +117,7 @@ function phProcessHelper() {
      { 'src': /J\//g, 'dest': 'gj' }, //Exact sound not available
      { 'src': /G\//g, 'dest': 'qg' }, //Exact sound not available
      { 'src': />\//g, 'dest': 'p' }, //Exact sound not available
-     { 'src': /B\//g, 'dest': 'blblb' }, //Exact sound not available
+     { 'src': /B\//g, 'dest': 'blb' }, //Exact sound not available
      { 'src': /f\//g, 'dest': 'fh' }, //Exact sound not available
      { 'src': /B\//g, 'dest': 'vhU' }, //Exact sound not available
      { 'src': /j\//g, 'dest': 'j' }, //Exact sound not available
@@ -158,6 +158,7 @@ function phProcessHelper() {
      { 'src': /L/g, 'dest': 'j' }, //Exact sound not available
      { 'src': /ѨѨѨѨѨ/g, 'dest': '@r' }, //Evaluting r
      { 'src': /@@/g, 'dest': '@' }, //Fixing any doubled schwas
+     { 'src': /,/g, 'dest': '       ' }, //Pause for comma
     ];
     for (var i = 0; i < mappings.length; i++) {
       uipa = uipa.replace(mappings[i].src, mappings[i].dest);
