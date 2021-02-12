@@ -71,7 +71,7 @@ $(function(){
         newFont.load().then(function(loadedFace) {
           setTimeout(function() { //Occasionally even after the font was successfully loaded, it needs a brief moment before adding
             document.fonts.add(loadedFace);
-          }, 500);
+          }, 1000);
         });
       },error:function(r){}
     }); //bucketURI
