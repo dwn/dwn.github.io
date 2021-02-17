@@ -119,7 +119,7 @@ function phProcessHelper() {
      { 'src': />\//g, 'dest': 'p' }, //Exact sound not available
      { 'src': /B\//g, 'dest': 'blb' }, //Exact sound not available
      { 'src': /f\//g, 'dest': 'fh' }, //Exact sound not available
-     { 'src': /B\//g, 'dest': 'vhU' }, //Exact sound not available
+     { 'src': /p\//g, 'dest': 'hv' }, //Exact sound not available
      { 'src': /j\//g, 'dest': 'j' }, //Exact sound not available
      { 'src': /X\//g, 'dest': 'hX' }, //Exact sound not available
      { 'src': /\?\//g, 'dest': 'hvw' }, //Exact sound not available
