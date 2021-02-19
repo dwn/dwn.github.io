@@ -193,7 +193,7 @@ function grProcess() {
       var lineIndex = txt.substring(0,k).split(/\r?\n/g).length;
       var begin = txt.lastIndexOf('\n',k-1);
       begin = begin<0? 0 : begin;
-      var end = nthIndex(txt,'\n',k,16); //16th txt.indexOf('\n',k);
+      var end = nthIndex(txt,'\n',k,22); //22nd txt.indexOf('\n',k);
       end = end<0? txt.length : end;
       txt = txt.substring(begin,end);
     }
