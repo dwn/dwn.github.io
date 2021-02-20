@@ -28,7 +28,7 @@ $(function(){
   $('form').submit(function(){
     const str=$('#messages-input').val();
     if (!str) return false;
-alert(str);
+alert(grProcess(str));
     socket.emit('chat message', uniqueUsername+':'+grProcess(str));
     $('#messages-input').val('');
     $('#messages-input').focus();
