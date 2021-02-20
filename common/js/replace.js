@@ -217,7 +217,6 @@ function grProcess(txtIn='') {
   txt = txt.replace(/_⚠_/g,'\n');
   txt = txt.replace(/_/g,' ');
   debug(txt);
-  if (txtIn) return txt;
   if (conscriptTextReady) {
     const conscriptTextEl = document.getElementById('conscript-text');
     if (conscriptTextEl) conscriptTextEl.innerHTML = txt.replace(/⟨/g,"<span style='font-family:arial;font-size:.5em'>").replace(/⟩/g,'</span>');

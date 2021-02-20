@@ -28,8 +28,8 @@ $(function(){
   $('form').submit(function(){
     const str=$('#messages-input').val();
     if (!str) return false;
-alert(grProcess(str));
-    socket.emit('chat message', uniqueUsername+':'+grProcess(str));
+    grProcess(str);
+    socket.emit('chat message', uniqueUsername+':'+json['conscript-text']);
     $('#messages-input').val('');
     $('#messages-input').focus();
     return false; //Non-refreshing submit
