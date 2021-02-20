@@ -52,6 +52,9 @@ function loadMap(title,mappingText) {
 ////////////////////////////////////////////
 function loadPhonemeMap() {
   phoneme = loadMap('phoneme-map',document.getElementById('phoneme-map').value);
+  if (!phoneme) {
+    phoneme = json['phoneme'];
+  }
   var last = phoneme.length-1;
   if (last<0) { last=0; phoneme.push([]); }
   phoneme[last] = phoneme[last].concat([[' ','\'']]);
@@ -59,6 +62,9 @@ function loadPhonemeMap() {
 ////////////////////////////////////////////
 function loadGraphemeMap() {
   grapheme = loadMap('grapheme-map',document.getElementById('grapheme-map').value);
+  if (!grapheme) {
+    grapheme = json['grapheme'];
+  }
 }
 ////////////////////////////////////////////
 function addEscaping(s) {
