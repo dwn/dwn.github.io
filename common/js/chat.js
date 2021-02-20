@@ -26,8 +26,9 @@ $(function(){
   }
 ////////////////////////////////////////////
   $('form').submit(function(){
-    if (!$('#messages-input').val()) return false;
-    socket.emit('chat message', uniqueUsername+':'+grProcess($('#messages-input').val()));
+    const str=$('#messages-input').val();
+    if (!str) return false;
+    socket.emit('chat message', uniqueUsername+':'+grProcess(str));
     $('#messages-input').val('');
     $('#messages-input').focus();
     return false; //Non-refreshing submit
