@@ -188,17 +188,20 @@ function phProcess() {
 ////////////////////////////////////////////
 function grProcess(txtIn='') {
   tmpTxt = txt;
-  if (txtIn) txt=txtIn;
-  if (json['view'] === 'view single page' && getSelectedText() === '') {
-    var userTextEl = document.getElementById('user-text');
-    if (userTextEl) {
-      var k = userTextEl.selectionEnd;
-      var lineIndex = txt.substring(0,k).split(/\r?\n/g).length;
-      var begin = txt.lastIndexOf('\n',k-1);
-      begin = begin<0? 0 : begin;
-      var end = nthIndex(txt,'\n',k,22); //22nd txt.indexOf('\n',k);
-      end = end<0? txt.length : end;
-      txt = txt.substring(begin,end);
+  if (txtIn) {
+    txt=txtIn;
+  } else {
+    if (json['view'] === 'view single page' && getSelectedText() === '') {
+      var userTextEl = document.getElementById('user-text');
+      if (userTextEl) {
+        var k = userTextEl.selectionEnd;
+        var lineIndex = txt.substring(0,k).split(/\r?\n/g).length;
+        var begin = txt.lastIndexOf('\n',k-1);
+        begin = begin<0? 0 : begin;
+        var end = nthIndex(txt,'\n',k,22); //22nd txt.indexOf('\n',k);
+        end = end<0? txt.length : end;
+        txt = txt.substring(begin,end);
+      }
     }
   }
   debug('ORTHOGRAPHY');
