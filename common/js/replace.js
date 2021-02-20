@@ -14,6 +14,8 @@ var phonemeEsc;
 var grapheme;
 var graphemeEsc;
 var json = {};
+var alreadyPlaying=false;
+var conscriptTextReady=false;
 ////////////////////////////////////////////
 function getSelectedText() {
   var userSelection='', ta;
