@@ -184,8 +184,8 @@ function phProcess() {
   phProcessHelper();
 }
 ////////////////////////////////////////////
-function grProcess() {
-  tmpTxt = txt;
+function grProcess(txtIn=txt) {
+  tmpTxt = txtIn;
   if (json['view'] === 'view single page' && getSelectedText() === '') {
     var userTextEl = document.getElementById('user-text');
     if (userTextEl) {
