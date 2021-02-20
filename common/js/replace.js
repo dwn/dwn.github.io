@@ -50,6 +50,12 @@ function loadMap(title,mappingText) {
   return r;
 }
 ////////////////////////////////////////////
+function loadMapfromFile(fontBasename) { //<<<<<<<<<FINISH! TODO
+  dat = dat.split('<desc>');
+  dat = dat[1].split('</desc>')[0];
+  json = JSON.parse(dat);
+}
+////////////////////////////////////////////
 function loadPhonemeMap() {
   phoneme = loadMap('phoneme-map',document.getElementById('phoneme-map').value);
   if (!phoneme) {
