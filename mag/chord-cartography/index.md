@@ -8,7 +8,7 @@ Dan Nielsen 4/2019
 
 ### (The previous article in this series is [Structure of Scales](../the-structure-of-scales))
 
-## Outline of a harmonic navigation system
+## JUST NOTES FOR MYSELF - Outline of a harmonic navigation system
 
 * Affirm the conventional wisdom about seventh chords - that the major, minor, and fully diminished sevenths chords respectively extend the major, minor, and diminished triads.
 
@@ -224,7 +224,7 @@ Just for example, it shows that we could pivot from MF6 into HarDor when we cons
 
 Voice-leading: triadic on the left, and tetradic on the right (R Cohn, based on Douthett, Boretz, *et al*)
 
-The figures above show the triadic and tetradic possibilities of half-step voice-leading changes. The figure on the left gives movement of tetrads as extensions of triads, while the other firgure shows purely tetradic movement. The minor seventh chords (shown as triangles on the righthand side, and as lowercase letters on the lefthand side) are equivalent chords connecting both maps, meaning the two figures actually represent a single unified map of tetradic voice leading. Also, the Dom7 chords are only one step away from the major chords.
+The figures above show the triadic and tetradic possibilities of half-step voice-leading changes. The figure on the left gives movement of tetrads as extensions of triads, while the other figure shows purely tetradic movement. The minor seventh chords (shown as triangles on the righthand side, and as lowercase letters on the lefthand side) are equivalent chords connecting both maps, meaning the two figures actually represent a single unified map of tetradic voice leading. Also, the Dom7 chords are only one step away from the major chords.
 
 ### Suspensions
 

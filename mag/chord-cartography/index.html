@@ -1,0 +1,1118 @@
+<html><head><style>body {
+	color: #333;
+	font-family: 'Segoe UI', 'Lucida Grande', Helvetica, sans-serif;
+	line-height: 1.5;
+	margin: 2em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	line-height: 1em;
+	margin: 20px 0;
+}
+h1 {
+	font-size: 2.25em;
+}
+h2 {
+	font-size: 1.75em;
+}
+h3 {
+	font-size: 1.5em;
+}
+h4, h5, h6 {
+	font-size: 1.25em;
+}
+
+a {
+	color: #08C;
+	text-decoration: none;
+}
+a:hover, a:focus {
+	text-decoration: underline;
+}
+a:visited {
+	color: #058;
+}
+
+img {
+	max-width: 100%;
+}
+
+li + li {
+	margin-top: 3px;
+}
+dt {
+	font-weight: bold;
+}
+
+code {
+	background: #EEE;
+	font-family: "Consolas", "Lucida Console", monospace;
+	padding: 1px 5px;
+}
+pre {
+	background: #EEE;
+	padding: 5px 10px;
+	white-space: pre-wrap;
+}
+pre code {
+	padding: 0;
+}
+
+blockquote {
+	border-left: 5px solid #EEE;
+	margin: 0;
+	padding: 0 10px;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+table + table {
+	margin-top: 1em;
+}
+thead {
+	background: #EEE;
+	text-align: left;
+}
+th, td {
+	border: 1px solid #EEE;
+	padding: 5px 10px;
+}
+
+hr {
+	background: #EEE;
+	border: 0;
+	height: 1px;
+}
+</style><style media="print">body {
+    color: #000;
+    font: 12pt serif;
+    margin: 0;
+    max-width: 100%;
+}
+
+a {
+    color: #666;
+    text-decoration: underline;
+}
+a[href]:after {
+    content: ' (' attr(href) ')';
+}
+
+blockquote, ul, dl {
+    page-break-inside: avoid;
+}
+</style><style>/* Base16 Atelier Cave Dark - Theme */
+/* by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/cave) */
+/* Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16) */
+
+/* Atelier-Cave Comment */
+.hljs-comment {
+  color: #7e7887;
+}
+
+/* Atelier-Cave Red */
+.hljs-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-regexp,
+.hljs-name,
+.ruby .hljs-constant,
+.xml .hljs-tag .hljs-title,
+.xml .hljs-pi,
+.xml .hljs-doctype,
+.html .hljs-doctype,
+.css .hljs-id,
+.css .hljs-class,
+.css .hljs-pseudo {
+  color: #be4678;
+}
+
+/* Atelier-Cave Orange */
+.hljs-number,
+.hljs-preprocessor,
+.hljs-built_in,
+.hljs-literal,
+.hljs-params,
+.hljs-constant {
+  color: #aa573c;
+}
+
+/* Atelier-Cave Yellow */
+.ruby .hljs-class .hljs-title,
+.css .hljs-rule .hljs-attribute {
+  color: #a06e3b;
+}
+
+/* Atelier-Cave Green */
+.hljs-string,
+.hljs-value,
+.hljs-inheritance,
+.hljs-header,
+.ruby .hljs-symbol,
+.xml .hljs-cdata {
+  color: #2a9292;
+}
+
+/* Atelier-Cave Aqua */
+.hljs-title,
+.css .hljs-hexcolor {
+  color: #398bc6;
+}
+
+/* Atelier-Cave Blue */
+.hljs-function,
+.python .hljs-decorator,
+.python .hljs-title,
+.ruby .hljs-function .hljs-title,
+.ruby .hljs-title .hljs-keyword,
+.perl .hljs-sub,
+.javascript .hljs-title,
+.coffeescript .hljs-title {
+  color: #576ddb;
+}
+
+/* Atelier-Cave Purple */
+.hljs-keyword,
+.javascript .hljs-function {
+  color: #955ae7;
+}
+
+.diff .hljs-deletion,
+.diff .hljs-addition {
+  color: #19171c;
+  display: inline-block;
+  width: 100%;
+}
+
+.diff .hljs-deletion {
+  background-color: #be4678;
+}
+
+.diff .hljs-addition {
+  background-color: #2a9292;
+}
+
+.diff .hljs-change {
+  color: #576ddb;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: #19171c;
+  color: #8b8792;
+  padding: 0.5em;
+  -webkit-text-size-adjust: none;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata {
+  opacity: 0.5;
+}
+</style><style>/* Style for the menu, possible positions/visibility */
+#__markdown-viewer__tools {
+  margin:0;
+  padding:0;
+  background:#555;
+  color:#eee;
+  box-shadow:0 -1px rgba(0,0,0,.5) inset;
+  border-radius: .5em;
+  max-width: 25%;
+  min-width: 2.8em;
+  min-height: 3em;
+  z-index: 2147483647;
+  position: relative;
+}
+
+#__markdown-viewer__tools.floating {
+  float:right;
+  margin: 0 0 .5em .5em;
+}
+
+#__markdown-viewer__tools.fixed {
+  max-height: calc(100vh - 1em);
+  overflow-y: auto;
+  position:fixed;
+  top:.5em;
+  right:1em;
+}
+
+#__markdown-viewer__tools.hidden {
+  display:none;
+}
+
+@media print {
+  #__markdown-viewer__tools {
+    display: none;
+  }
+}
+
+#__markdown-viewer__tools a[href]:after {
+  content: "";
+}
+
+/* Style for the menu top */
+label[for=__markdown-viewer__show-tools] {
+  display:block;
+  padding:0 18px 0 12px;
+  line-height:3em;
+  background:#333;
+  cursor:pointer;
+  border-radius: .5em;
+  min-height: 3em;
+  width: .9em;
+  position: absolute;
+  right: 0;
+}
+
+input#__markdown-viewer__show-tools:not(:checked) ~ label {
+  margin-left: -.9em;
+}
+
+input#__markdown-viewer__show-tools:checked ~ label {
+}
+
+label[for=__markdown-viewer__show-tools]:before{
+}
+
+label[for=__markdown-viewer__show-tools]:after {
+  content:"";
+  display:inline-block;
+  float:right;
+  margin-top:1.5em;
+  right:5px;
+  width:0;
+  height:0;
+  border-style: solid;
+  border-color: rgba(255,255,255,.5) transparent;
+  border-width: 4px 4px 0 4px;
+  transition:border-bottom .1s, border-top .1s .1s;
+}
+
+input#__markdown-viewer__show-tools:checked ~ label:after {
+  border-top-width:0;
+  border-bottom-width:4px;
+  transition:border-top .1s, border-bottom .1s .1s;
+}
+
+/* hide the input that tracks the menu's visibility */
+input#__markdown-viewer__show-tools {
+  display:none;
+}
+
+/* style, and hide/show menu items based on the input being checked */
+#__markdown-viewer__tools > .toggleable {
+  overflow:hidden;
+  transition-property:max-height, max-width, padding-top, padding-bottom, margin-top, margin-bottom;
+  transition-duration:0.5s;
+}
+
+input#__markdown-viewer__show-tools:checked ~ .toggleable {
+  /* maxes should be 'none' or infinite values, however those are not aniimatable, so just put something big enough. */
+  max-width: 2000px;
+  max-height: 2000px;
+  overflow-y: auto;
+  transition-timing-function:ease-in;
+}
+
+input#__markdown-viewer__show-tools:not(:checked) ~ .toggleable {
+  max-height:0;
+  max-width:0;
+  transition-timing-function:ease-out;
+  padding-top:0;
+  padding-bottom:0;
+  margin-top:0;
+  margin-bottom:0;
+}
+
+/* style the table of contents and its items */
+#__markdown-viewer__toc {
+  display:block;
+  padding: .5em;
+  border:0;
+}
+
+#__markdown-viewer__toc::before {
+  content: "Table of Contents";
+  text-align: center;
+  display: block;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#__markdown-viewer__toc {
+  margin-top: 2em;
+}
+
+#__markdown-viewer__tools.fixed input#__markdown-viewer__show-tools:checked ~ #__markdown-viewer__toc {
+  max-height: calc(100vh - 16em);
+}
+
+input#__markdown-viewer__show-tools:checked ~ #__markdown-viewer__toc::before {
+  position: absolute;
+  top: .5em;
+  left: 0;
+  right: 3em;
+}
+
+#__markdown-viewer__tools select {
+  max-width: 40%;
+  margin: 0 .5em;
+}
+
+#__markdown-viewer__tools select,
+#__markdown-viewer__toc * {
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+#__markdown-viewer__toc a {
+  color: white;
+  text-decoration: none;
+}
+
+#__markdown-viewer__toc ul {
+  list-style: inside "• ";
+  padding: 0;
+  margin: 0;
+}
+
+#__markdown-viewer__toc ul ul {
+  padding-left: 1.5em;
+}
+
+
+/* Style the "Download Source" button at the end of the menu */
+#__markdown-viewer__tools > p {
+  text-align:center;
+  padding: 0 .5em;
+}
+
+#__markdown-viewer__download {
+  /* appearance: button; */
+  -moz-appearance: button !important;
+  display:inline-block;
+  text-align: center;
+  text-decoration:none;
+  color:#000;
+  margin: .5em auto;
+}
+</style><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chord Cartography</title></head><body><div id="__markdown-viewer__tools" class="floating"><input type="checkbox" id="__markdown-viewer__show-tools"><label for="__markdown-viewer__show-tools"></label><div id="__markdown-viewer__toc" class="toggleable"><ul><li><a href="#chord-cartography">Chord Cartography</a><ul><li><ul><li><a href="#the-previous-article-in-this-series-is-structure-of-scales">(The previous article in this series is Structure of Scales)</a></li></ul></li><li><a href="#just-notes-for-myself---outline-of-a-harmonic-navigation-system">JUST NOTES FOR MYSELF - Outline of a harmonic navigation system</a></li><li><a href="#negative-scales">Negative scales</a></li><li><a href="#scale-spectrum">Scale spectrum</a></li><li><a href="#seventh-chords-taken-as-prescribed">Seventh chords taken as prescribed</a></li><li><a href="#scales-of-six-and-eight-tones">Scales of six and eight tones</a></li><li><a href="#pivot-chord-modulation">Pivot-chord modulation</a></li><li><a href="#pivot-chord-cadences">Pivot-chord cadences</a></li><li><a href="#voice-leading-map">Voice-leading map</a><ul><li><a href="#suspensions">Suspensions</a></li><li><a href="#transforms">Transforms</a></li></ul></li></ul></li></ul></div><p class="toggleable">Pick a markdown and code style:<br><select id="__markdown-viewer__mdselect"><option value="sss">default</option><option value="github">github</option></select><select id="__markdown-viewer__hlselect"><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/agate.css">agate</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/androidstudio.css">androidstudio</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/arduino-light.css">arduino-light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/arta.css">arta</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/ascetic.css">ascetic</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-cave.dark.css">atelier-cave.dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-cave.light.css">atelier-cave.light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-cave-dark.css">atelier-cave-dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-cave-light.css">atelier-cave-light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-dune.dark.css">atelier-dune.dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-dune.light.css">atelier-dune.light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-dune-dark.css">atelier-dune-dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-dune-light.css">atelier-dune-light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-estuary.dark.css">atelier-estuary.dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-estuary.light.css">atelier-estuary.light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-estuary-dark.css">atelier-estuary-dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-estuary-light.css">atelier-estuary-light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-forest.dark.css">atelier-forest.dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-forest.light.css">atelier-forest.light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-forest-dark.css">atelier-forest-dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-forest-light.css">atelier-forest-light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-heath.dark.css">atelier-heath.dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-heath.light.css">atelier-heath.light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-heath-dark.css">atelier-heath-dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-heath-light.css">atelier-heath-light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-lakeside.dark.css">atelier-lakeside.dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-lakeside.light.css">atelier-lakeside.light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-lakeside-dark.css">atelier-lakeside-dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-lakeside-light.css">atelier-lakeside-light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-plateau.dark.css">atelier-plateau.dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-plateau.light.css">atelier-plateau.light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-plateau-dark.css">atelier-plateau-dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-plateau-light.css">atelier-plateau-light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-savanna.dark.css">atelier-savanna.dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-savanna.light.css">atelier-savanna.light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-savanna-dark.css">atelier-savanna-dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-savanna-light.css">atelier-savanna-light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-seaside.dark.css">atelier-seaside.dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-seaside.light.css">atelier-seaside.light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-seaside-dark.css">atelier-seaside-dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-seaside-light.css">atelier-seaside-light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-sulphurpool.dark.css">atelier-sulphurpool.dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-sulphurpool.light.css">atelier-sulphurpool.light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-sulphurpool-dark.css">atelier-sulphurpool-dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atelier-sulphurpool-light.css">atelier-sulphurpool-light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atom-one-dark.css">atom-one-dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/atom-one-light.css">atom-one-light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/brown-paper.css">brown-paper</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/brown_paper.css">brown_paper</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/codepen-embed.css">codepen-embed</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/color-brewer.css">color-brewer</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/darcula.css">darcula</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/dark.css">dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/darkula.css">darkula</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/default.css">default</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/docco.css">docco</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/dracula.css">dracula</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/far.css">far</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/foundation.css">foundation</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/github.css">github</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/github-gist.css">github-gist</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/googlecode.css">googlecode</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/grayscale.css">grayscale</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/gruvbox-dark.css">gruvbox-dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/gruvbox-light.css">gruvbox-light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/hopscotch.css">hopscotch</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/hybrid.css">hybrid</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/idea.css">idea</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/ir-black.css">ir-black</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/ir_black.css">ir_black</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/kimbie.dark.css">kimbie.dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/kimbie.light.css">kimbie.light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/magula.css">magula</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/monokai.css">monokai</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/monokai-sublime.css">monokai-sublime</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/monokai_sublime.css">monokai_sublime</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/mono-blue.css">mono-blue</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/obsidian.css">obsidian</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/ocean.css">ocean</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/paraiso.dark.css">paraiso.dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/paraiso.light.css">paraiso.light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/paraiso-dark.css">paraiso-dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/paraiso-light.css">paraiso-light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/pojoaque.css">pojoaque</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/purebasic.css">purebasic</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/qtcreator_dark.css">qtcreator_dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/qtcreator_light.css">qtcreator_light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/railscasts.css">railscasts</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/rainbow.css">rainbow</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/routeros.css">routeros</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/school-book.css">school-book</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/school_book.css">school_book</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/solarized-dark.css">solarized-dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/solarized-light.css">solarized-light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/solarized_dark.css">solarized_dark</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/solarized_light.css">solarized_light</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/sunburst.css">sunburst</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/tomorrow.css">tomorrow</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/tomorrow-night.css">tomorrow-night</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/tomorrow-night-blue.css">tomorrow-night-blue</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/tomorrow-night-bright.css">tomorrow-night-bright</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/tomorrow-night-eighties.css">tomorrow-night-eighties</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/vs.css">vs</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/vs2015.css">vs2015</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/xcode.css">xcode</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/xt256.css">xt256</option><option value="moz-extension://adeb4faa-1a89-4f9b-8131-34fee5194a68/lib/highlightjs/styles/zenburn.css">zenburn</option></select></p><p class="toggleable"><a id="__markdown-viewer__download" download="markdown.html" style="display: none;">Download as HTML</a></p></div><div class="markdownRoot"><p><a href="../index.html"><img src="../back.png"></a></p>
+<hr>
+<h1 id="chord-cartography">Chord Cartography</h1>
+<p>Dan Nielsen 4/2019</p>
+<h3 id="the-previous-article-in-this-series-is-structure-of-scales">(The previous article in this series is <a href="../the-structure-of-scales">Structure of Scales</a>)</h3>
+<h2 id="just-notes-for-myself---outline-of-a-harmonic-navigation-system">JUST NOTES FOR MYSELF - Outline of a harmonic navigation system</h2>
+<ul>
+<li>
+<p>Affirm the conventional wisdom about seventh chords - that the major, minor, and fully diminished sevenths chords respectively extend the major, minor, and diminished triads.</p>
+</li>
+<li>
+<p>Make a map of all seventh chords constructed on the degrees of our 12 canonical scales, the idea being that identical chord types might be used to pivot-modulate between modes.</p>
+</li>
+<li>
+<p>Find and enumerate canonical cadences in each mode, while using our voice-leading map, to understand possible closing cadences and pivot modulations.</p>
+</li>
+<li>
+<p>Identify "negative" scales for each of our canonical scales, this being another form of modal transition alongside modulation and "tonic floating".</p>
+</li>
+<li>
+<p>Substitution (like iii7 for I7, which share 3 notes)</p>
+</li>
+<li>
+<p>Modal mixture</p>
+</li>
+<li>
+<p>Special harmonic progression: sad I-to-iii in a major key</p>
+</li>
+</ul>
+<h2 id="negative-scales">Negative scales</h2>
+<p>Negative harmony is a very popular concept in current music theory. Let's not elaborate here on its definition, since it's well-described by online resources. Suffice it to say that the "negative scale" begins on the fifth of the source scale and descends by the same order of whole and half steps, so that, for instance, [A B C D E F G] -&gt; [E D C# B A G# F#]. We then reorder the result to begin with the original tonic, so it becomes, in this case, [A B C# D E F# G#], or the major scale.</p>
+<p>But there's seemingly no good reason we shouldn't give the same significance to the symmetrical operation, to map a descending scale to an ascending scale that begins down a fifth, so that [A G F E D C B] -&gt; [D E F# G A B C]. After recentering and reordering, this becomes [A B C D E F# G], or Dorian mode.</p>
+<p>Notice that this process is a sort of natural continuation of the thinking in "Structure of Scales", where we attached harmonic structure to a nucleus of up-a-fifth-and-down-a-fifth. Now we are attaching serial pitch structure to up-a-fifth-and-down-a-fifth.</p>
+<p>In the chart below, when a scale may be called by various names, the names are listed and separated by commas. The term "unharmonic" is used when a leading tone is flattened, and "unmystic" when a minor second is sharpened.</p>
+<p>By negative harmony, we've shone light on eight more scales: <strong>Lydian</strong>, <strong>Locrian</strong>, <strong>Lydian Diminished</strong>, <strong>Locrian Natural 6</strong>, <strong>Ukrainian Dorian</strong>, <strong>Dorian Flat 5</strong>, <strong>the Overtone scale</strong>, <strong>the Half-Diminished scale</strong>.</p>
+<p>Notice that we now nicely have all seven diatonic modes: Aeolian, Locrian, Ionian, etc.</p>
+<p>We also have all of what I'm calling "harmonic" and "mystic" variants of these modes, except for two: MysLyd, HarLoc. These two scales are extremely uncommon in music, and, since they were not generated by our current musical operations, let's continue to leave them outside the scope of our scheme.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Neg<sub>1</sub></th>
+<th style="text-align:center">Neg<sub>2</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>MF6</strong></p></td>
+<td style="text-align:center"><p style="background-color:#c0c080">HarDor, MelMinAsc</p></td>
+<td style="text-align:center">MysDor</td>
+</tr>
+<tr>
+<td style="text-align:center"><p style="background-color:#eeeeee">Har</p></td>
+<td style="text-align:center"><p style="background-color:#c0c080">HarAeo, HarMin</p></td>
+<td style="text-align:center"><strong>LocNat6</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><p style="background-color:#eeeeee">Mys</p></td>
+<td style="text-align:center"><strong>LydDim</strong></td>
+<td style="text-align:center">MysMix, HarMinInv</td>
+</tr>
+<tr>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>Mix</strong></p></td>
+<td style="text-align:center"><p style="background-color:khaki">Dor</p></td>
+<td style="text-align:center"><p style="background-color:khaki">MysAeo, Phr</p></td>
+</tr>
+<tr>
+<td style="text-align:center"><p style="background-color:#eeeeee">Har</p></td>
+<td style="text-align:center"><p style="background-color:khaki">Aeo, NatMin, MelMinDes</p></td>
+<td style="text-align:center"><p style="background-color:khaki"><strong>Loc</strong></p></td>
+</tr>
+<tr>
+<td style="text-align:center"><p style="background-color:#eeeeee">Mys</p></td>
+<td style="text-align:center"><strong>UkrDor, RomMin</strong></td>
+<td style="text-align:center">MysMF6, PhrDom, Freygish</td>
+</tr>
+<tr>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>Aeo</strong></p></td>
+<td style="text-align:center"><p style="background-color:khaki">HarMix, Ion, Maj</p></td>
+<td style="text-align:center"><p style="background-color:khaki">Dor</p></td>
+</tr>
+<tr>
+<td style="text-align:center"><p style="background-color:#eeeeee">Har</p></td>
+<td style="text-align:center">HarMF6, HarMaj</td>
+<td style="text-align:center"><strong>DorFlt5</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><p style="background-color:#eeeeee">Mys</p></td>
+<td style="text-align:center"><p style="background-color:khaki"><strong>Lyd</strong></p></td>
+<td style="text-align:center"><p style="background-color:khaki">Mix</p></td>
+</tr>
+<tr>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>Dor</strong></p></td>
+<td style="text-align:center"><p style="background-color:khaki">Mix</p></td>
+<td style="text-align:center"><p style="background-color:khaki">Aeo, NatMin</p></td>
+</tr>
+<tr>
+<td style="text-align:center"><p style="background-color:#eeeeee">Har</p></td>
+<td style="text-align:center"><p style="background-color:tan">MF6</p></td>
+<td style="text-align:center"><strong>UnmysLoc, HalfDim</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><p style="background-color:#eeeeee">Mys</p></td>
+<td style="text-align:center"><strong>UnharLyd, Overtone</strong></td>
+<td style="text-align:center"><p style="background-color:tan">MF6</p></td>
+</tr>
+</tbody>
+</table>
+<h2 id="scale-spectrum">Scale spectrum</h2>
+<p>In "Structure of Scales", a metric was given for the brightness of a scale based on its harmonic structure. Let's use that metric to order these scales by brightness.</p>
+<p>We need to extend the metric a little, because, for the original set of scales, all "prongs" were attached to a "nucleus" of tonic and a fifth in either direction. This time, we might also have prongs attached at a distance of two fifths.</p>
+<p>For an upward prong attached at a distance of two fifths, the associated interval is the augmented fourth. If tonic is G, then it's C# attached to A. If we consider A to have pitch 9/8, then the value will be 3(8/9), or about 2.667.</p>
+<p>For a downward prong, the associated interval is the diminished fifth. If tonic is G, then it's Db attached to F. If we consider F to have pitch 8/9, then the value will be -3(9/8), or -3.375.</p>
+<p>Of course, we haven't given any rigorous proof for this heuristic, but it seems to work well enough for the  purposes of ranking, even if it likely has issues.</p>
+<pre><code>WITH G AS TONIC...                                                             
+                                                                               
+LYDIAN (w w w h w w h)                LOCRIAN (h w w h w w w)                  
+                                                                               
+B      F#     C#                      Bb ---- F ---- C ---- G                  
+|      |      |                               |      |      |                  
+G ---- D ---- A ---- E                        Db     Ab     Eb                 
+                                                                               
+3+2+2.667 = 7.667                     -2-3-3.375 = -8.375                      
+                                                                               
+LYDIAN DIMINISHED (w h 3h h w w h)    LOCRIAN NATURAL 6 (h w w h 3h h w)       
+                                                                               
+       F#     C#                                     E                         
+       |      |                                      |                         
+G ---- D ---- A ---- E                Bb ---- F ---- C ---- G                  
+       |                                      |      |                         
+       Bb                                     Db     Ab                        
+                                                                               
+2+2.667-3 = 1.667                     2-3-3.375 = -4.375                       
+                                                                               
+UKRAINIAN DORIAN (w h 3h h w h w)     DORIAN FLAT 5 (w h w h 3h h w)           
+                                                                               
+              C#                               A      E                        
+              |                                |      |                        
+G ---- D ---- A ---- E                 Bb ---- F ---- C ---- G                 
+       |      |                                |                               
+       Bb     F                                Db                              
+                                                                               
+2.667-3-3.375 = -3.708                2+2.667-3.375 = 1.292                    
+                                                                               
+OVERTONE SCALE (w w w h w h w)        HALF-DIMINISHED SCALE (w h w h w w w)    
+                                                                               
+B             C#                              A                                
+|             |                               |                                
+G ---- D ---- A ---- E                Bb ---- F ---- C ---- G                  
+              |                               |             |                         
+              F                               Db            Eb                        
+                                                                               
+3+2.667-3.375 = 2.292                 2.667-2-3.375 = -2.708                   
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Scale</th>
+<th style="text-align:left">Brightness</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Lyd</td>
+<td style="text-align:left">7.667</td>
+</tr>
+<tr>
+<td style="text-align:left">HarMix, Ion, Maj</td>
+<td style="text-align:left">7</td>
+</tr>
+<tr>
+<td style="text-align:left">Mix</td>
+<td style="text-align:left">5</td>
+</tr>
+<tr>
+<td style="text-align:left">HarMF6, HarMaj</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:left">UnharLyd, Overtone</td>
+<td style="text-align:left">2.292</td>
+</tr>
+<tr>
+<td style="text-align:left">MysMix, HarMinInv</td>
+<td style="text-align:left">2</td>
+</tr>
+<tr>
+<td style="text-align:left">LydDim</td>
+<td style="text-align:left">1.667</td>
+</tr>
+<tr>
+<td style="text-align:left">DorFlt5</td>
+<td style="text-align:left">1.292</td>
+</tr>
+<tr>
+<td style="text-align:left">MF6</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">HarDor, MelMinAsc</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">Dor</td>
+<td style="text-align:left">-1</td>
+</tr>
+<tr>
+<td style="text-align:left">MysMF6, PhrDom, Freygish</td>
+<td style="text-align:left">-2</td>
+</tr>
+<tr>
+<td style="text-align:left">UnmysLoc, HalfDim</td>
+<td style="text-align:left">-2.708</td>
+</tr>
+<tr>
+<td style="text-align:left">HarAeo, HarMin</td>
+<td style="text-align:left">-3</td>
+</tr>
+<tr>
+<td style="text-align:left">UkrDor, RomMin</td>
+<td style="text-align:left">-3.708</td>
+</tr>
+<tr>
+<td style="text-align:left">MysDor</td>
+<td style="text-align:left">-4</td>
+</tr>
+<tr>
+<td style="text-align:left">LocNat6</td>
+<td style="text-align:left">-4.375</td>
+</tr>
+<tr>
+<td style="text-align:left">Aeo, NatMin, MelMinDes</td>
+<td style="text-align:left">-5</td>
+</tr>
+<tr>
+<td style="text-align:left">MysAeo, Phr</td>
+<td style="text-align:left">-8</td>
+</tr>
+<tr>
+<td style="text-align:left">Loc</td>
+<td style="text-align:left">-8.375</td>
+</tr>
+</tbody>
+</table>
+<h2 id="seventh-chords-taken-as-prescribed">Seventh chords taken as prescribed</h2>
+<p>This section simply affirms the conventional wisdom regarding seventh chords as extensions of triads.</p>
+<p>Taking stacks of thirds, we can form seven seventh chords: <strong>augmented</strong>, <strong>major</strong>, <strong>dominant</strong>, <strong>minor-major</strong>, <strong>minor</strong>, <strong>half-diminished</strong>, <strong>diminished</strong>.</p>
+<p>Since the augmented triad appears as a root triad only in the augmented seventh chord, we can think of both chords as <strong>harmonically equivalent</strong> in traditional harmony, with the seventh being an embellishment of the triad.</p>
+<p>But the story's not so simple for the other seventh-chord types. The minor, major, and diminished triads each appear in two types of seventh chords. We might directly associate the major triad with the major seventh chord, the minor triad with the minor seventh chord, and the diminished triad with the fully diminished seventh chord. But besides the matching monikers already given to these chords, what's the justification?</p>
+<p>Using traditional theory to "naturally" extend triads, we could argue against the candidacy of <strong>minor-major</strong>, <strong>dominant</strong>, and <strong>half-diminished</strong> as alternative interpretations...</p>
+<ul>
+<li>
+<p><strong>Minor-major</strong>:
+This chord sounds tense and therefore does not provide a calm minor resolution, since the leading tone of harmonic minor wants to move up (nevermind the fact that it also appears in the major seventh chord, I guess); instead, it seems desirable that a so-called minor seventh interval (not a major interval) would extend a minor triad.</p>
+</li>
+<li>
+<p><strong>Dominant</strong>:
+This chord sounds like it wants to resolve down by a fifth, according to traditional theory, and therefore doesn't usually provide a stable major resolution; instead, it seems desirable that a so-called major seventh interval (not a minor interval) would extend a major triad.</p>
+</li>
+<li>
+<p><strong>Half-diminished</strong>:
+This chord does not fully contain the diminished character, which is minor thirds dividing the octave into four equal parts; instead, it seems desirable that a so-called diminished seventh interval (not a minor interval) would extend a diminished triad.</p>
+</li>
+</ul>
+<p>It seems these general conclusions are acceptable. Regarding the dominant seventh, we could amend that only a half-step modification is required to reach either a minor seventh chord or a major seventh chord; likewise, we could simply move away from the seventh, leaving the major triad. Therefore, taken without the context of a major scale, the dominant seventh is not necessarily so filled with the need to resolve down by a fifth, especially when doubling octaves of the root note. When the dominant seventh chord is viewed as an approximation of the first 8 harmonics, empowering the root tone is like restoring the harmonics 1:2:4:8.</p>
+<p>However, the major seventh contains two major thirds, on both the tonic and the fifth, so it makes sense to consider it the truest extension of the major triad.</p>
+<h2 id="scales-of-six-and-eight-tones">Scales of six and eight tones</h2>
+<h2 id="pivot-chord-modulation">Pivot-chord modulation</h2>
+<p>The previous article mentioned "secret passages", pairs of modes with a perfect-fifth relationship that share exactly the same harmonic structure, with only a different choice of tonic placement in the harmonic lattice. My interpretation is this: whereas we are used to thinking of a dominant relationship as being a heavy one, seeking resolution in the initial tonic, this perfect-fifth relation is weightless, and tonic can tranquilly float between either mode.</p>
+<p>But let's consider more traditional modulation now. The politest form of this modulation employs a pivot chord, meaning a chord that has a harmonic function in both the progressions of the original key and the target key.</p>
+<p>The table below gives us the seventh chord built on each scale degree in our new set of canonical scales.</p>
+<p>Just for example, it shows that we could pivot from MF6 into HarDor when we consider VII<sup>V7</sup> in MF6 to be V<sup>V7</sup> in HarDor.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>I<sup>+7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>I<sup>7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>I<sup>V7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>i<sup>mM7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>i<sup>7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>i<sup>ϕ7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>i<sup>o7</sup></strong></p></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">HarMix</td>
+<td style="text-align:center">Mix</td>
+<td style="text-align:center">HarAeo</td>
+<td style="text-align:center">Aeo</td>
+<td style="text-align:center">Loc</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">HarMF6</td>
+<td style="text-align:center">MF6</td>
+<td style="text-align:center">HarDor</td>
+<td style="text-align:center">Dor</td>
+<td style="text-align:center">LocNat6</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">Lyd</td>
+<td style="text-align:center">MysMix</td>
+<td style="text-align:center">LydDim</td>
+<td style="text-align:center">MysAeo</td>
+<td style="text-align:center">DorFlt5</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">MysMF6</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">MysDor</td>
+<td style="text-align:center">UnmysLoc</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">UnharLyd</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">UkrDor</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>II<sup>+7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>II<sup>7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>II<sup>V7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>ii<sup>mM7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>ii<sup>7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>ii<sup>ϕ7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>ii<sup>o7</sup></strong></p></td>
+</tr>
+<tr>
+<td style="text-align:center">MysMix</td>
+<td style="text-align:center">MysMF6</td>
+<td style="text-align:center">Lyd</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Mix</td>
+<td style="text-align:center">MF6</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">MysDor</td>
+<td style="text-align:center">MysAeo</td>
+<td style="text-align:center">LydDim</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Dor</td>
+<td style="text-align:center">Aeo</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">LocNat6</td>
+<td style="text-align:center">Loc</td>
+<td style="text-align:center">UkrDor</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">HarMix</td>
+<td style="text-align:center">HarMF6</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">UnharLyd</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">HarDor</td>
+<td style="text-align:center">HarAeo</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">DorFlt5</td>
+<td style="text-align:center">UnmysLoc</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>III<sup>+7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>III<sup>7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>III<sup>V7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>iii<sup>mM7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>iii<sup>7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>iii<sup>ϕ7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>iii<sup>o7</sup></strong></p></td>
+</tr>
+<tr>
+<td style="text-align:center">HarAeo</td>
+<td style="text-align:center">Aeo</td>
+<td style="text-align:center">MysAeo</td>
+<td style="text-align:center">DorFlt5</td>
+<td style="text-align:center">HarMix</td>
+<td style="text-align:center">Mix</td>
+<td style="text-align:center">MysMix</td>
+</tr>
+<tr>
+<td style="text-align:center">HarDor</td>
+<td style="text-align:center">Dor</td>
+<td style="text-align:center">MysDor</td>
+<td style="text-align:center">UnmysLoc</td>
+<td style="text-align:center">HarMF6</td>
+<td style="text-align:center">MF6</td>
+<td style="text-align:center">MysMF6</td>
+</tr>
+<tr>
+<td style="text-align:center">LydDim</td>
+<td style="text-align:center">UkrDor</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Lyd</td>
+<td style="text-align:center">UnharLyd</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Loc</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">LocNat6</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>IV<sup>+7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>IV<sup>7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>IV<sup>V7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>iv<sup>mM7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>iv<sup>7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>iv<sup>ϕ7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>iv<sup>o7</sup></strong></p></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">Mix</td>
+<td style="text-align:center">Dor</td>
+<td style="text-align:center">MF6</td>
+<td style="text-align:center">Aeo</td>
+<td style="text-align:center">Lyd</td>
+<td style="text-align:center">LydDim</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">MysMix</td>
+<td style="text-align:center">MysDor</td>
+<td style="text-align:center">MysMF6</td>
+<td style="text-align:center">MysAeo</td>
+<td style="text-align:center">UnharLyd</td>
+<td style="text-align:center">UkrDor</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">HarMix</td>
+<td style="text-align:center">HarDor</td>
+<td style="text-align:center">HarMF6</td>
+<td style="text-align:center">HarAeo</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">LocNat6</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Loc</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">DorFlt5</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">UnmysLoc</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>AugV<sup>+7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>MajV<sup>7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>V<sup>V7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>v<sup>mM7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>v<sup>7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>v<sup>ϕ7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>v<sup>o7</sup></strong></p></td>
+</tr>
+<tr>
+<td style="text-align:center">DorFlt5</td>
+<td style="text-align:center">Lyd</td>
+<td style="text-align:center">HarMix</td>
+<td style="text-align:center">UkrDor</td>
+<td style="text-align:center">Mix</td>
+<td style="text-align:center">MysMix</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">UnmysLoc</td>
+<td style="text-align:center">Loc</td>
+<td style="text-align:center">HarMF6</td>
+<td style="text-align:center">UnharLyd</td>
+<td style="text-align:center">MF6</td>
+<td style="text-align:center">MysMF6</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">LydDim</td>
+<td style="text-align:center">HarAeo</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Aeo</td>
+<td style="text-align:center">MysAeo</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">LocNat6</td>
+<td style="text-align:center">HarDor</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Dor</td>
+<td style="text-align:center">MysDor</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>VI<sup>+7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>VI<sup>7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>VI<sup>V7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>vi<sup>mM7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>vi<sup>7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>vi<sup>ϕ7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>vi<sup>o7</sup></strong></p></td>
+</tr>
+<tr>
+<td style="text-align:center">MF6</td>
+<td style="text-align:center">Aeo</td>
+<td style="text-align:center">Loc</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Mix</td>
+<td style="text-align:center">Dor</td>
+<td style="text-align:center">LocNat6</td>
+</tr>
+<tr>
+<td style="text-align:center">MysMF6</td>
+<td style="text-align:center">MysAeo</td>
+<td style="text-align:center">UnmysLoc</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">MysMix</td>
+<td style="text-align:center">MysDor</td>
+<td style="text-align:center">DorFlt5</td>
+</tr>
+<tr>
+<td style="text-align:center">HarMF6</td>
+<td style="text-align:center">HarAeo</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">HarMix</td>
+<td style="text-align:center">HarDor</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Lyd</td>
+<td style="text-align:center">LydDim</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">UkrDor</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">UnharLyd</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>VII<sup>+7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>VII<sup>7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>VII<sup>V7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>vii<sup>mM7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>vii<sup>7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>vii<sup>ϕ7</sup></strong></p></td>
+<td style="text-align:center"><p style="background-color:lightgray"><strong>vii<sup>o7</sup></strong></p></td>
+</tr>
+<tr>
+<td style="text-align:center">UkrDor</td>
+<td style="text-align:center">Mix</td>
+<td style="text-align:center">MF6</td>
+<td style="text-align:center">LocNat6</td>
+<td style="text-align:center">Lyd</td>
+<td style="text-align:center">HarMix</td>
+<td style="text-align:center">HarMF6</td>
+</tr>
+<tr>
+<td style="text-align:center">UnharLyd</td>
+<td style="text-align:center">Dor</td>
+<td style="text-align:center">Aeo</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Loc</td>
+<td style="text-align:center">HarDor</td>
+<td style="text-align:center">HarAeo</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">MysMix</td>
+<td style="text-align:center">MysMF6</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">LydDim</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">MysDor</td>
+<td style="text-align:center">MysAeo</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">DorFlt5</td>
+<td style="text-align:center">UnmysLoc</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="pivot-chord-cadences">Pivot-chord cadences</h2>
+<h2 id="voice-leading-map">Voice-leading map</h2>
+<p><img src="chord-cartography-1.jpg" alt=""></p>
+<p>Voice-leading: triadic on the left, and tetradic on the right (R Cohn, based on Douthett, Boretz, <em>et al</em>)</p>
+<p>The figures above show the triadic and tetradic possibilities of half-step voice-leading changes. The figure on the left gives movement of tetrads as extensions of triads, while the other figure shows purely tetradic movement. The minor seventh chords (shown as triangles on the righthand side, and as lowercase letters on the lefthand side) are equivalent chords connecting both maps, meaning the two figures actually represent a single unified map of tetradic voice leading. Also, the Dom7 chords are only one step away from the major chords.</p>
+<h3 id="suspensions">Suspensions</h3>
+<p>Of course, not included in these figures are non-tertiary triads like C-F-G (suspensions), but they are easy enough to account for, since they just attach to the major and minor triads.</p>
+<h3 id="transforms">Transforms</h3>
+<p>The typical core theory of harmonic progression is PLR: parallel, leading-tone exchange, relative.</p>
+<p>Transform P is <strong>melodic</strong> - it relates to a direct modal modulation, so, for instance, a minor chord on tonic may directly become major as uphelp by a continuous melodic line. The character is changed by a slight change in the third. To extend and constrain this notion for the case of various scales, as opposed to major and minor triads, we might say that a transition can only move a single prong in the harmonic structure of a scale at a time, for instance, Lyd -&gt; LydDim -&gt; UkrDor -&gt; Overtone. Observe this amazing fact: <strong>such changes imply a change of only a halfstep within the scale, so they satisfy the notion of voice-leading parsimony</strong>.</p>
+<p>Transform R is <strong>harmonic</strong> - for instance, C major may transition to its harmonic relative A minor. Between these chords an augmented chord is impled by the parsimonious voice-leading map. To be proper, let's always require this augmented chord be played in between the other chords.</p>
+<p>Transform L is a <strong>mediant or submediant progression</strong> involving the leading tone. This chord change has an emotional pull; the chord change I-iii, for instance, has been described as "damp" and uniquely affecting.</p>
+<pre><code>B      F#     C#                                                       B                           B      F#                          B
+|      |      |                                                        |                           |      |                           |
+G ---- D ---- A ---- E      Bb ---- F ---- C ---- G      F ---- C ---- G ---- D ---- A      C ---- G ---- D ---- A      F ---- C ---- G ---- D
+                                    |      |      |                    |                           |                           |      |
+                                    Db     Ab     Eb                   Eb                          Eb                          Ab     Eb
+                                                                                                                        
+Lyd                         Loc                          MixFlt6                            HarMixFlt6                   MysMixFlt6
+                                                                   
+       F#     C#                           E                    E                           E             F#                   E      B
+       |      |                            |                    |                           |             |                    |      |
+G ---- D ---- A ---- E      Bb ---- F ---- C ---- G      F ---- C ---- G ---- D ---- A      C ---- G ---- D ---- A      F ---- C ---- G ---- D
+       |                            |      |                                  |                           |                    |
+       Bb                           Db     Ab                                 Bb                          Bb                   Ab
+                                                                                            
+LydDim                      LocNat6                      Dor                                HarDor                      Mys Mix
+                                                                                            
+              C#                     A      E                   E      B                    E      B      F#
+              |                      |      |                   |      |                    |      |      |
+G ---- D ---- A ---- E       Bb ---- F ---- C ---- G     F ---- C ---- G ---- D ---- A      C ---- G ---- D ---- A      F ---- C ---- G ---- D
+       |      |                      |                                                                                         |      |      |
+       Bb     F                      Db                                                                                        Ab     Eb     Bb
+                                                                                            
+UkrDor                      DorFlt5                      Mix                                Maj                         Phr
+                                                                                            
+B             C#                    A                                                                     F#                   E
+|             |                     |                                                                     |                    |
+G ---- D ---- A ---- E      Bb ---- F ---- C ---- G      F ---- C ---- G ---- D ---- A      C ---- G ---- D ---- A      F ---- C ---- G ---- D
+              |                     |             |                    |      |                    |      |                    |             |
+              F                     Db            Eb                   Eb     Bb                   Eb     Bb                   Ab            Bb
+                                                                                            
+Overtone                    HlfDim                       Min                                HarMin                      MysDor
+</code></pre>
+</div></body></html>
