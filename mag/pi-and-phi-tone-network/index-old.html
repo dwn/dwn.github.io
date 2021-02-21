@@ -1,0 +1,518 @@
+<!DOCTYPE HTML>
+<html>
+  <head>  
+    <meta charset='utf-8' />
+    <title>&pi; and &Phi;</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <script src='Tone.js'></script>
+    <script src='tonejs-ui.js'></script>
+    <script src='easeljs.min.js'></script>
+  </head>
+  <body>
+    <tone-example id='tone-example'>
+        <p><a href="../index.html"><img src="../back.png"></a></p>
+        <h1>Pi and Phi: Tone Network</h1>
+        Dan Nielsen<br/>
+        6/2020
+      <tone-content>
+<canvas id='canvas' width='800' height='600'></canvas>
+      </tone-content>
+<label>synth
+<select id='synth' onchange='setSynth();'>
+  <option selected>fm</option>
+  <option>buzz</option>
+  <option>sine</option>
+  <option>triangle</option>
+  <option>square</option>
+</select>
+</label>
+        <br/>
+      <tone-explanation label='&pi; and &Phi; can serve as basis intervals for a tone network'>
+<!-- <button type='button' onclick='play(scaleTest);'>play</button> -->
+        <i><b>&Phi;</b></i> = inverse golden ratio
+        <br/>
+        <br/>
+        In 72-edo with octave equivalence, <i><b>&pi; &pi;</b></i> equals <i><b>&Phi;</b></i>
+        <br/>
+        <br/>
+        <b><i>n</i><sub>step</sub></b>( <i><b>x</b></i> ) = round( 72 log<sub>2</sub> <i><b>x</b></i> ) mod 72
+        <br/>
+        <b><i>n</i><sub>step</sub></b>( <i><b>&pi; &pi;</b></i> ) = <b><i>n</i><sub>step</sub></b>( <i><b>&Phi;</b></i> ) = 22 (upmid third)
+        <br/>
+        <b><i>n</i><sub>step</sub></b>( <i><b>&pi;</b></i> ) = 47 (downminor sixth)
+        <br/>
+        <br/>
+        So stacking two downminor sixths (<i><b>&pi;</b></i>) gives an upmid third (<i><b>&Phi;</b></i>)
+        <br/>
+        A triad formed from these steps [0 22 47] sounds like this
+        <br/>
+        <button type='button' onclick='play(triadEDO);'>play</button>
+        <!-- <tone-play-toggle></tone-play-toggle> -->
+        <!-- <tone-synth></tone-synth> -->
+        <!-- <tone-reverb collapsed></tone-reverb> -->
+        <br/>
+        <br/>
+        It is interesting that several intervals are near to simple ratios
+        <br/>
+        (octave-equivalent interval names in parentheses)
+        <br/>
+        <br/>
+        <i><b>&pi; / &Phi;</b></i> &asymp; 61/12 (upmajor third)
+        <br/>
+        <i><b>&pi; &Phi; &Phi;</b></i> &asymp; 6/5 (minor third, like <i><b>&pi; &pi; &pi; &Phi;</b></i> or <i><b>&pi; &pi; &pi; &pi; &pi;</b></i>)
+        <br/>
+        <i><b>&pi; &pi; &Phi;</b></i> &asymp; 61/10 (double-up fifth, like <i><b>&Phi; &Phi;</b></i> or <i><b>&pi; &pi; &pi; &pi;</b></i>)
+        <br/>
+        <i><b>&pi; &pi; &pi;</b></i> &asymp; 31 (quartertone less than octave, like <i><b>&pi; &Phi;</b></i>)
+        <br/>
+        <br/>
+        Notice that our triad of steps [0 22 47] is approximately 31 : 6/5 : 61/10 &rArr; 155 : 6 : 61
+        <br/>
+        We can confirm by listening
+        <br/>
+        <button type='button' onclick='play(triadJI);'>play</button>
+        <!-- <tone-play-toggle></tone-play-toggle> -->
+        <!-- <tone-synth></tone-synth> -->
+        <!-- <tone-reverb collapsed></tone-reverb> -->
+        <br/>
+        <br/>
+        The picture shows the tone network
+        <br/>
+        You can see that after the triad [0 22 47], we get steps [69 44 19], the same triad shifted by a quartertone
+        <br/>
+        It is generally desirable for notes in a scale to be somewhat separated, so let's skip every other set of three notes as we travel along
+        <br/>
+        Then we wind up with four triads
+        <br/>
+        <br/>
+        [0 22 47]
+        <br/>
+        [66 16 41]
+        <br/>
+        [60 10 35]
+        <br/>
+        [54 4 29]
+        <br/>
+        <br/>
+        Forming a <b>12-note</b> scale from the collection gives something akin to the usual chromatic scale
+        <br/>
+        <br/>
+        [0 4 10 16 22 29 35 41 47 54 60 66 (72)]
+        <br/>
+        <button type='button' onclick='play(scale12);'>play</button>
+        <!-- <tone-play-toggle></tone-play-toggle> -->
+        <!-- <tone-synth></tone-synth> -->
+        <!-- <tone-reverb collapsed></tone-reverb> -->
+        <br/>
+        <br/>
+        If we again skip every other triad, we wind up with a <b>6-note</b> scale similar to a wholetone scale
+        <br/>
+        <br/>
+        [0 10 22 35 47 60 (72)]
+        <br/>
+        <button type='button' onclick='play(scale6);'>play</button>
+        <!-- <tone-play-toggle></tone-play-toggle> -->
+        <!-- <tone-synth></tone-synth> -->
+        <!-- <tone-reverb collapsed></tone-reverb> -->
+        <br/>
+        <br/>
+        If instead we pick a <b>7-note</b> diatonic subset, such as the nicely symmetrical Dorian, we get this
+        <br/>
+        <br/>
+        [0 10 16 29 41 54 60 (72)]
+        <br/>
+        <button type='button' onclick='play(scale7);'>play</button>
+        <!-- <tone-play-toggle></tone-play-toggle> -->
+        <!-- <tone-synth></tone-synth> -->
+        <!-- <tone-reverb collapsed></tone-reverb> -->
+        <br/>
+        <br/>
+        We noted that traveling <i><b>&pi; &pi; &pi;</b></i> brings us back to a quartertone difference, which was considered to be undesirable
+        <br/>
+        What happens if we travel along the <i><b>&Phi;</b></i>-direction instead of the <i><b>&pi;</b></i>-direction?
+        <br/>
+        After 12 moves by <i><b>&Phi;</b></i>, we come to step 48, very near to <i><b>&pi;</b></i>'s 47
+        <br/>
+        <br/>
+        0 &rArr; 22 &rArr; 44 &rArr; 66 &rArr; 16 &rArr; 38 &rArr; 60 &rArr; 10 &rArr; 32 &rArr; 54 &rArr; 4 &rArr; 26 &rArr; 48
+        <br/>
+        <br/>
+        If we travel another 12 moves, we would expect to wind up at <i><b>&pi; &pi;</b></i>, which we know is about equal to <i><b>&Phi;</b></i>
+        <br/>
+        Therefore, if we trace backward a move along <i><b>&Phi;</b></i>, we would expect to arrive close to an octave, and in fact that's true - with 23 moves total, we arrive at step 2, which we'll call the untempered octave
+        <br/>
+        <br/>
+        48 &rArr; 70 &rArr; 20 &rArr; 42 &rArr; 64 &rArr; 14 &rArr; 36 &rArr; 58 &rArr; 8 &rArr; 30 &rArr; 52 &rArr; 2
+        <br/>
+        <br/>
+        Putting these notes together into a scale gives the following <b>23-note</b> scale with an overwide octave, indicated by (74)
+        <br/>
+        <br/>
+        [0 4 8 10 14 16 20 22 26 30 32 36 38 42 44 48 52 54 58 60 64 66 70 (74)]
+        <br/>
+        <br/>
+        Since all of the scale degrees are even, we can switch to <b>36-edo</b> without any loss of precision
+        <br/>
+        <br/>
+        [0 2 4 5 7 8 10 11 13 15 16 18 19 21 22 24 26 27 29 30 32 33 35 (37)]
+        <br/>
+        <button type='button' onclick='play(scale23_untemp,"+4m");'>play</button>
+        <!-- <tone-play-toggle></tone-play-toggle> -->
+        <!-- <tone-synth></tone-synth> -->
+        <!-- <tone-reverb collapsed></tone-reverb> -->
+        <br/>
+        <br/>
+        The logical next step might be to temper the overwide octave, but if we do that uniformly, we will lose the near-perfect 11-step <i><b>&Phi;</b></i>
+        <br/>
+        I'd suggest instead that we accept this octave that is a sixthtone too wide, since it has a certain lively character to it
+        <br/>
+        <br/>
+        We can produce two <b>12-note</b> scales by keeping only every other element in the path taken above
+        <br/>
+        They are nearly the same, just shifted 3 steps in 36-edo, but each scale keeps the same 0
+        <br/>
+        <br/>
+        72-edo: <b>0</b> &rArr; 22 &rArr; <b>44</b> &rArr; 66 &rArr; <b>16</b> &rArr; 38 &rArr; <b>60</b> &rArr; 10 &rArr; <b>32</b> &rArr; 54 &rArr; <b>4</b> &rArr; 26 &rArr; <b>48</b> &rArr; 70 &rArr; <b>20</b> &rArr; 42 &rArr; <b>64</b> &rArr; 14 &rArr; <b>36</b> &rArr; 58 &rArr; <b>8</b> &rArr; 30 &rArr; <b>52</b> &rArr; <b>(74)</b>
+        <br>
+        <br/>
+        36-edo: [0 2 4 8 10 16 18 22 24 26 30 32 (37)]
+        <br/>
+        <button type='button' onclick='play(scale12a);'>play</button>
+        <!-- <tone-play-toggle></tone-play-toggle> -->
+        <!-- <tone-synth></tone-synth> -->
+        <!-- <tone-reverb collapsed></tone-reverb> -->
+        <br/>
+        <br/>
+        72-edo: <b>0</b> &rArr; <b>22</b> &rArr; 44 &rArr; <b>66</b> &rArr; 16 &rArr; <b>38</b> &rArr; 60 &rArr; <b>10</b> &rArr; 32 &rArr; <b>54</b> &rArr; 4 &rArr; <b>26</b> &rArr; 48 &rArr; <b>70</b> &rArr; 20 &rArr; <b>42</b> &rArr; 64 &rArr; <b>14</b> &rArr; 36 &rArr; <b>58</b> &rArr; 8 &rArr; <b>30</b> &rArr; 52 &rArr; <b>(74)</b>
+        <br>
+        <br/>
+        36-edo: [0 5 7 11 13 15 18 21 27 29 33 35 (37)]
+        <br/>
+        <button type='button' onclick='play(scale12b);'>play</button>
+        <!-- <tone-play-toggle></tone-play-toggle> -->
+        <!-- <tone-synth></tone-synth> -->
+        <!-- <tone-reverb collapsed></tone-reverb> -->
+        <br/>
+        <br/>
+        <br/>
+        <button type='button' onclick='play(intervalPi);'>play</button>
+        <br/>
+        <br/>
+      </tone-explanation>
+    </tone-example>
+<script>
+
+// AUDIO /////////////////
+
+const fund = 440.;
+
+function f(x,temper=1.) { // 72-edo
+  const s = 1./72.;
+  return fund * Math.pow(2, temper*s*x);
+}
+
+function ff(x,temper=1.) { // 36-edo
+  const s = 1./36.;
+  return fund * Math.pow(2, temper*s*x);
+}
+
+const Phi = (Math.sqrt(5.)-1.) / 2.;
+const pi = Math.PI;
+var synth;
+var part;
+
+var synthOsc = new Tone.PolySynth(3, Tone.Synth, {
+  'oscillator' : {
+    'type' : 'sine',
+    'count' : 1,
+    'spread' : 0,
+  },
+  'envelope': {
+    'attack': 0.01,
+    'decay': 0.1,
+    'sustain': 0.5,
+    'release': 0.4,
+    'attackCurve' : 'exponential',
+  },
+});
+
+var synthFM = new Tone.PolySynth(3, Tone.FMSynth,  {
+  'harmonicity': Phi,
+  'modulationIndex': Phi*Phi*Phi/Phi, // modAmp/modFreq
+  'detune': 0,
+  'oscillator': { 'type' : 'sine' },
+  'envelope': {
+    'attack': 0.01,
+    'decay': 0.01,
+    'sustain': 1,
+    'release': 0.5,
+  },
+  'modulation': { 'type' : 'sine' },
+  'modulationEnvelope': {
+    'attack': 0.5,
+    'decay': 0,
+    'sustain': 1,
+    'release': 0.5,
+  }
+});
+
+function setSynth() {
+  var e = document.getElementById("synth");
+  var strSynth = e.options[e.selectedIndex].text;
+  if (typeof part != "undefined") {
+    synth.disconnect();
+  }
+  synth = synthOsc;
+  switch(strSynth) {
+    case 'buzz':
+      synth.set({
+        'oscillator' : {
+          'type' : 'fatsawtooth',
+          'count' : 3,
+          'spread' : 30,
+        }
+      });
+    break; case 'sine':
+      synth.set({
+        'oscillator' : {
+          'type' : 'sine',
+          'count' : 1,
+          'spread' : 0,
+        }
+      });
+    break; case 'triangle':
+      synth.set({
+        'oscillator' : {
+          'type' : 'triangle',
+          'count' : 1,
+          'spread' : 0,
+        }
+      });
+    break; case 'square':
+      synth.set({
+        'oscillator' : {
+          'type' : 'square',
+          'count' : 1,
+          'spread' : 0,
+        }
+      });
+    break; default: // FM
+      synth = synthFM;
+  };
+  synth.toMaster();
+}
+
+function callback(time, note){
+  console.log(note);
+  synth.triggerAttackRelease(note, "6n", time);
+}
+
+var triadEDO = [
+  ['0:0', [f(0)]],
+  ['0:1', [f(22)]],
+  ['0:2', [f(47)]],
+  ['0:3', [f(0),f(22),f(47)]],
+];
+
+var triadJI = [
+  ['0:0', [fund]],
+  ['0:1', [fund*32.*6/155.]],
+  ['0:2', [fund*4.*61/155.]],
+  ['0:3', [fund,fund*32.*6/155.,fund*4.*61/155.]],
+];
+
+var scale12 = [
+  ['0:0:0', [f(0)]],
+  ['0:0:2', [f(4)]],
+  ['0:0:4', [f(10)]],
+  ['0:0:6', [f(16)]],
+  ['0:0:8', [f(22)]],
+  ['0:0:10', [f(29)]],
+  ['0:0:12', [f(35)]],
+  ['0:0:14', [f(41)]],
+  ['1:0:0', [f(47)]],
+  ['1:0:2', [f(54)]],
+  ['1:0:4', [f(60)]],
+  ['1:0:6', [f(66)]],
+  ['1:0:8', [f(72)]],
+];
+
+var scale6 = [
+  ['0:0:0', [f(0)]],
+  ['0:0:2', [f(10)]],
+  ['0:0:4', [f(22)]],
+  ['0:0:6', [f(35)]],
+  ['0:0:8', [f(47)]],
+  ['0:0:10', [f(60)]],
+  ['0:0:12', [f(72)]],
+];
+
+var scale7 = [
+  ['0:0:0', [f(0)]],
+  ['0:0:2', [f(10)]],
+  ['0:0:4', [f(16)]],
+  ['0:0:6', [f(29)]],
+  ['0:0:8', [f(41)]],
+  ['0:0:10', [f(54)]],
+  ['0:0:12', [f(60)]],
+  ['0:0:14', [f(72)]],
+];
+
+var scale23_untemp = [
+  ['0:0:0', [ff(0)]],
+  ['0:0:2', [ff(2)]],
+  ['0:0:4', [ff(4)]],
+  ['0:0:6', [ff(5)]],
+  ['0:0:8', [ff(7)]],
+  ['0:0:10', [ff(8)]],
+  ['0:0:12', [ff(10)]],
+  ['0:0:14', [ff(11)]],
+  ['1:0:0', [ff(13)]],
+  ['1:0:2', [ff(15)]],
+  ['1:0:4', [ff(16)]],
+  ['1:0:6', [ff(18)]],
+  ['1:0:8', [ff(19)]],
+  ['1:0:10', [ff(21)]],
+  ['1:0:12', [ff(22)]],
+  ['1:0:14', [ff(24)]],
+  ['2:0:0', [ff(26)]],
+  ['2:0:2', [ff(27)]],
+  ['2:0:4', [ff(29)]],
+  ['2:0:6', [ff(30)]],
+  ['2:0:8', [ff(32)]],
+  ['2:0:10', [ff(33)]],
+  ['2:0:12', [ff(35)]],
+  ['2:0:14', [ff(37)]],
+  ['3:0:0', [ff(0),ff(37)]],
+  ['3:0:2', [ff(0),ff(37)]],
+  ['3:0:4', [ff(0),ff(37)]],
+  ['3:0:6', [ff(0),ff(37)]],
+];
+
+var scale12a = [
+  ['0:0:0', [ff(0)]],
+  ['0:0:2', [ff(2)]],
+  ['0:0:4', [ff(4)]],
+  ['0:0:6', [ff(8)]],
+  ['0:0:8', [ff(10)]],
+  ['0:0:10', [ff(16)]],
+  ['0:0:12', [ff(18)]],
+  ['0:0:14', [ff(22)]],
+  ['1:0:0', [ff(24)]],
+  ['1:0:2', [ff(26)]],
+  ['1:0:4', [ff(30)]],
+  ['1:0:6', [ff(32)]],
+  ['1:0:8', [ff(37)]],
+];
+
+var scale12b = [
+  ['0:0:0', [ff(0)]],
+  ['0:0:2', [ff(5)]],
+  ['0:0:4', [ff(7)]],
+  ['0:0:6', [ff(11)]],
+  ['0:0:8', [ff(13)]],
+  ['0:0:10', [ff(15)]],
+  ['0:0:12', [ff(19)]],
+  ['0:0:14', [ff(21)]],
+  ['1:0:0', [ff(27)]],
+  ['1:0:2', [ff(29)]],
+  ['1:0:4', [ff(33)]],
+  ['1:0:6', [ff(35)]],
+  ['1:0:8', [ff(37)]],
+];
+
+var intervalPi = [
+  ['0:0:0', [fund,find*pi]],
+  ['0:0:2', [fund,find*pi]],
+];
+
+function play(chords,stopTime='+2m') {
+  if (typeof part != "undefined") {
+    part.removeAll();
+  }
+  part = new Tone.Part(callback,chords).start(0);
+  Tone.Transport.start('+4n');
+  Tone.Transport.stop(stopTime);
+}
+
+// GRAPHIC ////////////////
+
+ var stage = new createjs.Stage("canvas");
+
+function drawSectionOfToneNetwork(ctx,x,y,val0,val1) {
+  var grd;
+  ctx.font = "36px serif";
+  ctx.lineWidth = 0;
+  ctx.beginPath();
+  //Phi
+  grd = ctx.createLinearGradient(x-50, y-50, x+50, y+150);
+  grd.addColorStop(0, 'maroon');
+  grd.addColorStop(1, 'gold');
+  ctx.fillStyle = grd;
+  ctx.fillRect(x-100, y-15, 30, 165);
+  ctx.fillRect(x+70, y-115, 30, 165);
+  ctx.fillStyle = 'black';
+  ctx.fillText("Ф",x-100,y+90);
+  ctx.fillText("Ф",x+70,y-10);
+  //Pi
+  grd = ctx.createLinearGradient(x+50, y-50, x-50, y+155);
+  grd.addColorStop(0, 'blue');
+  grd.addColorStop(.37, 'lightblue');
+  grd.addColorStop(.37, 'darkblue');
+  grd.addColorStop(1, 'blue');
+  grd.addColorStop(1, 'maroon');
+  ctx.moveTo(x+100,y+70);
+  ctx.lineTo(x-100,y-30);
+  ctx.lineTo(x-100,y-70);
+  ctx.lineTo(x+100,y+30);
+  ctx.lineTo(x+100,y+70);
+  ctx.lineTo(x-100,y+170);
+  ctx.lineTo(x-100,y+130);
+  ctx.lineTo(x+100,y+30);
+  ctx.strokeStyle = 'maroon';
+  ctx.stroke();
+  ctx.moveTo(x,y);
+  ctx.fillStyle = grd;
+  ctx.fill();
+  ctx.fillStyle = 'black';
+  ctx.fillText("π",x+25,y+25);
+  ctx.fillText("π",x-50,y+125);
+  ctx.fillStyle = 'ivory';
+  ctx.font = "28px serif";
+  ctx.fillText(val0,x-150,y-35);
+  ctx.fillText(val1,x+120,y+65);
+}
+
+function handleResize() {
+  var w = 500;
+  var h = 1000;
+  stage.canvas.width = w;
+  stage.canvas.height = h;
+  stage.update();
+  var canvas = document.getElementById("canvas");
+  if (canvas.getContext) {
+    var x = .5 * canvas.width;
+    var y = .5 * canvas.height;
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle = "maroon";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    drawSectionOfToneNetwork(ctx, x, y-300, (0*22) % 72, (47+0*22) % 72);
+    drawSectionOfToneNetwork(ctx, x, y-100, (1*22) % 72, (47+1*22) % 72);
+    drawSectionOfToneNetwork(ctx, x, y+100, (2*22) % 72, (47+2*22) % 72);
+    drawSectionOfToneNetwork(ctx, x, y+300, (3*22) % 72, (47+3*22) % 72);
+    drawSectionOfToneNetwork(ctx, x, y+500, (4*22) % 72, (47+4*22) % 72);
+  }
+}
+
+// ONLOAD ///////////////////////////
+
+window.onload = function() {
+  window.addEventListener("resize", handleResize);
+  handleResize(); // First draw
+  // document.getElementById('tone-example').style.display = 'none';
+  setSynth();
+};
+
+</script>
+  </body>
+</html>
