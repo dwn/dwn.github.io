@@ -8,7 +8,7 @@ Dan Nielsen 3/2019
 
 ---
 
-### (The next article in this series is [Chord Cartography](http://wfo.conlang.org/malkachi/chord-cartography))
+### (The second article in this series is [Chord Cartography](../chord-cartography))
 
 ## Four scales
 

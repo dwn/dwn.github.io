@@ -6,7 +6,7 @@
 
 Dan Nielsen 4/2019
 
-### (The previous article in this series is [Structure of Scales](http://wfo.conlang.org/malkachi/the-structure-of-scales))
+### (The previous article in this series is [Structure of Scales](../the-structure-of-scales))
 
 ## Outline of a harmonic navigation system
 
