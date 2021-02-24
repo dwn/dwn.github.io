@@ -12,7 +12,7 @@ Dan Nielsen 4/2019
 
 If you've long wanted a computer font for your constructed script but never wanted to deal with the painstaking process of creating one, or if your script needed more flexibility than you could manage with font tools, then this web app might make things much easier for you...
 
-https://wfo.conlang.org
+[https://wfo.conlang.org](https://wfo.conlang.org)
 
 It's very much a work in progress, created for free, and there's no support or guarantee of it working for you, but this document will give a quick run-down of the process.
 
