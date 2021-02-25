@@ -20,7 +20,7 @@ var conscriptTextReady=false;
 function loadFileURL(fileURL) {
   var result = null;
   var xmlhttp = new XMLHttpRequest();
-  xmlhttp.open('GET', file, false);
+  xmlhttp.open('GET', fileURL, false);
   xmlhttp.send();
   if (xmlhttp.status==200) {
     result = xmlhttp.responseText;
