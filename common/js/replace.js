@@ -63,7 +63,7 @@ function loadMap(title,mappingText) {
 ////////////////////////////////////////////
 function setAllData(on, titleEl, title = null, dat = null) {
   if (on) {
-    if (dat === null) { //Only called when font selected from title screen
+    if (!dat) { //Only called when font selected from title screen
       openedChat=false;
       fontSelectedFromTitleScreen=true;
       setVisibility('select-selected',false);
