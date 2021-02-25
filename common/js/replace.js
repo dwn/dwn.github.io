@@ -17,6 +17,17 @@ var json = {};
 var alreadyPlaying=false;
 var conscriptTextReady=false;
 ////////////////////////////////////////////
+function loadFileURL(fileURL) {
+  var result = null;
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.open('GET', file, false);
+  xmlhttp.send();
+  if (xmlhttp.status==200) {
+    result = xmlhttp.responseText;
+  }
+  return result;
+}
+////////////////////////////////////////////
 function getSelectedText() {
   var userSelection='', ta;
   if (window.getSelection && document.activeElement) {
@@ -57,7 +68,7 @@ function setAllData(on, titleEl, title = null, dat = null) {
       fontSelectedFromTitleScreen=true;
       setVisibility('select-selected',false);
       setVisibility('conscript-loading',true);
-      dat = loadURLFile('lang/'+titleEl.innerHTML+'.svg');
+      dat = loadFileURL('lang/'+titleEl.innerHTML+'.svg');
       setVisibility('conscript-loading',false);
       setVisibility('select-selected',true);
       const nameInInputBox = document.querySelector('.username-element').value;
