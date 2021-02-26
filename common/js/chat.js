@@ -16,6 +16,19 @@ $(function(){
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
   }
 ////////////////////////////////////////////
+  function langList() {
+    var result = null;
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('GET', 'https://dwn.github.io/common/lang/list', false);
+    xmlhttp.send();
+    if (xmlhttp.status===200) {
+      result = xmlhttp.responseText;
+    }
+    return result;
+  }
+  var arrLang=langList().split('\n');
+  arrLang = arrLang.filter(function (el) { return el !== null && el !== ''; }); //Remove empty entries
+////////////////////////////////////////////
   var socket = io();
   var uniqueUsername = getParameterByName('username');
   if (!uniqueUsername) {
