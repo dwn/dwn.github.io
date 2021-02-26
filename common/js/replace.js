@@ -68,7 +68,7 @@ function setAllData(on, titleEl, title = null, dat = null) {
       fontSelectedFromTitleScreen=true;
       setVisibility('select-selected',false);
       setVisibility('conscript-loading',true);
-      dat = loadFileURL('lang/'+titleEl.innerHTML+'.svg');
+      dat = loadFileURL('https://dwn.github.io/common/lang/'+titleEl.innerHTML+'.svg');
       setVisibility('conscript-loading',false);
       setVisibility('select-selected',true);
       const nameInInputBox = document.querySelector('.username-element').value;
