@@ -74,14 +74,14 @@ $(function(){
     msg = msg.split(':');
     const username = msg[0];
     const fontBasename = msg[1];
-    var uri = '/bucket-uri';
+    var url = '/bucket-url';
     if (!fontBasename.match(/\d{4}[-]\d{2}[-]\d{2}[_]\d{2}[_]\d{2}[_]\d{2}[_]\d{3}[_]/)) {
-      uri = '/static-bucket-uri';
+      url = '/common-url';
     }
-    //Ajax bucket-uri/ -> bucketURI
-    $.ajax({type:'GET',dataType:'text',url:uri,
-      success:function(bucketURI){
-        const addr = bucketURI + fontBasename + '.otf';
+    //Ajax bucket-url/ -> bucketURL
+    $.ajax({type:'GET',dataType:'text',url:url,
+      success:function(bucketURL){
+        const addr = bucketURL + fontBasename + '.otf';
         var newFont = new FontFace(username, 'url(' + addr + ')');
         newFont.load().then(function(loadedFace) {
           setTimeout(function() { //Occasionally even after the font was successfully loaded, it needs a brief moment before adding
