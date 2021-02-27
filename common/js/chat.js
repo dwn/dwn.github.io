@@ -76,7 +76,7 @@ $(function(){
     const fontBasename = msg[1];
     var url = '/bucket-url';
     if (!fontBasename.match(/\d{4}[-]\d{2}[-]\d{2}[_]\d{2}[_]\d{2}[_]\d{2}[_]\d{3}[_]/)) {
-      url = '/common-url';
+      url = '/common-lang-url';
     }
     //Ajax bucket-url/ -> bucketURL
     $.ajax({type:'GET',dataType:'text',url:url,
