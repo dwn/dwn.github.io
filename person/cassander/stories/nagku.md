@@ -2,6 +2,9 @@
 ### Cassander Garduna
 
 Below is the character Nagku the unlearning beast, the ascetic of the dark forest, the one who vomits poison. Nagku is the personification of the wild, its magic, it beauty, its freedom and its danger. He eats and smokes atsusta (the forgetting plant) as his goal is to purify himself through unlearning, forgetting everything he knows, including language itself. Nagku was born from the things I wish i had never learned or could forget, to be unburdened by memories of the past and let the wild back in.  
+
+![](../img/cassander-1.jpeg)
+![](../img/cassander-2.jpeg)
     
 In Nagku's early life he was refered to as Nak-Nak which in the language Nishgwi Lanta means (no no).  As an orphen Little Nak-Nak had many different care takers throughout his childhood. One such caretaker was a women named Gula se gitla hela (Gula the dog women). Nak-nak was a frail sickly child with a lung disorder. Gula tried to treat him the best she could with her minute knowledge of medicine, but only made him sicker. everyday for several years while living with Gula, Nak-nak would vomit up the bad medicine she gave him. This is one reason why as an adult Nak-nak was eventually given the name Nagku (one who vomits poison), but the poison he would expell as the unlearning beast was knowledge itself. 
     
