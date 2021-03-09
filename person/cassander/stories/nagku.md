@@ -1,4 +1,4 @@
-# Description of Nagku
+# Nagku
 ### Cassander Garduna
 
 Below is the character Nagku the unlearning beast, the ascetic of the dark forest, the one who vomits poison. Nagku is the personification of the wild, its magic, it beauty, its freedom and its danger. He eats and smokes atsusta (the forgetting plant) as his goal is to purify himself through unlearning, forgetting everything he knows, including language itself. Nagku was born from the things I wish i had never learned or could forget, to be unburdened by memories of the past and let the wild back in.  
