@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.12: http://docutils.sourceforge.net/" />
+<title>fgallery: a modern, minimalist javascript photo gallery</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7614 2013-02-21 15:55:51Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="fgallery-a-modern-minimalist-javascript-photo-gallery">
+<h1 class="title">fgallery: a modern, minimalist javascript photo gallery</h1>
+
+<p>&quot;fgallery&quot; is a static photo gallery generator with no frills that has a
+stylish, minimalist look. &quot;fgallery&quot; shows your photos, and nothing else.</p>
+<p>You can see an example gallery at the following address:</p>
+<p><a class="reference external" href="https://www.thregr.org/~wavexx/software/fgallery/demo/">https://www.thregr.org/~wavexx/software/fgallery/demo/</a></p>
+<p>There is no server-side processing, only static generation. The resulting
+gallery can be uploaded anywhere without additional requirements and works with
+any modern browser.</p>
+<ul class="simple">
+<li>Automatically orients pictures without quality loss.</li>
+<li>Multi-camera friendly: automatically sorts pictures by time: just throw your
+(and your friends) photos and movies in a directory. The resulting gallery
+shows the pictures in seamless shooting order.</li>
+<li>Adapts to the current screen size and proportions, switching from
+horizontal/vertical layout and scaling thumbnails automatically.</li>
+<li>Supports face detection for improved thumbnail centering.</li>
+<li>Loads fast! Especially over slow connections.</li>
+<li>Includes original (raw) pictures in a zip file for downloading.</li>
+<li>Panoramas can be seen full-size by default.</li>
+</ul>
+<div class="section" id="usage">
+<h1>Usage</h1>
+<ol class="arabic">
+<li><p class="first">Generate all the static files with ./fgallery:</p>
+<pre class="literal-block">
+./fgallery photo-dir my-gallery
+</pre>
+</li>
+<li><p class="first">Upload &quot;my-gallery&quot; somewhere.</p>
+</li>
+</ol>
+<p>To test/preview the gallery locally using Firefox, you can just open the file
+<tt class="docutils literal"><span class="pre">my-gallery/index.html</span></tt>. On other browsers you need a web server (due to AJAX
+same-origin restrictions). If you have python installed, a quick way to test
+the gallery locally is to run:</p>
+<pre class="literal-block">
+cd my-gallery
+python -m SimpleHTTPServer 8000
+</pre>
+<p>and then navigate to <a class="reference external" href="http://localhost:8000">http://localhost:8000</a>.</p>
+</div>
+<div class="section" id="pre-built-packages">
+<h1>Pre-built packages</h1>
+<p>Pre-built packages for <cite>fgallery</cite> (and <cite>facedetect</cite>) are available for Debian:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://packages.debian.org/fgallery">https://packages.debian.org/fgallery</a></li>
+<li><a class="reference external" href="https://packages.debian.org/facedetect">https://packages.debian.org/facedetect</a></li>
+</ul>
+<p>Arch Linux:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://aur.archlinux.org/packages/fgallery/">https://aur.archlinux.org/packages/fgallery/</a></li>
+</ul>
+<p>You can also try the latest <cite>fgallery</cite> bundled with <a class="reference external" href="https://www.thregr.org/~wavexx/software/facedetect/">facedetect</a> in a Docker
+container using the following <tt class="docutils literal">Dockerfile</tt> provided by Stavros Korokithakis:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/skorokithakis/docker-fgallery">https://github.com/skorokithakis/docker-fgallery</a></li>
+</ul>
+</div>
+<div class="section" id="usage-notes">
+<h1>Usage notes</h1>
+<p>The images as shown by the viewer are scaled/compressed using the specified
+quality to reduce viewing lag. They are also stripped of any EXIF tag. However,
+the pictures in the generated zip album are preserved <em>unchanged</em>.</p>
+<p>Lossless auto-rotation is applied so that images can be opened with a browser
+directly. JPEG and PNG files are also re-optimized (losslessy) before being
+archived to furthermore save space.</p>
+<p>Image captions are read from simple text files or directly from EXIF metadata.
+Captions can be controlled by the user using the &quot;bubble&quot; icon or by pressing
+the &quot;c&quot; keyboard shortcut, which cycles between normal/always hidden/always
+shown visualization modes.</p>
+<p>Preview and thumbnail images are converted to the sRGB color-space by default,
+which provides better results on normal displays and browsers without color
+management support.</p>
+<p>All images can be included to be viewed individually at full resolution in the
+gallery by using the <tt class="docutils literal"><span class="pre">-i</span></tt> flag. Panoramas are automatically detected and the
+original image is included in full-size by default, as often the image preview
+alone doesn't give it justice.</p>
+<p>For best results when shooting with multiple cameras (or friends), synchronize
+the camera clocks before starting to take pictures. Just pick one camera's time
+as the reference. By doing this the album is automatically shown in logical
+shooting order instead of file-name order.</p>
+<p>Never use the <tt class="docutils literal"><span class="pre">-s</span></tt> or <tt class="docutils literal"><span class="pre">-d</span></tt> flags. Let your friends and viewers download the
+raw album at full resolution, not the downscaled crap. Don't make me angry.</p>
+</div>
+<div class="section" id="tuning-thumbnail-generation">
+<h1>Tuning thumbnail generation</h1>
+<p>The sizes of the thumbnails and the main image can be customized on the command
+line with the appropriate flags. Two settings are available for the thumbnail
+sizes: minimum (150x112) and maximum (267x200). Thumbnails will always be as
+big as the minimum size, but they can be enlarged up to the specified maximum
+depending on the screen orientation. The default settings are tuned for a
+mostly-landscape gallery, but they can be changed as needed.</p>
+<p>Images having a different aspect ratio (like panoramas) are cut and centered
+instead of being scaled-to-fit, so that the thumbnail shows the central subject
+of the image instead of a thin, unwatchable strip. When this happens, the
+viewer shows a sign on the thumbnail along the cut edges (this effect can be
+seen in the demo gallery).</p>
+<div class="section" id="portraits-and-face-detection">
+<h2>Portraits and face detection</h2>
+<p>To simply favor photos shot in portrait format, invert the width/height of the
+thumbnail sizes:</p>
+<pre class="literal-block">
+./fgallery --min-thumb 112x150 --max-thumb 200x267 ...
+</pre>
+<p>This will force the thumbnails to always fit vertically, at the expense of a
+higher horizontal thumbnail strip.</p>
+<p>If your photos are mixed and can contain people, faces or portraits, you can
+enable face detection by using the <tt class="docutils literal"><span class="pre">-f</span></tt> flag and installing <a class="reference external" href="https://www.thregr.org/~wavexx/software/facedetect/">facedetect</a>.</p>
+<p>Face detection will ensure that the thumbnails, especially when cut, will be
+centered on the face of the subject. If face detection is enabled, there's
+generally no need to increase the thumbnail size.</p>
+</div>
+</div>
+<div class="section" id="image-captioning">
+<h1>Image captioning</h1>
+<p>Several sources for image captions are automatically read by fgallery. These
+can be customized though the <tt class="docutils literal"><span class="pre">-c</span></tt> flag in the command line, which consists of
+a comma-separated list of any of the following:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name"><tt class="docutils literal">txt</tt>:</th><td class="field-body">Detached captions in a simple text file.</td>
+</tr>
+<tr class="field"><th class="field-name"><tt class="docutils literal">xmp</tt>:</th><td class="field-body">Captions read from XMP sidecar metadata.</td>
+</tr>
+<tr class="field"><th class="field-name"><tt class="docutils literal">exif</tt>:</th><td class="field-body">Captions read from EXIF metadata.</td>
+</tr>
+<tr class="field"><th class="field-name"><tt class="docutils literal">cmt</tt>:</th><td class="field-body">Captions read from JPEG or PNG's built-in &quot;comment&quot; data.</td>
+</tr>
+</tbody>
+</table>
+<p>You can disable caption extraction entirely by using <tt class="docutils literal"><span class="pre">-c</span> none</tt>. When multiple
+methods are provided, the first available caption source is used. By default,
+the method list is <tt class="docutils literal">txt,xmp,exif</tt>.</p>
+<p>The <tt class="docutils literal">txt</tt> method reads the caption from a text file that has the same name as
+the image, but with <tt class="docutils literal">txt</tt> extension (for example <tt class="docutils literal">IMG1234.jpg</tt> reads from
+<tt class="docutils literal">IMG1234.txt</tt>). The first line of the file (which can be empty) constitutes
+the title, with any following line becoming the description. These files can
+either be written manually, or can be edited more conveniently using the
+<tt class="docutils literal">utils/fcaption</tt> utility. <tt class="docutils literal">fcaption</tt> accepts a list of filenames or
+directories on the command line, and provides a simple visual interface to
+quickly edit image captions in this format.</p>
+<p><tt class="docutils literal">XMP</tt> or <tt class="docutils literal">EXIF</tt> captions can be edited easily with many other image
+editing/previewing programs, such as <a class="reference external" href="http://www.darktable.org/">Darktable</a> (which writes XMP sidecar files
+by default) or <a class="reference external" href="http://geeqie.org/">Geeqie</a> (use Ctrl+K to bring up the metadata editor).</p>
+<p>Both JPEG and PNG have a built-in comment field, but it's not read by default
+as it's often abused by editing software to put attribution or copyright
+information. When enabled, the comment is parsed as for <tt class="docutils literal">txt</tt> files: the
+first line is the title, with any subsequent line becoming the description.</p>
+<p>Captions are intended to be short. Do not write long or distracting
+descriptions. Captions should <em>never</em> contain copyright information.
+<em>Do not abuse captions</em>.</p>
+</div>
+<div class="section" id="color-management">
+<h1>Color management</h1>
+<div class="section" id="a-pledge">
+<h2>A pledge</h2>
+<p>Since every camera is different, and every monitor is different, some color
+transformation is necessary to reproduce the colors on your monitor as
+<em>originally</em> captured by the camera. <a class="reference external" href="http://en.wikipedia.org/wiki/Color_management">Color management</a> is an umbrella term
+for all the techniques required to perform this task.</p>
+<p>Most image-viewing software support color management to some degree, but it's
+rarely configured properly on most systems except for Safari on Mac OSX. No
+other browser, unfortunately, supports decent color management.</p>
+<p>This causes the familiar effect of looking at the same picture from your laptop
+and your tablet, and noticing that the blue of the sky is just slightly off, or
+that colors look much more contrasty on one screen as opposed to the other.
+Often the image <em>has</em> the information required for a more balanced color
+reproduction, but the browser is just ignoring it.</p>
+<p>We're writing this down because Firefox <em>has</em> built-in color-management
+support, but it's disabled by default on all platforms. It's also ranking very
+low on the list of improvements to make, with some bugs being open for years.
+In an attempt to raise awareness, please complain/contribute to any of the
+existing <a class="reference external" href="https://bugzilla.mozilla.org/buglist.cgi?component=GFX%3A%20Color%20Management&amp;product=Core&amp;bug_status=__open__">bug reports</a>, citing the <a class="reference internal" href="#technical-details">Technical details</a> on this web page.</p>
+</div>
+<div class="section" id="technical-details">
+<h2>Technical details</h2>
+<p>On Firefox, the installation of the following &quot;Color Management&quot; add-on is
+recommended:</p>
+<p><a class="reference external" href="https://addons.mozilla.org/en-US/firefox/addon/color-management/">https://addons.mozilla.org/en-US/firefox/addon/color-management/</a></p>
+<p>When installed, in the add-on configuration, you'll need to enable color
+management for &quot;All images&quot; and restart the browser. Also, if you have a
+multi-monitor setup, it's advisable to manually set the &quot;Display profile&quot; to
+the external/calibrated screen, since FF won't automatically select the color
+profile for the current monitor, and just default to the primary. Firefox has
+also known bugs with LUT profiles, though the more common Matrix profiles seem
+to work fine.</p>
+<p>We understand that CM has a considerable impact on image rendering performance,
+but strictly speaking CM doesn't need to be enabled on all images by default.
+It would be perfectly fine to have an additional attribute on the image tag to
+request CM. The current method of enabling CM only on images with an ICC
+profile is clearly not adequate, since images without a profile should be
+assumed to be in sRGB color-space already.</p>
+<p>Because of the general lack of color management, <cite>fgallery</cite> transforms the
+preview and thumbnail images from the built-in color profile to the sRGB
+color-space by default. On most devices this will result in images appearing to
+be <em>closer</em> to true colors with only minimal lack of absolute color depth. As
+usual, no transformation is done on the original downloadable files.</p>
+</div>
+</div>
+<div class="section" id="dependencies">
+<h1>Dependencies</h1>
+<p>Frontend/viewer: none (static html/js/css)</p>
+<p>Backend:</p>
+<ul>
+<li><p class="first">ImageMagick (<tt class="docutils literal">imagemagick</tt>, <a class="reference external" href="http://www.imagemagick.org">http://www.imagemagick.org</a>)</p>
+</li>
+<li><p class="first">LittleCMS2 utilities (<tt class="docutils literal"><span class="pre">liblcms2-utils</span></tt>, <a class="reference external" href="http://www.littlecms.com/">http://www.littlecms.com/</a>).</p>
+</li>
+<li><p class="first">Either:</p>
+<ul class="simple">
+<li><tt class="docutils literal">exiftran</tt> (part of <tt class="docutils literal">fbida</tt>: <a class="reference external" href="http://www.kraxel.org/blog/linux/fbida/">http://www.kraxel.org/blog/linux/fbida/</a>), or</li>
+<li><tt class="docutils literal">exifautotran</tt> (part of <tt class="docutils literal"><span class="pre">libjpeg-progs</span></tt>: <a class="reference external" href="http://libjpeg.sourceforge.net/">http://libjpeg.sourceforge.net/</a>).</li>
+</ul>
+</li>
+<li><p class="first">zip</p>
+</li>
+<li><p class="first">perl &gt;= 5.14 (threading support enabled), with the following <cite>required</cite> modules:</p>
+<ul class="simple">
+<li>Image::ExifTool (<tt class="docutils literal"><span class="pre">libimage-exiftool-perl</span></tt>: <a class="reference external" href="http://owl.phy.queensu.ca/~phil/exiftool/">http://owl.phy.queensu.ca/~phil/exiftool/</a>)</li>
+</ul>
+<p>and the following additional <cite>recommended</cite> modules:</p>
+<ul class="simple">
+<li>Cpanel::JSON::XS (<tt class="docutils literal"><span class="pre">libcpanel-json-xs-perl</span></tt>)</li>
+</ul>
+</li>
+</ul>
+<p>Several other tools are supported, but are only used when installed.
+Therefore it's also helpful to install:</p>
+<ul class="simple">
+<li>jpegoptim (<a class="reference external" href="http://www.kokkonen.net/tjko/projects.html">http://www.kokkonen.net/tjko/projects.html</a>, for JPEG size optimization)</li>
+<li>pngcrush (<a class="reference external" href="http://pmt.sourceforge.net/pngcrush/">http://pmt.sourceforge.net/pngcrush/</a>, for PNG size optimization)</li>
+<li>facedetect (<a class="reference external" href="https://www.thregr.org/~wavexx/software/facedetect/">https://www.thregr.org/~wavexx/software/facedetect/</a>, for face detection)</li>
+<li>p7zip (<a class="reference external" href="http://www.7-zip.org/">http://www.7-zip.org/</a>, for faster and higher-compression zip archiving)</li>
+</ul>
+<p>On Debian/Ubuntu, you can install all the required dependencies with:</p>
+<pre class="literal-block">
+sudo apt-get install imagemagick exiftran zip liblcms2-utils
+sudo apt-get install libimage-exiftool-perl libcpanel-json-xs-perl
+</pre>
+<p>To save more space in the generated galleries, we recommend installing also the
+optional dependencies:</p>
+<pre class="literal-block">
+sudo apt-get install jpegoptim pngcrush p7zip
+</pre>
+<p><tt class="docutils literal">fcaption</tt> is written in Python and requires PyQT4. You can install the
+required packages with:</p>
+<pre class="literal-block">
+sudo apt-get install python-qt4
+</pre>
+<p>For face detection support, simply follow the <a class="reference external" href="https://www.thregr.org/~wavexx/software/facedetect/#dependencies">facedetect installation
+instructions</a>.</p>
+<p>On a Mac, we recommend installing the dependencies using <a class="reference external" href="http://www.macports.org/">MacPorts</a>. After installing MacPorts, type:</p>
+<pre class="literal-block">
+sudo port install imagemagick lcms2 jpeg jpegoptim pngcrush
+sudo port install p5-image-exiftool p5-cpanel-json-xs
+</pre>
+</div>
+<div class="section" id="installation">
+<h1>Installation</h1>
+<p>Installation is currently optional. If needed, copy the extracted directory to
+a directory of your liking and link <cite>fgallery</cite> appropriately:</p>
+<pre class="literal-block">
+sudo cp -r fgallery-X.Y /usr/local/share/fgallery
+sudo ln -s /usr/local/share/fgallery/fgallery /usr/local/bin
+</pre>
+</div>
+<div class="section" id="authors-and-copyright">
+<h1>Authors and Copyright</h1>
+<p>&quot;fgallery&quot; can be found at <a class="reference external" href="https://www.thregr.org/~wavexx/software/fgallery/">https://www.thregr.org/~wavexx/software/fgallery/</a></p>
+<div class="line-block">
+<div class="line">&quot;fgallery&quot; is distributed under GPLv2+ (see COPYING) WITHOUT ANY WARRANTY.</div>
+<div class="line">Copyright(c) 2011-2016 by wave++ &quot;Yuri D'Elia&quot; &lt;<a class="reference external" href="mailto:wavexx&#64;thregr.org">wavexx&#64;thregr.org</a>&gt;.</div>
+</div>
+<p>fgallery's GIT repository is publicly accessible at:</p>
+<pre class="literal-block">
+git://src.thregr.org/fgallery
+</pre>
+<p>or at <a class="reference external" href="https://github.com/wavexx/fgallery">https://github.com/wavexx/fgallery</a></p>
+</div>
+<div class="section" id="extending-fgallery">
+<h1>Extending fgallery</h1>
+<p>&quot;fgallery&quot; is composed of a backend (the &quot;fgallery&quot; script) and a viewer
+(contained in the &quot;view&quot; directory). Both are distributed as one package, but
+they are designed to be used also independently.</p>
+<p>&quot;fgallery&quot; just cares about generating the image previews and the album data.
+All the presentation logic however is inside the viewer.</p>
+<p>It's relatively easy to generate the album data dynamically and just use the
+viewer. This was my aim when I started to develop &quot;fgallery&quot;, as it's much
+easier to just modify an existing CMS instead of trying to reinvent the wheel.
+All a backend has to do is provide a valid &quot;data.json&quot; at some prefixed
+address. A plugin for a CMS such as <a class="reference external" href="http://galleryproject.org/">Gallery</a>
+should be very easy to implement.</p>
+</div>
+<div class="section" id="todo">
+<h1>TODO</h1>
+<ul class="simple">
+<li>Handle videos too</li>
+<li>Add an &quot;overview&quot; mode, which shows a screenful of thumbnails.</li>
+<li>Allow to hide the thumbnails entirely.</li>
+<li>Improve EXIF/header display.</li>
+</ul>
+</div>
+</div>
+</body>
+</html>
