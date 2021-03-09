@@ -1,4 +1,4 @@
-# Crash
+# Venture
 ### Cassander Garduna
 
 ## Breaking dinner plates
@@ -7,7 +7,7 @@ In the great house where all things reside Tsula the blueberry king stands atop 
 
 “Is this it? Is this all there is? What hell! What terror!” Says Tsula as onlookers gathered at the bottom of the hill. “We are trapped in the dining hall! For each there is a plate set before them, and for each there is a plate with which to sit upon, for God has a plan to kill us all! My warriors, my wise ones, my tricksters, thieves, heroes and villains we must escape the dinning hall, we must escape the plate!” 
 
-The Driftwood people debated amongst themselves as to what their plight was and if there was anything to do about it for a long time until King Migka Narudt, (king over all the island) spoke up, “We will build long canoes and leave this world, we will find the edges of the great house and even those we will cross.” And so they began. They built three long canoes and thought themselves very clever.
+The Driftwood people debated amongst themselves as to what their plight was and if there was anything to do about it for a long time until King Migka Narudt (king over all the island) spoke up, “We will build long canoes and leave this world, we will find the edges of the great house and even those we will cross.” And so they began. They built three long canoes and thought themselves very clever.
 
 “How will we leave the earth in canoes which cannot fly” asked Tsula. 
 
