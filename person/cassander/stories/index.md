@@ -6,4 +6,4 @@
 ---
 ## ...more to come...
 ---
-![](../img/more/more-cassander-1.jpeg)
+![](../more-img/more-cassander-1.jpeg)
