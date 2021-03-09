@@ -467,6 +467,7 @@ function setupHeader()
 
 function onMainReady()
 {
+  document.requestFullscreen();
   resizeMainImg(eimg);
   eimg.setStyle('opacity', 0);
   eimg.addClass('current');
