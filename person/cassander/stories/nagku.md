@@ -9,7 +9,7 @@ As a young adult Nak-Nak was called Tunta Ogk Sattu meaning 'feels like home'. H
     
 No one but Nagku knows why this change of heart came about. Some of the tribe see Nagku as a sage or shaman, and follow his actions as sacred teachings; others pity him; and others still follow the teachings of Tunta Ogk Sattu to this day. Because of this Nagku is one of the most influential Kitka of all time.
 
-| | | |
-|-|-|-|
+| | |
+|-|-|
 ![](../img/cassander-1.jpeg) | ![](../img/cassander-2.jpeg)
     
