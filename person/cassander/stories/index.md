@@ -1,3 +1,5 @@
+![](../more-img/cass-flag.svg)
+
 # Stories
 ---
 # - [Venture](venture.html)
