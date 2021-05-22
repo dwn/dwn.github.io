@@ -319,8 +319,8 @@ function grProcess(txtIn='') {
       var s = graphemeEsc[j][0][0].substr(22);
       var n = parseInt(s,10);
       currLine = j;
-      j = sectionBegin(n);
-      if (n+1<sectionBegin.length) stopLine = sectionBegin(n+1);
+      j = sectionBegin[n];
+      if (n+1<sectionBegin.length) stopLine = sectionBegin[n+1];
       else stopLine = graphemeEsc.length;
       repeating = true;
       continue;
