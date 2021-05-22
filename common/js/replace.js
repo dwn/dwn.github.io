@@ -306,7 +306,7 @@ function grProcess(txtIn='') {
   txt = txt.replace(/\n/g,'_⚠_'); //Weird newline character hopefully no one else will use
   txt = txt.replace(/ /g,'_');
   var repeated=false;
-  for(var j in graphemeEsc) {
+  for(var j=0; j<graphemeEsc.length; j++) {
     if (graphemeEsc[j][0][0]==='\\[\\[\\[\\[\\R\\E\\P\\E\\A\\T\\]\\]\\]\\]'&&!repeated) {
       repeated=true;
       j=0;
