@@ -306,8 +306,8 @@ function grProcess(txtIn='') {
   txt = txt.replace(/\n/g,'_⚠_'); //Weird newline character hopefully no one else will use
   txt = txt.replace(/ /g,'_');
   var repeated=false;
-  txt = addEscaping(txt);
   for(var j in graphemeEsc) {
+    txt = addEscaping(txt);
     if (graphemeEsc[j][i][0]==='\\[\\[\\[\\[\\R\\E\\P\\E\\A\\T\\]\\]\\]\\]'&&!repeated) {
       repeated=true;
       j=0;
@@ -317,8 +317,8 @@ function grProcess(txtIn='') {
       if (graphemeEsc[j][i][0]==='') continue;
       txt = txt.split(graphemeEsc[j][i][0]).join(graphemeEsc[j][i][1]);
     }
+    txt = removeEscaping(txt);
   }
-  txt = removeEscaping(txt);
   txt = txt.replace(/_⚠_/g,'\n');
   txt = txt.replace(/_/g,' ');
   debug(txt);
