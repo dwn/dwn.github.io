@@ -305,7 +305,6 @@ function grProcess(txtIn='') {
   json['user-text'] = txt;
   txt = txt.replace(/\n/g,'_⚠_'); //Weird newline character hopefully no one else will use
   txt = txt.replace(/ /g,'_');
-  txt = addEscaping(txt);
   var tookRepeat=false;
   for(var j in graphemeEsc) {
     if (graphemeEsc[j][0][0]==='\\[\\[\\[\\[\\R\\E\\P\\E\\A\\T\\]\\]\\]\\]'&&!repeated) {
@@ -313,12 +312,13 @@ function grProcess(txtIn='') {
       j=0;
       continue;
     }
+    txt = addEscaping(txt);
     for(var i in graphemeEsc[j]) {
       if (graphemeEsc[j][i][0]==='') continue;
       txt = txt.split(graphemeEsc[j][i][0]).join(graphemeEsc[j][i][1]);
     }
+    txt = removeEscaping(txt);
   }
-  txt = removeEscaping(txt);
   txt = txt.replace(/_⚠_/g,'\n');
   txt = txt.replace(/_/g,' ');
   debug(txt);
