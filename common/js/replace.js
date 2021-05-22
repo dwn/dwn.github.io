@@ -315,7 +315,7 @@ function grProcess(txtIn='') {
       repeating = false;
       continue;
     }
-    else if (graphemeEsc[j][0][0]==='\\=\\=\\=\\=\\R\\E\\P\\E\\A\\T\\-'&&!repeated) {
+    else if (graphemeEsc[j][0][0].substr(0,11)==='\\=\\=\\=\\=\\R\\E\\P\\E\\A\\T\\-'&&!repeated) {
       var s = graphemeEsc[j][0][0].substr(11);
       var n = parseInt(s,10);
       currLine = j;
