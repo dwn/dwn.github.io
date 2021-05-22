@@ -311,7 +311,6 @@ function grProcess(txtIn='') {
     for(var i in graphemeEsc[j]) {
       if (graphemeEsc[j][i][0]==='') continue;
       if (graphemeEsc[j][i][0]==='\\[\\[\\[\\[\\R\\E\\P\\E\\A\\T\\]\\]\\]\\]'&&!repeated) {
-            alert('REPEAT');
             repeated=true;
             j=i=0;
          }
