@@ -307,6 +307,7 @@ function grProcess(txtIn='') {
   txt = txt.replace(/ /g,'_');
   for(var j in graphemeEsc) {
     if (graphemeEsc[j][0][0]==='\\[\\[\\[\\[\\R\\E\\P\\E\\A\\T\\]\\]\\]\\]'&&!repeated) {
+      alert('rep');
       repeated=true;
       j=0;
       continue;
