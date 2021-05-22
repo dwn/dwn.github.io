@@ -316,7 +316,7 @@ function grProcess(txtIn='') {
       continue;
     }
     else if (graphemeEsc[j][0][0].substr(0,23)==='\\=\\=\\=\\=\\R\\E\\P\\E\\A\\T\\-\\'&&!repeating) {
-      var s = graphemeEsc[j][0][0].substr(23);
+      var s = graphemeEsc[j][0][0].substr(23).replace('\\','');
       var n = parseInt(s,10);
       currLine = j;
       j = sectionBegin[n];
