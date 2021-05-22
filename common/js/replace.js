@@ -307,11 +307,6 @@ function grProcess(txtIn='') {
   txt = txt.replace(/ /g,'_');
   var tookRepeat=false;
   for(var j in graphemeEsc) {
-    if (graphemeEsc[j][0][0]==='\\[\\[\\[\\[\\R\\E\\P\\E\\A\\T\\]\\]\\]\\]'&&!repeated) {
-      tookRepeat=true;
-      j=0;
-      continue;
-    }
     txt = addEscaping(txt);
     for(var i in graphemeEsc[j]) {
       if (graphemeEsc[j][i][0]==='') continue;
