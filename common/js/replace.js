@@ -306,6 +306,7 @@ function grProcess(txtIn='') {
   txt = txt.replace(/\n/g,'_⚠_'); //Weird newline character hopefully no one else will use
   txt = txt.replace(/ /g,'_');
   var repeating=false;
+  var skipping=false;
   var sectionBegin=[0];
   var currLine=0;
   var stopLine=graphemeEsc.length;
@@ -313,6 +314,15 @@ function grProcess(txtIn='') {
     if (j>=stopLine && repeating) {
       j = currLine;
       repeating = false;
+      continue;
+    }
+    else if (graphemeEsc[j][0][0]==='\\=\\=\\=\\=\\S\\E\\C\\T\\I\\O\\N') {
+      sectionBegin.push(j);
+      skipping = false;
+      continue;
+    }
+    else if (graphemeEsc[j][0][0]==='\\=\\=\\=\\=\\S\\K\\I\\P') {
+      skipping = true;
       continue;
     }
     else if (graphemeEsc[j][0][0]==='\\=\\=\\=\\=\\R\\E\\P\\E\\A\\T'&&!repeating) {
@@ -325,10 +335,7 @@ function grProcess(txtIn='') {
       repeating = true;
       continue;
     }
-    else if (graphemeEsc[j][0][0]==='\\=\\=\\=\\=\\S\\E\\C\\T\\I\\O\\N') {
-      sectionBegin.push(j);
-      continue;
-    }
+    if (skipping) continue;
     txt = addEscaping(txt);
     for(var i in graphemeEsc[j]) {
       if (graphemeEsc[j][i][0]==='') continue;
