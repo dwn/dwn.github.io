@@ -305,37 +305,32 @@ function grProcess(txtIn='') {
   json['user-text'] = txt;
   txt = txt.replace(/\n/g,'_⚠_'); //Weird newline character hopefully no one else will use
   txt = txt.replace(/ /g,'_');
-  var repeating=false;
+  var runningSection=false;
   var skipping=false;
-  var sectionBegin=[0];
+  var sectionBegin={};
   var currLine=0;
   var stopLine=graphemeEsc.length;
   for(var j=0; j<graphemeEsc.length; j++) {
-    if (j>=stopLine && repeating) {
-      j = currLine;
-      repeating = false;
-      continue;
-    }
-    else if (graphemeEsc[j][0][0]==='\\=\\=\\=\\=\\S\\E\\C\\T\\I\\O\\N') {
-      sectionBegin.push(j);
-      skipping = false;
-      continue;
-    }
-    else if (graphemeEsc[j][0][0]==='\\=\\=\\=\\=\\S\\K\\I\\P') {
-      skipping = true;
-      continue;
-    }
-    else if (graphemeEsc[j][0][0]==='\\=\\=\\=\\=\\R\\E\\P\\E\\A\\T'&&!repeating) {
-      var s = graphemeEsc[j][0][1];
-      var n = parseInt(s,10);
-      currLine = j;
-      j = sectionBegin[n];
-      if (n+1<sectionBegin.length) stopLine = sectionBegin[n+1];
-      else stopLine = graphemeEsc.length;
-      repeating = true;
+    if (graphemeEsc[j][0][0]==='\\=\\=\\=\\=\\S\\E\\C\\T\\I\\O\\N') {
+      if (runningSection) {
+        runningSection = false;
+        j = currLine;
+        continue;
+      }
+      var sectionTitle = graphemeEsc[j][0][1];
+      sectionBegin[sectionTitle] = j;
+      if (sectionTitle === 'MAIN') skipping = false;
+      else skipping = true;
       continue;
     }
     if (skipping) continue;
+    if (graphemeEsc[j][0][0]==='\\=\\=\\=\\=\\R\\U\\N'&&!runningSection) {
+      var s = graphemeEsc[j][0][1];
+      currLine = j;
+      j = sectionBegin[s];
+      runningSection = true;
+      continue;
+    }
     txt = addEscaping(txt);
     for(var i in graphemeEsc[j]) {
       if (graphemeEsc[j][i][0]==='') continue;
