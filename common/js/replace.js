@@ -305,6 +305,8 @@ function grProcess(txtIn='') {
   json['user-text'] = txt;
   txt = txt.replace(/\n/g,'_⚠_'); //Weird newline character hopefully no one else will use
   txt = txt.replace(/ /g,'_');
+  if (txt[0]!=='_') txt='_'+txt;
+  if (txt[txt.length-1]!=='_') txt=txt+'_';
   var runningSection=false;
   var skipping=false;
   var sectionBegin={};
