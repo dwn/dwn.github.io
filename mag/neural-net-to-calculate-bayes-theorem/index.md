@@ -1,0 +1,85 @@
+﻿# ANN to Calculate Bayes' Theorem
+
+About 11 years ago, while looking at the definition for a certain set of numbers called the poly-file:///home/dwn/dl/html.html
+Bernoulli sequence, which were defined by Masanobu Kaneko, I noticed something surprising: the righthand side of the equation could be viewed as an expression for Bayes theorem, the fundamental formula of probability. In trying to write up that result and how it might be manifested, I didn't get too far before the threads fell apart. A paper by Chad Brewbaker, however, had noted a use of these numbers in reconstructing blocks of binary data given limited information, so I imagined that the sequence might somehow be fundamental to the way our memories work in other ways as well. (Since that time Eric Weisstein also noticed that these numbers count the binary matrices for which all eigenvalues are positive real numbers.)
+
+Well, this notion returned recently, and, for whatever reason, a really nice explanation presented itself this time. But let's start at the beginning and describe the issue at hand.
+
+Basically this would be an alternative way to choose between differing hypotheses. A traditional way that's performed for two hypotheses and two possible states of evidence is like this:
+
+We walk into the kitchen and find an unlabeled box of cereal.
+
+We start picking pieces of cereal from the box. There are two kinds of cereal: the sugary one, and the healthier one. The sugary one has 50% marshmallow pieces and 50% grain pieces. The healthier one has 10% marshmallow and 90% grain pieces.
+
+So there are two hypotheses (two types of cereal) and two kinds of evidence (two types of pieces).
+
+The cereals may not have equal probability to begin with. Perhaps we know that the sugary cereal isn't usually kept in the house. Or perhaps the store sells more of the sugary cereal, so it's more likely to be available. Whatever the reasons, we'll have formed some impression from past experience.
+
+What's really nice in this case is that we don't have to do a calculation every time we draw out a piece to check. We can calculate the change in odds in advance as constants (likelihood ratios). Then we can just apply those changes all at once. We just take a handful of pieces and count them.
+
+Our minds are traditionally thought to work on logarithmic scales, which simply means that they represent data like our decimal number system, where only a few digits are required to represent large quantities. That also means that in the calculation, all multiplications turn into additions; divisions turn into subtractions; and exponents turn into multiplications. That means we can do the whole calculation like this:
+
+**odds of hypothesis = prior odds +**
+
+**n<sup>o</sup> sugary pieces drawn * constant<sub>1</sub> +**
+
+**n<sup>o</sup> grain pieces drawn * constant<sub>2</sub>**
+
+Just a couple of additions and multiplications - what could be easier? Well, there are some issues.
+
+For one, this equation typically becomes much more unwieldy for more hypotheses and possible states of evidence. Those nice precomputed constants don't yield. But our mind, on the other hand, seems to be able to make associations and to choose from many different theories with relative ease.
+
+Also, our minds are not computer processors, so, even in this case, addition and multiplication are not necessarily the most natural operations. Log representation, too, while having many benefits, is not necessarily always most natural. Likelihood ratios (both in log and raw form) also theoretically can approach infinity, although it's been argued that typical values only lie in a small domain, and anything higher can easily be ignored, basically claiming we can do a lot of calculation with even a low resolution.
+
+We should also wonder if odds representation (like "it has 7-to-3 odds of winning") is not necessarily the most natural way of thinking, and likelihood ratios (like "it is twice as likely that his shirt will be blue given that his pants are jeans") also may not be most natural.
+
+While these arguments may or may not be significant, we can look at another means for comparison.
+
+An alternative way of using Bayes' theorem to find probability is with "relative effect". For instance, if today has a 30% chance of rain given that it's spring, and would have a 20% chance of rain otherwise (given not spring), then the difference is 10%, which we then divide by 30%, giving 33%. So 33% of spring's rain chances are correlated with it being spring instead of another season. Perhaps storaging information this way would give us easier ability to "jump to" reasons from a single piece of evidence, what in logic is sometimes termed abduction.
+
+In medicine, it's important to be able to easily understand when an improvement might be attributable to a treatment. There, this measure of efficacy is termed "relative risk reduction".
+
+Relative effect is equal to 100% minus the control likelihood ratio, so it essentially includes that quantity without direct reference. But didn't we say that ratio could run to infinity? Well, yes, but ***.
+
+All this taken together simply means that minds work differently than CPUs, and there's a natural and elegant physical way humans compute Bayesian processes. The following is intended to describe that method.
+
+Imagine we have a bunch of neurons. There are a bunch on the left, and bunch on the right. Every neuron on the left is connected to every neuron on the right (and therefore vice-versa). No neuron in either group is connected to any other neuron in its own group.
+
+So the neurons are parted into two layers, and the connections between them are full, a "complete bipartite graph".
+
+Now we want to pick a direction for each connection. Further, if we follow those arrows, we never want to wind up back where we started. In electronics, we require a circuit, but here, we never want one. In electronics, the power source replenishes the used energy. Here, the energy is simply dispersed. In graph theory, cycles are sometimes treated as a single node, so perhaps that's what's happening here, I don't know.
+
+All acyclic graphs are bipartite anyway, and these "directed acyclic graphs" are so common to study that they're known simply as DAGs.
+
+The number of complete DAGs we can form from a complete bipartite graph <img src="https://i.upmath.me/svg/K_%7Bm-1%2Cn-1%7D" alt="K_{m-1,n-1}" /> is given by the poly-Bernoulli number, where there are (<img src="https://i.upmath.me/svg/m-1" alt="m-1" />) neurons in one part, and <img src="https://i.upmath.me/svg/(n-1)" alt="(n-1)" /> in the other.
+
+<img src="https://i.upmath.me/svg/B_%7Bn-1%7D%5E%7B(-(m-1))%7D%20%3D%20numDAGs(m-1%2Cn-1)%20%3D%20%5Csum_%7Bj%3D1%7D%5E%7Bmin(m%2Cn)%7D%20(j-1)!%5E2%20%5CBigg%5C%7B%7Bm%20%5Catop%20j%7D%5CBigg%5C%7D%20%5CBigg%5C%7B%7Bn%20%5Catop%20j%7D%5CBigg%5C%7D%7D" alt="B_{n-1}^{(-(m-1))} = numDAGs(m-1,n-1) = \sum_{j=1}^{min(m,n)} (j-1)!^2 \Bigg\{{m \atop j}\Bigg\} \Bigg\{{n \atop j}\Bigg\}}" />
+
+<img src="https://i.upmath.me/svg/%5CBig%5C%7B%7Bm%20%5Catop%20j%7D%7B%5CBig%5C%7D" alt="\Big\{{m \atop j}{\Big\}" /> are the Stirling numbers of the second kind, which simply gives the number of possible partitions of <img src="https://i.upmath.me/svg/m" alt="m" /> neurons into <img src="https://i.upmath.me/svg/j" alt="j" /> parts. What's important is that the generating function of the poly-Bernoulli numbers includes this expression, as pointed out by Robert Schumacher, Celia Glass, & Peter Cameron.
+
+<img src="https://i.upmath.me/svg/%5Csum_%7Bm%5Cin%20%5Cmathbb%7BN%7D%7D%5E%7B%7D%20%5Csum_%7Bn%5Cin%20%5Cmathbb%7BN%7D%7D%5E%7B%7D%20%5Csum_%7Bj%3D1%7D%5E%7Bmin(m%2Cn)%7D%20(j-1)!%5E2%20%5CBigg%5C%7B%7Bm%20%5Catop%20j%7D%5CBigg%5C%7D%20%5CBigg%5C%7B%7Bn%20%5Catop%20j%7D%5CBigg%5C%7D%7D%20%7B%7Bx%5E%7Bm-1%7D%20y%5E%7Bn-1%7D%7D%20%5Cover%20%7B(m-1)!(n-1)!%7D%7D%20%3D%20%7Be%5E%7Bx%2By%7D%20%5Cover%20%7Be%5Ex%20-%20e%5E%7Bx%2By%7D%20%2B%20e%5Ey%7D%7D" alt="\sum_{m\in \mathbb{N}}^{} \sum_{n\in \mathbb{N}}^{} \sum_{j=1}^{min(m,n)} (j-1)!^2 \Bigg\{{m \atop j}\Bigg\} \Bigg\{{n \atop j}\Bigg\}} {{x^{m-1} y^{n-1}} \over {(m-1)!(n-1)!}} = {e^{x+y} \over {e^x - e^{x+y} + e^y}}" />
+
+As a first step, use the gamma function <img src="https://i.upmath.me/svg/%5CGamma(j)" alt="\Gamma(j)" /> as well as the standard gamma probability density function <img src="https://i.upmath.me/svg/g(x%3Bm)%20%3D%20x%5E%7Bm-1%7D%20e%5E%7B-x%7D%20%2F%20%5CGamma(m)" alt="g(x;m) = x^{m-1} e^{-x} / \Gamma(m)" />.
+
+<img src="https://i.upmath.me/svg/%5Csum_%7Bm%5Cin%20%5Cmathbb%7BN%7D%7D%5E%7B%7D%20%5Csum_%7Bn%5Cin%20%5Cmathbb%7BN%7D%7D%5E%7B%7D%20%5Csum_%7Bj%3D1%7D%5E%7Bmin(m%2Cn)%7D%20%5CGamma(j)%5E2%5C%20%5CBigg%5C%7B%7Bm%20%5Catop%20j%7D%5CBigg%5C%7D%20%5CBigg%5C%7B%7Bn%20%5Catop%20j%7D%5CBigg%5C%7D%7D%5C%20g(x%3Bm)%5C%20g(y%3Bn)%20%3D%20%7B1%20%5Cover%20%7Be%5Ex%20-%20e%5E%7Bx%2By%7D%20%2B%20e%5Ey%7D%7D" alt="\sum_{m\in \mathbb{N}}^{} \sum_{n\in \mathbb{N}}^{} \sum_{j=1}^{min(m,n)} \Gamma(j)^2\ \Bigg\{{m \atop j}\Bigg\} \Bigg\{{n \atop j}\Bigg\}}\ g(x;m)\ g(y;n) = {1 \over {e^x - e^{x+y} + e^y}}" />
+
+For the second step, let's change the righthand side a bit. Begin by noting Bayes' theorem for two mutually exclusive cases, calling the posterior probability <img src="https://i.upmath.me/svg/e%5E%7Bx'%7D%3DP(A%7CB)" alt="e^{x'}=P(A|B)" />.
+
+<img src="https://i.upmath.me/svg/e%5E%7Bx'%7D%3D%7BP(A)%20%5Cover%20%7BP(A)%2B%7BP(B%7C%5Coverline%20A)%20%5Cover%20P(B%7CA)%7D(1-P(A))%7D%7D" alt="e^{x'}={P(A) \over {P(A)+{P(B|\overline A) \over P(B|A)}(1-P(A))}}" />
+
+Let prior probability <img src="https://i.upmath.me/svg/e%5Ex%20%3D%20P(A)" alt="e^x = P(A)" />; control likelihood ratio <img src="https://i.upmath.me/svg/e%5E%7By%7D%3D%7BP(B%7C%5Coverline%20A)%20%5Cover%20P(B%7C%20A)%7D" alt="e^{y}={P(B|\overline A) \over P(B| A)}" />.
+
+<img src="https://i.upmath.me/svg/e%5E%7Bx'%7D%20%3D%20%7Be%5Ex%20%5Cover%20%7Be%5Ex%20-%20e%5E%7Bx%2By%7D%20%2B%20e%5Ey%7D%7D" alt="e^{x'} = {e^x \over {e^x - e^{x+y} + e^y}}" />
+
+Now, rewriting the earlier expression,
+
+<img src="https://i.upmath.me/svg/%5Csum_%7Bm%5Cin%20%5Cmathbb%7BN%7D%7D%5E%7B%7Dg(x%3Bm)%5Csum_%7Bn%5Cin%20%5Cmathbb%7BN%7D%7D%5E%7B%7Dg(y%3Bn)%5C%20numDAGs(m-1%2Cn-1)%20%3D%20%7Be%5E%7Bx'-x%7D" alt="\sum_{m\in \mathbb{N}}^{}g(x;m)\sum_{n\in \mathbb{N}}^{}g(y;n)\ numDAGs(m-1,n-1) = {e^{x'-x}" />
+
+So the righthand side <img src="https://i.upmath.me/svg/%7Be%5E%7Bx'-x%7D" alt="{e^{x'-x}" /> is the change in probability as a proportion, given plainly and requiring no conversion.
+
+The lefthand side requires a little more interpretation. What does it mean physically that <img src="https://i.upmath.me/svg/numDAGs" alt="numDAGs" /> is a function of <img src="https://i.upmath.me/svg/(m-1%2Cn-1)" alt="(m-1,n-1)" /> instead of <img src="https://i.upmath.me/svg/(m%2Cn)" alt="(m,n)" />?
+
+Well, once that's figured out I'll post a part II. ;)
+
+
+
