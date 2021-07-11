@@ -1,4 +1,10 @@
-﻿# ANN to Calculate Bayes' Theroem
+﻿<a href="../index.html"><img src="../back.png"></a>
+
+---
+
+# ANN to Calculate Bayes' Theroem
+
+Dan Nielsen 7/2021
 
 About 11 years ago, while looking at the definition for a certain set of numbers called the poly-Bernoulli sequence, which were defined by Masanobu Kaneko, I noticed something surprising: the righthand side of the equation could be viewed as an expression for Bayes theorem, the fundamental formula of probability. In trying to write up that result and how it might be manifested, I didn't get too far before the threads fell apart. A paper by Chad Brewbaker, however, had noted a use of these numbers in reconstructing blocks of binary data given limited information, so I imagined that the sequence might somehow be fundamental to the way our memories work in other ways as well. (Since that time Eric Weisstein also noticed that these numbers count the binary matrices for which all eigenvalues are positive real numbers.)
 
@@ -78,7 +84,5 @@ So the righthand side <img src="https://i.upmath.me/svg/%7Be%5E%7Bx'-x%7D" alt="
 
 The lefthand side requires a little more interpretation. What does it mean physically that <img src="https://i.upmath.me/svg/numDAGs" alt="numDAGs" /> is a function of <img src="https://i.upmath.me/svg/(m-1%2Cn-1)" alt="(m-1,n-1)" /> instead of <img src="https://i.upmath.me/svg/(m%2Cn)" alt="(m,n)" />?
 
-Well, once that's figured out I'll post a part II. ;)
-
-
+Well, once that's figured out we'll have post a part II... ;)
 
