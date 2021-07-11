@@ -1,18 +1,7 @@
-﻿<a href="../index.html"><img src="../back.png"></a>
 
----
-
-# ANN to Calculate Bayes' Theroem
-
-Dan Nielsen 7/2021
-
-## Poly-Bernoulli numbers
-
-About 11 years ago, while looking at the definition for a certain set of numbers called the poly-Bernoulli sequence, which were defined by Masanobu Kaneko, I noticed something surprising: the righthand side of the equation could be viewed as an expression for Bayes' theorem, the fundamental formula of probability. In trying to write up that result and how it might be manifested in physical systems, I didn't get too far before the threads fell apart. A paper by Chad Brewbaker, however, had noted a use of these numbers in reconstructing blocks of binary data given limited information, so I imagined that the sequence might somehow be fundamental to the way our memories work in other ways as well. (Since that time Eric Weisstein also noticed that these numbers count the binary matrices for which all eigenvalues are positive real numbers.)
+About 11 years ago, while looking at the definition for a certain set of numbers called the poly-Bernoulli sequence, which were defined by Masanobu Kaneko, I noticed something surprising: the righthand side of the equation could be viewed as an expression for Bayes theorem, the fundamental formula of probability. In trying to write up that result and how it might be manifested, I didn't get too far before the threads fell apart. A paper by Chad Brewbaker, however, had noted a use of these numbers in reconstructing blocks of binary data given limited information, so I imagined that the sequence might somehow be fundamental to the way our memories work in other ways as well. (Since that time Eric Weisstein also noticed that these numbers count the binary matrices for which all eigenvalues are positive real numbers.)
 
 Well, this notion returned recently, and, for whatever reason, a really nice explanation presented itself this time. But let's start at the beginning and describe the issue at hand.
-
-## Bayesian inference
 
 Basically this would be an alternative way to choose between differing hypotheses. A traditional way that's performed for two hypotheses and two possible states of evidence is like this:
 
@@ -52,10 +41,6 @@ Relative effect is equal to 100% minus the control likelihood ratio, so it essen
 
 All this taken together simply means that minds work differently than CPUs, and there's a natural and elegant physical way humans compute Bayesian processes. The following is intended to describe that method.
 
-But before we go on, just one small disclaimer: Bayesian inference is not only used to find probability after observing evidence. Perhaps the later probability is known, but we want to find out what evidence was observed, or maybe we want to know what the probability was beforehand. All such operations are also part of Bayesian inference.
-
-## 
-
 Imagine we have a bunch of neurons. There are a bunch on the left, and bunch on the right. Every neuron on the left is connected to every neuron on the right (and therefore vice-versa). No neuron in either group is connected to any other neuron in its own group.
 
 So the neurons are parted into two layers, and the connections between them are full, a "complete bipartite graph".
@@ -84,7 +69,7 @@ Let prior probability <img src="https://i.upmath.me/svg/e%5Ex%20%3D%20P(A)" alt=
 
 <img src="https://i.upmath.me/svg/e%5E%7Bx'%7D%20%3D%20%7Be%5Ex%20%5Cover%20%7Be%5Ex%20-%20e%5E%7Bx%2By%7D%20%2B%20e%5Ey%7D%7D" alt="e^{x'} = {e^x \over {e^x - e^{x+y} + e^y}}" />
 
-Now, rewriting the earlier expression,
+Now rewriting the earlier expression,
 
 <img src="https://i.upmath.me/svg/%5Csum_%7Bm%5Cin%20%5Cmathbb%7BN%7D%7D%5E%7B%7Dg(x%3Bm)%5Csum_%7Bn%5Cin%20%5Cmathbb%7BN%7D%7D%5E%7B%7Dg(y%3Bn)%5C%20numDAGs(m-1%2Cn-1)%20%3D%20%7Be%5E%7Bx'-x%7D" alt="\sum_{m\in \mathbb{N}}^{}g(x;m)\sum_{n\in \mathbb{N}}^{}g(y;n)\ numDAGs(m-1,n-1) = {e^{x'-x}" />
 
@@ -92,5 +77,5 @@ So the righthand side <img src="https://i.upmath.me/svg/%7Be%5E%7Bx'-x%7D" alt="
 
 The lefthand side requires a little more interpretation. What does it mean physically that <img src="https://i.upmath.me/svg/numDAGs" alt="numDAGs" /> is a function of <img src="https://i.upmath.me/svg/(m-1%2Cn-1)" alt="(m-1,n-1)" /> instead of <img src="https://i.upmath.me/svg/(m%2Cn)" alt="(m,n)" />?
 
-Well, once that's figured out there'll be a part II. Hopefully it won't take another 11 years. :)
+Well, once that's figured out I'll post a part II. ;)
 
