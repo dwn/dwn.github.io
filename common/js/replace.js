@@ -141,7 +141,7 @@ function setAllData(on, titleEl = null, title = null, dat = null, fileBasename =
     setVisibility('username',true);
     setVisibility('help',true);
   }
-  if (titleEl !== null && title !== null) {
+  if (titleEl && title) {
     titleEl.innerHTML = title;
   }
 }
