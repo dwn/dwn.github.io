@@ -30,7 +30,8 @@ $(function(){
   arrLang = arrLang.filter(function (el) { return el !== null && el !== ''; }); //Remove empty entries
 ////////////////////////////////////////////
   var socket = io();
-  var uniqueUsername = getParameterByName('username');
+  var uniqueUsername = decodeURIComponent(getParameterByName('username'));
+  // var graphemeMapURLParam = decodeURIComponent(getParameterByName('graphemeMap'));
   if (!uniqueUsername) {
     //Okay to call this async since it cannot be used quickly
     //Ajax unique-username -> uniqueUsername

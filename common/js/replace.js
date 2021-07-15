@@ -62,13 +62,13 @@ function loadMap(title,mappingText) {
   return r;
 }
 ////////////////////////////////////////////
-function setAllData(on, titleEl = null, title = null, dat = null) {
+function setAllData(on, titleEl = null, title = null, dat = null, fileBasename = null) {
   var el;
   if (on) {
     if (!dat) { //Only called when font selected from title screen
       setVisibility('select-selected',false);
       setVisibility('conscript-loading',true);
-      dat = loadFileURL('https://dwn.github.io/common/lang/'+titleEl.innerHTML+'.svg');
+      dat = loadFileURL('https://dwn.github.io/common/lang/'+(fileBasename? fileBasename : titleEl.innerHTML)+'.svg');
       setVisibility('conscript-loading',false);
       setVisibility('select-selected',true);
       const nameInInputBox = document.querySelector('.username-element').value;
@@ -114,7 +114,7 @@ function setAllData(on, titleEl = null, title = null, dat = null) {
     //Clear canvas
     el = document.getElementById('font-canvas');
     if (el) {
-      var ctx = canvas.getContext('2d');
+      var ctx = el.getContext('2d');
       ctx.beginPath();
       ctx.clearRect(0, 0, el.width, el.height);
     }
