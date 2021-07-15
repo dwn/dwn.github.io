@@ -14,6 +14,7 @@ var phonemeEsc;
 var grapheme;
 var graphemeEsc;
 var json = {};
+var jsonAfter = {};
 var alreadyPlaying=false;
 var conscriptTextReady=false;
 ////////////////////////////////////////////
@@ -61,11 +62,10 @@ function loadMap(title,mappingText) {
   return r;
 }
 ////////////////////////////////////////////
-function setAllData(on, titleEl, title = null, dat = null) {
+function setAllData(on, titleEl = null, title = null, dat = null) {
+  var el;
   if (on) {
     if (!dat) { //Only called when font selected from title screen
-      openedChat=false;
-      fontSelectedFromTitleScreen=true;
       setVisibility('select-selected',false);
       setVisibility('conscript-loading',true);
       dat = loadFileURL('https://dwn.github.io/common/lang/'+titleEl.innerHTML+'.svg');
@@ -80,34 +80,51 @@ function setAllData(on, titleEl, title = null, dat = null) {
     dat = dat.split('<desc>');
     dat = dat[1].split('</desc>')[0];
     json = JSON.parse(dat);
-    document.getElementById('phoneme-map').value = json['phoneme-map'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
-    document.getElementById('grapheme-map').value = json['grapheme-map'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
-    document.getElementById('kerning-map').value = json['kerning-map'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
-    document.getElementById('user-text').value = json['user-text'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
-    //document.getElementById('conscript-text').innerText = json['conscript-text'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
-    document.getElementById('font-code').value = json['font-code'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
-    document.getElementById('direction').value = json['direction'];
-    document.getElementById('pen').value = json['pen'];
-    document.getElementById('weight').value = json['weight'];
-    document.getElementById('size').value = json['size'];
-    document.getElementById('style').value = json['style'];
-    document.getElementById('space').value = json['space'];
-    document.getElementById('note').value = json['note'];
-    document.getElementById('view').value = json['view'];
-    document.getElementById('font-name').value = json['name'].replace(/\d{4}[-]\d{2}[-]\d{2}[_]\d{2}[_]\d{2}[_]\d{2}[_]\d{3}[_]/g, '');
+    jsonAfter['phoneme-map'] = json['phoneme-map'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
+    jsonAfter['grapheme-map'] = json['grapheme-map'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
+    jsonAfter['kerning-map'] = json['kerning-map'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
+    jsonAfter['user-text'] = json['user-text'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
+    // jsonAfter['conscript-text'] = json['conscript-text'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
+    jsonAfter['font-code'] = json['font-code'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
+    jsonAfter['direction'] = json['direction'];
+    jsonAfter['pen'] = json['pen'];
+    jsonAfter['weight'] = json['weight'];
+    jsonAfter['size'] = json['size'];
+    jsonAfter['style'] = json['style'];
+    jsonAfter['space'] = json['space'];
+    jsonAfter['note'] = json['note'];
+    jsonAfter['view'] = json['view'];
+    jsonAfter['name'] = json['name'].replace(/\d{4}[-]\d{2}[-]\d{2}[_]\d{2}[_]\d{2}[_]\d{2}[_]\d{3}[_]/g, '');
+    if (el=document.getElementById('phoneme-map').value) el = jsonAfter['phoneme-map'];
+    if (el=document.getElementById('grapheme-map').value) el = jsonAfter['grapheme-map'];
+    if (el=document.getElementById('kerning-map').value) el = jsonAfter['kerning-map'];
+    if (el=document.getElementById('user-text').value) el = jsonAfter['user-text'];
+    //if (el=document.getElementById('conscript-text').value) el = jsonAfter['conscript-text'];
+    if (el=document.getElementById('font-code').value) el = jsonAfter['font-code'];
+    if (el=document.getElementById('direction').value) el = jsonAfter['direction'];
+    if (el=document.getElementById('pen').value) el = jsonAfter['pen'];
+    if (el=document.getElementById('weight').value) el = jsonAfter['weight'];
+    if (el=document.getElementById('size').value) el = jsonAfter['size'];
+    if (el=document.getElementById('style').value) el = jsonAfter['style'];
+    if (el=document.getElementById('space').value) el = jsonAfter['space'];
+    if (el=document.getElementById('note').value) el = jsonAfter['note'];
+    if (el=document.getElementById('view').value) el = jsonAfter['view'];
+    if (el=document.getElementById('font-name').value) el = jsonAfter['name'];
     setAdjustSetting();
     //Clear canvas
-    var canvas = document.getElementById('font-canvas'),
-    ctx = canvas.getContext('2d');
-    ctx.beginPath();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    el = document.getElementById('font-canvas');
+    if (el) {
+      var ctx = canvas.getContext('2d');
+      ctx.beginPath();
+      ctx.clearRect(0, 0, el.width, el.height);
+    }
     //Load mappings
     loadKerningMap();
     loadPhonemeMap();
     loadGraphemeMap();
     document.body.style.backgroundImage = 'none';
     document.body.style.backgroundColor = '#680068';
-    fullTxt = document.getElementById('user-text').value;
+    fullTxt = jsonAfter['user-text'];
     hideAll();
     document.getElementById('page-container').style.backgroundColor = '#680068';
     setVisibility('help',false);
