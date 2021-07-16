@@ -76,7 +76,7 @@ function setAllData(on, titleEl = null, title = null, dat = null) {
         setVisibility('select-selected',false);
         setVisibility('conscript-loading',true);
       }
-      dat = loadFileURL('https://dwn.github.io/common/lang/'+(titleEl? titleEl.innerHTML : fontBasename)+'.svg'+urlParams);
+      dat = loadFileURL('https://dwn.github.io/common/lang/'+(titleEl? titleEl.innerHTML : fontBasename)+'.svg');
       if (typeof setVisibility === "function") {
         setVisibility('conscript-loading',false);
         setVisibility('select-selected',true);
