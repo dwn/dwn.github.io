@@ -66,16 +66,19 @@ function setAllData(on, titleEl = null, title = null, dat = null) {
   var el;
   if (on) {
     if (!dat) { //Only called when font selected from title screen
-      setVisibility('select-selected',false);
-      setVisibility('conscript-loading',true);
-
       var urlParts = window.location.href.split('/');
       var fontBasename = urlParts.pop() || urlParts.pop();
       fontBasename = fontBasename.split('?')[0];
 
+      if (typeof setVisibility === "function") {
+        setVisibility('select-selected',false);
+        setVisibility('conscript-loading',true);
+      }
       dat = loadFileURL('https://dwn.github.io/common/lang/'+(titleEl? titleEl.innerHTML : fontBasename)+'.svg');
-      setVisibility('conscript-loading',false);
-      setVisibility('select-selected',true);
+      if (typeof setVisibility === "function") {
+        setVisibility('conscript-loading',false);
+        setVisibility('select-selected',true);
+      }
       const nameInInputBox = document.querySelector('.username-element').value;
       //Okay to call this async since it cannot be used quickly
       //Ajax unique-username -> myUsername
