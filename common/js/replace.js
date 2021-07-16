@@ -120,7 +120,7 @@ function setAllData(on, titleEl = null, title = null, dat = null) {
     if (el=document.getElementById('note')) el.value = jsonAfter['note'];
     if (el=document.getElementById('view')) el.value = jsonAfter['view'];
     if (el=document.getElementById('font-name')) el.value = jsonAfter['name'];
-    setAdjustSetting();
+    // setAdjustSetting();
     //Clear canvas
     el = document.getElementById('font-canvas');
     if (el) {
@@ -129,9 +129,9 @@ function setAllData(on, titleEl = null, title = null, dat = null) {
       ctx.clearRect(0, 0, el.width, el.height);
     }
     //Load mappings
-    loadKerningMap();
-    loadPhonemeMap();
-    loadGraphemeMap();
+    // loadKerningMap();
+    // loadPhonemeMap();
+    // loadGraphemeMap();
     document.body.style.backgroundImage = 'none';
     document.body.style.backgroundColor = '#680068';
     fullTxt = jsonAfter['user-text'];
