@@ -31,14 +31,6 @@ $(function(){
 ////////////////////////////////////////////
   var socket = io();
   var uniqueUsername = decodeURIComponent(getParameterByName('username'));
-  var bucketURL;
-  //Ajax bucket-url/ -> bucketURL
-  $.ajax({type:'GET',dataType:'text',url:url,
-    success:function(r){
-      bucketURL = r;
-      setAllData(true, null, null, null, bucketURL);
-    },error:function(r){}
-  }); //bucketURL
   if (!uniqueUsername) {
     //Okay to call this async since it cannot be used quickly
     //Ajax unique-username -> uniqueUsername
@@ -86,11 +78,17 @@ $(function(){
     if (!fontBasename.match(/\d{4}[-]\d{2}[-]\d{2}[_]\d{2}[_]\d{2}[_]\d{2}[_]\d{3}[_]/)) {
       url = '/common-lang-url';
     }
-    var newFont = new FontFace(username, 'url(' + bucketURL + fontBasename + '.otf)');
-    newFont.load().then(function(loadedFace) {
-      setTimeout(function() { //Occasionally even after the font was successfully loaded, it needs a brief moment before adding
-        document.fonts.add(loadedFace);
-      }, 1000);
-    });
+    //Ajax bucket-url/ -> bucketURL
+    $.ajax({type:'GET',dataType:'text',url:url,
+      success:function(bucketURL){
+        setAllData(true, null, null, null, bucketURL);
+        var newFont = new FontFace(username, 'url(' + bucketURL + fontBasename + '.otf)');
+        newFont.load().then(function(loadedFace) {
+          setTimeout(function() { //Occasionally even after the font was successfully loaded, it needs a brief moment before adding
+            document.fonts.add(loadedFace);
+          }, 1000);
+        });
+      },error:function(r){}
+    }); //bucketURL
   });
 });
