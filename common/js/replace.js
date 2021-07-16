@@ -146,9 +146,8 @@ function setAllData(on, titleEl = null, title = null, dat = null) {
         setVisibility('select-selected',true);
         nameInInputBox = document.querySelector('.username-element').value;
       }
-      //Okay to call this async since it cannot be used quickly
-      //Ajax unique-username -> myUsername
-      $.ajax({type:'GET',dataType:'text',url:'/unique-username?name='+(nameInInputBox? nameInInputBox : ''),
+      //Blocking Ajax unique-username -> myUsername
+      $.ajax({async:false,type:'GET',dataType:'text',url:'/unique-username?name='+(nameInInputBox? nameInInputBox : ''),
         success:function(r){myUsername=r;},error:function(r){}});
     }
     dat = dat.split('<desc>');
