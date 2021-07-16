@@ -68,13 +68,15 @@ function setAllData(on, titleEl = null, title = null, dat = null) {
     if (!dat) { //Only called when font selected from title screen
       var urlParts = window.location.href.split('/');
       var fontBasename = urlParts.pop() || urlParts.pop();
-      fontBasename = fontBasename.split('?')[0];
+      fontBasename = fontBasename.split('?');
+      var urlParams = fontBasename[1];
+      fontBasename = fontBasename[0];
 
       if (typeof setVisibility === "function") {
         setVisibility('select-selected',false);
         setVisibility('conscript-loading',true);
       }
-      dat = loadFileURL('https://dwn.github.io/common/lang/'+(titleEl? titleEl.innerHTML : fontBasename)+'.svg');
+      dat = loadFileURL('https://dwn.github.io/common/lang/'+(titleEl? titleEl.innerHTML : fontBasename)+'.svg'+urlParams);
       if (typeof setVisibility === "function") {
         setVisibility('conscript-loading',false);
         setVisibility('select-selected',true);
