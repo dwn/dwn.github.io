@@ -29,9 +29,6 @@ $(function(){
   var arrLang=langList().split('\n');
   arrLang = arrLang.filter(function (el) { return el !== null && el !== ''; }); //Remove empty entries
 ////////////////////////////////////////////
-});
-$('document').ready(function(){
-////////////////////////////////////////////
   var socket = io();
   var uniqueUsername = decodeURIComponent(getParameterByName('username'));
   if (!uniqueUsername) {
