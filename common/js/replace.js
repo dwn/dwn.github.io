@@ -80,12 +80,12 @@ function setAllData(on, titleEl = null, title = null, dat = null) {
       if (typeof setVisibility === "function") {
         setVisibility('conscript-loading',false);
         setVisibility('select-selected',true);
+        const nameInInputBox = document.querySelector('.username-element').value;
+        //Okay to call this async since it cannot be used quickly
+        //Ajax unique-username -> myUsername
+        $.ajax({type:'GET',dataType:'text',url:'/unique-username?name='+(nameInInputBox? nameInInputBox : ''),
+          success:function(r){myUsername=r;},error:function(r){}});
       }
-      const nameInInputBox = document.querySelector('.username-element').value;
-      //Okay to call this async since it cannot be used quickly
-      //Ajax unique-username -> myUsername
-      $.ajax({type:'GET',dataType:'text',url:'/unique-username?name='+(nameInInputBox? nameInInputBox : ''),
-        success:function(r){myUsername=r;},error:function(r){}});
     }
     dat = dat.split('<desc>');
     dat = dat[1].split('</desc>')[0];
