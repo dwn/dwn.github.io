@@ -135,21 +135,21 @@ function setAllData(on, titleEl = null, title = null, dat = null) {
     document.body.style.backgroundImage = 'none';
     document.body.style.backgroundColor = '#680068';
     fullTxt = jsonAfter['user-text'];
-    hideAll();
+    // hideAll();
     document.getElementById('page-container').style.backgroundColor = '#680068';
-    setVisibility('help',false);
-    setVisibility('username',false);
-    setVisibility('donate',false);
-    setVisibility('menu',true);
-    setVisibility('script',true);
+    // setVisibility('help',false);
+    // setVisibility('username',false);
+    // setVisibility('donate',false);
+    // setVisibility('menu',true);
+    // setVisibility('script',true);
   } else {
     document.body.style.backgroundImage = 'url(img/continua.svg)';
     document.getElementById('page-container').style.backgroundColor = 'transparent';
-    hideAll();
-    setVisibility('menu',false);
-    setVisibility('donate',true);
-    setVisibility('username',true);
-    setVisibility('help',true);
+    // hideAll();
+    // setVisibility('menu',false);
+    // setVisibility('donate',true);
+    // setVisibility('username',true);
+    // setVisibility('help',true);
   }
   if (titleEl && title) {
     titleEl.innerHTML = title;
