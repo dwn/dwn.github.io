@@ -126,7 +126,7 @@ function loadGraphemeMap() {
   }
 }
 ////////////////////////////////////////////
-function setAllData(on, titleEl = null, title = null, dat = null) {
+function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = null) {
   var el;
   if (on) {
     if (!dat) { //Only called when font selected from title screen or when user on chat page
@@ -139,7 +139,7 @@ function setAllData(on, titleEl = null, title = null, dat = null) {
         setVisibility('select-selected',false);
         setVisibility('conscript-loading',true);
       }
-      dat = loadFileURL('https://dwn.github.io/common/lang/'+(titleEl? titleEl.innerHTML : fontBasename)+'.svg');
+      dat = loadFileURL((bucketURL? bucketURL : 'https://dwn.github.io/common/lang/')+(titleEl? titleEl.innerHTML : fontBasename)+'.svg');
       var nameInput;
       if (typeof setVisibility === "function") {
         setVisibility('conscript-loading',false);
