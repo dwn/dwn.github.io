@@ -140,14 +140,17 @@ function setAllData(on, titleEl = null, title = null, dat = null) {
         setVisibility('conscript-loading',true);
       }
       dat = loadFileURL('https://dwn.github.io/common/lang/'+(titleEl? titleEl.innerHTML : fontBasename)+'.svg');
-      var nameInInputBox;
+      var nameInput;
       if (typeof setVisibility === "function") {
         setVisibility('conscript-loading',false);
         setVisibility('select-selected',true);
-        nameInInputBox = document.querySelector('.username-element').value;
+        nameInput = document.querySelector('.username-element').value;
+      } else {
+        const urlParams = new URLSearchParams(window.location.search);
+        nameInput = urlParams.get('username');
       }
       //Blocking Ajax unique-username -> myUsername
-      $.ajax({async:false,type:'GET',dataType:'text',url:'/unique-username?name='+(nameInInputBox? nameInInputBox : ''),
+      $.ajax({async:false,type:'GET',dataType:'text',url:'/unique-username?name='+(nameInput? nameInput : ''),
         success:function(r){myUsername=r;},error:function(r){}});
     }
     dat = dat.split('<desc>');
