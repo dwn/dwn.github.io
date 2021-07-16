@@ -53,6 +53,7 @@ $(function(){
     var username = msg[0];
     msg.shift();
     msg = msg.join(':');
+    if (!username.includes('_')) username='_'+username;
     const shortUsername=username.split('_')[1]; //Without uid
     if (shortUsername==='connected') {
       socket.emit('chat font', msg);
