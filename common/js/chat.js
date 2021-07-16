@@ -31,7 +31,6 @@ $(function(){
 ////////////////////////////////////////////
   var socket = io();
   var uniqueUsername = decodeURIComponent(getParameterByName('username'));
-  // var graphemeMapURLParam = decodeURIComponent(getParameterByName('graphemeMap'));
   if (!uniqueUsername) {
     //Okay to call this async since it cannot be used quickly
     //Ajax unique-username -> uniqueUsername

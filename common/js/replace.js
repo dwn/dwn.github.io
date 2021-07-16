@@ -62,13 +62,18 @@ function loadMap(title,mappingText) {
   return r;
 }
 ////////////////////////////////////////////
-function setAllData(on, titleEl = null, title = null, dat = null, fontBasename = null) {
+function setAllData(on, titleEl = null, title = null, dat = null) {
   var el;
   if (on) {
     if (!dat) { //Only called when font selected from title screen
       setVisibility('select-selected',false);
       setVisibility('conscript-loading',true);
-      dat = loadFileURL('https://dwn.github.io/common/lang/'+(fontBasename? fontBasename : titleEl.innerHTML)+'.svg');
+
+      var urlParts = window.location.href.split('/');
+      var fontBasename = urlParts.pop() || urlParts.pop();
+      fontBasename = fontBasename.split('?')[0];
+
+      dat = loadFileURL('https://dwn.github.io/common/lang/'+(titleEl? titleEl.innerHTML : fontBasename)+'.svg');
       setVisibility('conscript-loading',false);
       setVisibility('select-selected',true);
       const nameInInputBox = document.querySelector('.username-element').value;
