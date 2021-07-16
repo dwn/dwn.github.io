@@ -132,19 +132,19 @@ function setAllData(on, titleEl = null, title = null, dat = null) {
     // loadKerningMap();
     // loadPhonemeMap();
     // loadGraphemeMap();
-    document.body.style.backgroundImage = 'none';
-    document.body.style.backgroundColor = '#680068';
+    // document.body.style.backgroundImage = 'none';
+    // document.body.style.backgroundColor = '#680068';
     fullTxt = jsonAfter['user-text'];
     // hideAll();
-    document.getElementById('page-container').style.backgroundColor = '#680068';
+    // document.getElementById('page-container').style.backgroundColor = '#680068';
     // setVisibility('help',false);
     // setVisibility('username',false);
     // setVisibility('donate',false);
     // setVisibility('menu',true);
     // setVisibility('script',true);
   } else {
-    document.body.style.backgroundImage = 'url(img/continua.svg)';
-    document.getElementById('page-container').style.backgroundColor = 'transparent';
+    // document.body.style.backgroundImage = 'url(img/continua.svg)';
+    // document.getElementById('page-container').style.backgroundColor = 'transparent';
     // hideAll();
     // setVisibility('menu',false);
     // setVisibility('donate',true);
