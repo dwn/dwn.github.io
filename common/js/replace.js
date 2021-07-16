@@ -98,7 +98,13 @@ function loadKerningMap() {
 }
 ////////////////////////////////////////////
 function loadPhonemeMap() {
-  phoneme = loadMap('phoneme-map',document.getElementById('phoneme-map').value);
+  var phonemeSet;
+  if (typeof setVisibility === "function") {
+    phonemeSet = document.getElementById('phoneme-map').value;
+  } else {
+    phonemeSet = jsonAfter['phoneme-map'];
+  }
+  phoneme = loadMap('phoneme-map',phonemeSet);
   if (!phoneme) {
     phoneme = json['phoneme'];
   }
@@ -108,7 +114,13 @@ function loadPhonemeMap() {
 }
 ////////////////////////////////////////////
 function loadGraphemeMap() {
-  grapheme = loadMap('grapheme-map',document.getElementById('grapheme-map').value);
+  var graphemeSet;
+  if (typeof setVisibility === "function") {
+    graphemeSet = document.getElementById('grapheme-map').value;
+  } else {
+    graphemeSet = jsonAfter['grapheme-map'];
+  }
+  grapheme = loadMap('grapheme-map',graphemeSet);
   if (!grapheme) {
     grapheme = json['grapheme'];
   }
