@@ -62,16 +62,55 @@ function loadMap(title,mappingText) {
   return r;
 }
 ////////////////////////////////////////////
+function loadKerningMap() {
+  var kernSet;
+  if (typeof setVisibility === "function") {
+    kernSet = document.getElementById('kerning-map').value;
+  } else {
+    kernSet = jsonAfter['kerning-map'];
+  }
+  json['kerning-map'] = kernSet.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  if (invalidCharacterCombo()) return;
+  kernSet = kernSet.split(' ');
+  kerning = { };
+  for(var i=0;i<kernSet.length;i++) {
+    var numShiftLeft = (kernSet[i].split('<').length - 1) - (kernSet[i].split('>').length - 1);
+    var dat = kernSet[i].split(/[<>]/).filter(function(el) {return el.length != 0});
+    if (dat.length<2) continue;
+    lhs0 = dat[0].split('-')[0];
+    rhs0 = dat[0].split('-')[1];
+    lhs1 = dat[1].split('-')[0];
+    rhs1 = dat[1].split('-')[1];
+    kerning[i] = { 'lhs0':lhs0, 'rhs0':rhs0, 'lhs1':lhs1, 'rhs1':rhs1, 'numShiftLeft':numShiftLeft };
+  }
+}
+////////////////////////////////////////////
+function loadPhonemeMap() {
+  phoneme = loadMap('phoneme-map',document.getElementById('phoneme-map').value);
+  if (!phoneme) {
+    phoneme = json['phoneme'];
+  }
+  var last = phoneme.length-1;
+  if (last<0) { last=0; phoneme.push([]); }
+  phoneme[last] = phoneme[last].concat([[' ','\'']]);
+}
+////////////////////////////////////////////
+function loadGraphemeMap() {
+  grapheme = loadMap('grapheme-map',document.getElementById('grapheme-map').value);
+  if (!grapheme) {
+    grapheme = json['grapheme'];
+  }
+}
+////////////////////////////////////////////
 function setAllData(on, titleEl = null, title = null, dat = null) {
   var el;
   if (on) {
-    if (!dat) { //Only called when font selected from title screen
+    if (!dat) { //Only called when font selected from title screen or when user on chat page
       var urlParts = window.location.href.split('/');
       var fontBasename = urlParts.pop() || urlParts.pop();
       fontBasename = fontBasename.split('?');
       var urlParams = fontBasename[1];
       fontBasename = fontBasename[0];
-
       if (typeof setVisibility === "function") {
         setVisibility('select-selected',false);
         setVisibility('conscript-loading',true);
@@ -105,71 +144,62 @@ function setAllData(on, titleEl = null, title = null, dat = null) {
     jsonAfter['note'] = json['note'];
     jsonAfter['view'] = json['view'];
     jsonAfter['name'] = json['name'].replace(/\d{4}[-]\d{2}[-]\d{2}[_]\d{2}[_]\d{2}[_]\d{2}[_]\d{3}[_]/g, '');
-    if (el=document.getElementById('phoneme-map')) el.value = jsonAfter['phoneme-map'];
-    if (el=document.getElementById('grapheme-map')) el.value = jsonAfter['grapheme-map'];
-    if (el=document.getElementById('kerning-map')) el.value = jsonAfter['kerning-map'];
-    if (el=document.getElementById('user-text')) el.value = jsonAfter['user-text'];
-    //if (el=document.getElementById('conscript-text')) el.value = jsonAfter['conscript-text'];
-    if (el=document.getElementById('font-code')) el.value = jsonAfter['font-code'];
-    if (el=document.getElementById('direction')) el.value = jsonAfter['direction'];
-    if (el=document.getElementById('pen')) el.value = jsonAfter['pen'];
-    if (el=document.getElementById('weight')) el.value = jsonAfter['weight'];
-    if (el=document.getElementById('size')) el.value = jsonAfter['size'];
-    if (el=document.getElementById('style')) el.value = jsonAfter['style'];
-    if (el=document.getElementById('space')) el.value = jsonAfter['space'];
-    if (el=document.getElementById('note')) el.value = jsonAfter['note'];
-    if (el=document.getElementById('view')) el.value = jsonAfter['view'];
-    if (el=document.getElementById('font-name')) el.value = jsonAfter['name'];
-    // setAdjustSetting();
-    //Clear canvas
-    el = document.getElementById('font-canvas');
-    if (el) {
-      var ctx = el.getContext('2d');
-      ctx.beginPath();
-      ctx.clearRect(0, 0, el.width, el.height);
+    if (typeof setVisibility === "function") {
+      document.getElementById('phoneme-map').value = jsonAfter['phoneme-map'];
+      document.getElementById('grapheme-map').value = jsonAfter['grapheme-map'];
+      document.getElementById('kerning-map').value = jsonAfter['kerning-map'];
+      document.getElementById('user-text').value = jsonAfter['user-text'];
+      document.getElementById('conscript-text').value = jsonAfter['conscript-text'];
+      document.getElementById('font-code').value = jsonAfter['font-code'];
+      document.getElementById('direction').value = jsonAfter['direction'];
+      document.getElementById('pen').value = jsonAfter['pen'];
+      document.getElementById('weight').value = jsonAfter['weight'];
+      document.getElementById('size').value = jsonAfter['size'];
+      document.getElementById('style').value = jsonAfter['style'];
+      document.getElementById('space').value = jsonAfter['space'];
+      document.getElementById('note').value = jsonAfter['note'];
+      document.getElementById('view').value = jsonAfter['view'];
+      document.getElementById('font-name').value = jsonAfter['name'];
+    }
+    if (typeof setVisibility === "function") {
+      setAdjustSetting();
+      //Clear canvas
+      el = document.getElementById('font-canvas');
+      if (el) {
+        var ctx = el.getContext('2d');
+        ctx.beginPath();
+        ctx.clearRect(0, 0, el.width, el.height);
+      }
     }
     //Load mappings
-    // loadKerningMap();
-    // loadPhonemeMap();
-    // loadGraphemeMap();
-    // document.body.style.backgroundImage = 'none';
-    // document.body.style.backgroundColor = '#680068';
+    loadKerningMap();
+    loadPhonemeMap();
+    loadGraphemeMap();
     fullTxt = jsonAfter['user-text'];
-    // hideAll();
-    // document.getElementById('page-container').style.backgroundColor = '#680068';
-    // setVisibility('help',false);
-    // setVisibility('username',false);
-    // setVisibility('donate',false);
-    // setVisibility('menu',true);
-    // setVisibility('script',true);
+    if (typeof setVisibility === "function") {
+      document.body.style.backgroundImage = 'none';
+      document.body.style.backgroundColor = '#680068';
+      hideAll();
+      document.getElementById('page-container').style.backgroundColor = '#680068';
+      setVisibility('help',false);
+      setVisibility('username',false);
+      setVisibility('donate',false);
+      setVisibility('menu',true);
+      setVisibility('script',true);
+    }
   } else {
-    // document.body.style.backgroundImage = 'url(img/continua.svg)';
-    // document.getElementById('page-container').style.backgroundColor = 'transparent';
-    // hideAll();
-    // setVisibility('menu',false);
-    // setVisibility('donate',true);
-    // setVisibility('username',true);
-    // setVisibility('help',true);
+    if (typeof setVisibility === "function") {
+      document.body.style.backgroundImage = 'url(img/continua.svg)';
+      document.getElementById('page-container').style.backgroundColor = 'transparent';
+      hideAll();
+      setVisibility('menu',false);
+      setVisibility('donate',true);
+      setVisibility('username',true);
+      setVisibility('help',true);
+    }
   }
   if (titleEl && title) {
     titleEl.innerHTML = title;
-  }
-}
-////////////////////////////////////////////
-function loadPhonemeMap() {
-  phoneme = loadMap('phoneme-map',document.getElementById('phoneme-map').value);
-  if (!phoneme) {
-    phoneme = json['phoneme'];
-  }
-  var last = phoneme.length-1;
-  if (last<0) { last=0; phoneme.push([]); }
-  phoneme[last] = phoneme[last].concat([[' ','\'']]);
-}
-////////////////////////////////////////////
-function loadGraphemeMap() {
-  grapheme = loadMap('grapheme-map',document.getElementById('grapheme-map').value);
-  if (!grapheme) {
-    grapheme = json['grapheme'];
   }
 }
 ////////////////////////////////////////////
