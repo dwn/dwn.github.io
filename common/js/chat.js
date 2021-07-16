@@ -4,7 +4,7 @@
 if (typeof DEBUG!=='undefined' && DEBUG==1) {function debug(s){console.log(s);}} else {function debug(s){}}
 ////////////////////////////////////////////
 //Requires jquery
-$('document').ready(function(){
+$(function(){
 ////////////////////////////////////////////
   function getParameterByName(name, url) {
     if (!url) url = window.location.href;
@@ -28,6 +28,9 @@ $('document').ready(function(){
   }
   var arrLang=langList().split('\n');
   arrLang = arrLang.filter(function (el) { return el !== null && el !== ''; }); //Remove empty entries
+////////////////////////////////////////////
+});
+$('document').ready(function(){
 ////////////////////////////////////////////
   var socket = io();
   var uniqueUsername = decodeURIComponent(getParameterByName('username'));
