@@ -4,7 +4,7 @@
 if (typeof DEBUG!=='undefined' && DEBUG==1) {function debug(s){console.log(s);}} else {function debug(s){}}
 ////////////////////////////////////////////
 //Requires jquery
-$(function(){
+$('document').ready(function(){
 ////////////////////////////////////////////
   function getParameterByName(name, url) {
     if (!url) url = window.location.href;
