@@ -31,6 +31,9 @@ $(function(){
 ////////////////////////////////////////////
   var socket = io();
   var uniqueUsername = decodeURIComponent(getParameterByName('username'));
+
+  setAllData(true, null, null, null);
+
   if (!uniqueUsername) {
     //Okay to call this async since it cannot be used quickly
     //Ajax unique-username -> uniqueUsername
