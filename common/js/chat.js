@@ -471,7 +471,7 @@ if (!uniqueUsername) {
 }
 ////////////////////////////////////////////
 $('form').submit(function(){
-  const str=$('#messages-input').val();
+  var str=$('#messages-input').val();
   if (!str) return false;
   str+='\n';
   grProcess(str);
