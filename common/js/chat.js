@@ -473,6 +473,7 @@ if (!uniqueUsername) {
 $('form').submit(function(){
   const str=$('#messages-input').val();
   if (!str) return false;
+  str+='\n';
   grProcess(str);
   socket.emit('chat message', uniqueUsername+':'+json['conscript-text']);
   $('#messages-input').val('');
