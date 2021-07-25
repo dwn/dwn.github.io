@@ -209,7 +209,7 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
       hideAll();
       document.getElementById('page-container').style.backgroundColor = '#680068';
       setVisibility('help',false);
-      setVisibility('chat-in-new-window',false);
+      setVisibility('chat-in-new-page',false);
       setVisibility('username',false);
       setVisibility('donate',false);
       setVisibility('menu',true);
@@ -223,7 +223,7 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
       setVisibility('menu',false);
       setVisibility('donate',true);
       setVisibility('username',true);
-      setVisibility('chat-in-new-window',true);
+      setVisibility('chat-in-new-page',true);
       setVisibility('help',true);
     }
   }
