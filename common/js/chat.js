@@ -12,11 +12,19 @@ $('#message-input').bind('keyup click focus paste', function() {
   var begin = str.lastIndexOf(' ',k-1);
   begin = (begin<0? 0 : begin);
   var end = str.indexOf(' ',k);
-  end=(end<0? str.length : end);
+  end = (end<0? str.length : end);
   str = str.substring(begin,end).trim();
-  // if (str.length>3) {
-    document.getElementById('search-result').innerText='TESTING';
-  // }
+  if (str.length>2) {
+    k=0;
+    while((k=fullTxt.indexOf(str,k))>=0) {
+      begin = fullTxt.lastIndexOf(' ',k);
+      begin = (begin<0? 0 : begin);
+      end = fullTxt.indexOf(' ',k);
+      end = (end<0? fullTxt.length : end);
+      var res = res.substring(begin,end).trim();
+      document.getElementById('search-result').innerText+=res+' ';
+    }
+  }
 });
 ////////////////////////////////////////////
 var tmpTxt;
