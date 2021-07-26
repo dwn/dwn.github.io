@@ -11,11 +11,14 @@ $('#message-input').bind('keyup click focus paste', function() {
   var str = this.value;
   var begin = txt.lastIndexOf(' ',k-1);
   begin = (begin<0? 0 : begin);
-  var end = txt.indexOf('\n',k);
-  str = str.substring(begin,end).trim();
-  if (str.length>3) {
-    getElementById('search-result').value='TESTING';
+  var end = txt.indexOf(' ',k);
+  if (end<0) {
+    end = txt.indexOf('\0',k);
   }
+  str = str.substring(begin,end).trim();
+  // if (str.length>3) {
+    getElementById('search-result').value='TESTING';
+  // }
 });
 ////////////////////////////////////////////
 var tmpTxt;
