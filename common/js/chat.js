@@ -6,6 +6,10 @@ if (typeof DEBUG!=='undefined' && DEBUG==1) {function debug(s){console.log(s);}}
 meSpeak.loadConfig('https://dwn.github.io/common/json/mespeak_config.json');
 meSpeak.loadVoice('https://dwn.github.io/common/json/en.json');
 ////////////////////////////////////////////
+$('#message-input').bind('keyup click focus paste', function(str) {
+  alert(str);
+});
+////////////////////////////////////////////
 var tmpTxt;
 var arrTxt;
 var txt = '';
