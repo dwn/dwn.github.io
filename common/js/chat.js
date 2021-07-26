@@ -21,7 +21,7 @@ $('#message-input').bind('keyup click focus paste', function() {
       begin = (begin<0? 0 : begin);
       end = fullTxt.indexOf(' ',k);
       end = (end<0? fullTxt.length : end);
-      var res = fullText.substring(begin,end).trim();
+      var res = fullTxt.substring(begin,end).trim();
       document.getElementById('search-result').innerText+=res+' ';
     }
   }
