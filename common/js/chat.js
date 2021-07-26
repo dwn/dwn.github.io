@@ -23,7 +23,7 @@ $('#message-input').bind('keyup click focus paste', function() {
       end = fullTxt.indexOf('\n',k);
       end = (end<0? fullTxt.length : end);
       var res = fullTxt.substring(begin,end).trim();
-      document.getElementById('search-result').innerText+=res+' ';
+      document.getElementById('search-result').innerText+=res+'\n';
       k++;
     }
   }
