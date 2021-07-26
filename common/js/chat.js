@@ -24,7 +24,8 @@ $('#message-input').bind('keyup click focus paste', function() {
       end = (end<0? fullTxt.length : end);
       var res = fullTxt.substring(begin,end).trim();
       if (res===res.toUpperCase()) { //If all uppercase, include preceding line as well
-         begin = fullTxt.lastIndexOf('\n',begin);
+        begin = fullTxt.lastIndexOf('\n',begin-1);
+        begin = (begin<0? 0 : begin);
       }
       res = fullTxt.substring(begin,end).trim();
       document.getElementById('search-result').innerText+=res+'\n';
