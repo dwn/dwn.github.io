@@ -6,8 +6,16 @@ if (typeof DEBUG!=='undefined' && DEBUG==1) {function debug(s){console.log(s);}}
 meSpeak.loadConfig('https://dwn.github.io/common/json/mespeak_config.json');
 meSpeak.loadVoice('https://dwn.github.io/common/json/en.json');
 ////////////////////////////////////////////
-$('#message-input').bind('keyup click focus paste', function(str) {
-  alert(str);
+$('#message-input').bind('keyup click focus paste', function() {
+  var k = this.selectionEnd;
+  var str = this.value;
+  var begin = txt.lastIndexOf(' ',k-1);
+  begin = (begin<0? 0 : begin);
+  var end = txt.indexOf('\n',k);
+  str = str.substring(begin,end).trim();
+  if (str.length>3) {
+    getElementById('search-result').value='TESTING';
+  }
 });
 ////////////////////////////////////////////
 var tmpTxt;
