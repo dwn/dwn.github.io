@@ -12,7 +12,7 @@ $('#message-input').bind('keyup click focus paste', function() {
   var begin = str.lastIndexOf(' ',k-1);
   begin = (begin<0? 0 : begin);
   var end = str.indexOf(' ',k);
-  end=(end<0? end.length : end);
+  end=(end<0? str.length : end);
   str = str.substring(begin,end).trim();
   // if (str.length>3) {
     document.getElementById('search-result').value='TESTING';
