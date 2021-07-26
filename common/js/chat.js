@@ -473,13 +473,13 @@ if (!uniqueUsername) {
 }
 ////////////////////////////////////////////
 $('form').submit(function(){
-  var str=$('#messages-input').val();
+  var str=$('#message-input').val();
   if (!str) return false;
   str+='\n';
   grProcess(str);
   socket.emit('chat message', uniqueUsername+':'+json['conscript-text']);
-  $('#messages-input').val('');
-  $('#messages-input').focus();
+  $('#message-input').val('');
+  $('#message-input').focus();
   return false; //Non-refreshing submit
 });
 ////////////////////////////////////////////
