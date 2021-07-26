@@ -23,6 +23,7 @@ $('#message-input').bind('keyup click focus paste', function() {
       end = (end<0? fullTxt.length : end);
       var res = fullTxt.substring(begin,end).trim();
       document.getElementById('search-result').innerText+=res+' ';
+      k++;
     }
   }
 });
