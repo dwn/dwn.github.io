@@ -9,11 +9,11 @@ meSpeak.loadVoice('https://dwn.github.io/common/json/en.json');
 $('#message-input').bind('keyup click focus paste', function() {
   var k = this.selectionEnd;
   var str = this.value;
-  var begin = txt.lastIndexOf(' ',k-1);
+  var begin = str.lastIndexOf(' ',k-1);
   begin = (begin<0? 0 : begin);
-  var end = txt.indexOf(' ',k);
+  var end = str.indexOf(' ',k);
   if (end<0) {
-    end = txt.indexOf('\0',k);
+    end = str.indexOf('\0',k);
   }
   str = str.substring(begin,end).trim();
   // if (str.length>3) {
