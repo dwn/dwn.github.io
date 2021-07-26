@@ -12,13 +12,10 @@ $('#message-input').bind('keyup click focus paste', function() {
   var begin = str.lastIndexOf(' ',k-1);
   begin = (begin<0? 0 : begin);
   var end = str.indexOf(' ',k);
-  if (end<0) {
-    end = str.indexOf('\0',k);
-  }
   str = str.substring(begin,end).trim();
-  // if (str.length>3) {
-    getElementById('search-result').value='TESTING';
-  // }
+  if (str.length>1) {
+    document.getElementById('search-result').value='TESTING';
+  }
 });
 ////////////////////////////////////////////
 var tmpTxt;
