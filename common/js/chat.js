@@ -15,7 +15,7 @@ $('#message-input').bind('keyup click focus paste', function() {
   end = (end<0? str.length : end);
   str = str.substring(begin,end).trim();
   if (str.length>2) {
-    k=-1;
+    k=0;
     while((k=fullTxt.indexOf(str,k+1))>=0) {
       begin = fullTxt.lastIndexOf(' ',k);
       begin = (begin<0? 0 : begin);
