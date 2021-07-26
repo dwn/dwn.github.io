@@ -15,7 +15,7 @@ $('#message-input').bind('keyup click focus paste', function() {
   end=(end<0? str.length : end);
   str = str.substring(begin,end).trim();
   // if (str.length>3) {
-    document.getElementById('search-result').value='TESTING';
+    document.getElementById('search-result').innerText='TESTING';
   // }
 });
 ////////////////////////////////////////////
