@@ -16,10 +16,11 @@ $('#message-input').bind('keyup click focus paste', function() {
   str = str.substring(begin,end).trim();
   if (str.length>2) {
     k=0;
+    document.getElementById('search-result').innerText='';
     while((k=fullTxt.indexOf(str,k))>=0) {
-      begin = fullTxt.lastIndexOf(' ',k);
+      begin = fullTxt.lastIndexOf('\n',k);
       begin = (begin<0? 0 : begin);
-      end = fullTxt.indexOf(' ',k);
+      end = fullTxt.indexOf('\n',k);
       end = (end<0? fullTxt.length : end);
       var res = fullTxt.substring(begin,end).trim();
       document.getElementById('search-result').innerText+=res+' ';
