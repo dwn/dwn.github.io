@@ -28,7 +28,7 @@ $('#message-input').bind('keyup click focus paste', function() {
         begin = (begin<0? 0 : begin);
       }
       else if (res===res.toLowerCase()) { //If all lowercase, include succeeding line as well
-        end = fullTxt.lastIndexOf('\n',end+1);
+        end = fullTxt.indexOf('\n',end+1);
         end = (end<0? fullTxt.length : end);
       }
       res = fullTxt.substring(begin,end).trim();
