@@ -449,7 +449,7 @@ function grProcess(txtIn='') {
       continue;
     }
     if (skipping) continue;
-    var strRun=graphemeEsc[j][0][0].split('-');
+    var strRun=graphemeEsc[j][0][0].split('\\-');
     if (strRun[0]==='\\=\\=\\=\\=\\R\\U\\N'&&!runningSection) {
       if (strRun[1]===undefined||strRun[1]==='') { //Element [1] contains number of times to run
         runningSection = 1;
