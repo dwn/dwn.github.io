@@ -454,6 +454,7 @@ function grProcess(txtIn='') {
       if (strRun[1]===undefined||strRun[1]==='') { //Element [1] contains number of times to run
         runningSection = 1;
       } else {
+        strRun[1]=strRun[1].replace('\\','');
         runningSection = parseInt(strRun[1]);
       }
       currLine = j;
