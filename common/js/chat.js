@@ -425,16 +425,21 @@ function grProcess(txtIn='') {
   txt = txt.replace(/ /g,'_');
   if (txt[0]!=='_') txt='_'+txt;
   if (txt[txt.length-1]!=='_') txt=txt+'_';
-  var runningSection=false;
+  var runningSection=0;
   var skipping=false;
   var sectionBegin={};
   var currLine=0;
   var stopLine=graphemeEsc.length;
+  var currSectionBegin=0;
   for(var j=0; j<graphemeEsc.length; j++) {
     if (graphemeEsc[j][0][0]==='\\=\\=\\=\\=\\S\\E\\C\\T\\I\\O\\N') {
       if (runningSection) {
-        runningSection = false;
-        j = currLine;
+        runningSection--;
+        if (runningSection) {
+          j = currSectionBegin;
+        } else {
+          j = currLine;
+        }
         continue;
       }
       var sectionTitle = graphemeEsc[j][0][1];
@@ -444,11 +449,16 @@ function grProcess(txtIn='') {
       continue;
     }
     if (skipping) continue;
-    if (graphemeEsc[j][0][0]==='\\=\\=\\=\\=\\R\\U\\N'&&!runningSection) {
-      var s = graphemeEsc[j][0][1];
+    if (graphemeEsc[j][0].split('-')==='\\=\\=\\=\\=\\R\\U\\N'&&!runningSection) {
+      strRun=graphemeEsc[j][0].split('-');
+      if (strRun[1]===undefined||strRun[1]==='') { //Element [1] contains number of times to run
+        runningSection = 1;
+      } else {
+        runningSection = parseInt(strRun[1]);
+      }
       currLine = j;
-      j = sectionBegin[s];
-      runningSection = true;
+      currSectionBegin = sectionBegin[graphemeEsc[j][0][1]];
+      j = currSectionBegin;
       continue;
     }
     txt = addEscaping(txt);
