@@ -3,13 +3,6 @@
 ////////////////////////////////////////////
 if (typeof DEBUG!=='undefined' && DEBUG==1) {function debug(s){console.log(s);}} else {function debug(s){}}
 ////////////////////////////////////////////
-function waitForElement(){
-if (typeof meSpeak === "undefined"){ setTimeout(waitForElement, 250); }
-else {
-////
-meSpeak.loadConfig('https://dwn.github.io/common/json/mespeak_config.json');
-meSpeak.loadVoice('https://dwn.github.io/common/json/en.json');
-////////////////////////////////////////////
 $('#message-input').bind('keyup click focus paste', function() {
   var k = this.selectionEnd;
   var str = this.value;
@@ -292,6 +285,13 @@ function escapeArray(arr) {
   return arrEsc;
 }
 ////////////////////////////////////////////
+function waitForElement(){
+if (typeof meSpeak === "undefined"){ setTimeout(waitForElement, 250); }
+else {
+////
+meSpeak.loadConfig('https://dwn.github.io/common/json/mespeak_config.json');
+meSpeak.loadVoice('https://dwn.github.io/common/json/en.json');
+////
 function phProcessHelper() {
   do {
     if (arrTxt===null || !arrTxt.length) {
@@ -391,6 +391,9 @@ function phProcessHelper() {
   catch(err) {
     alert('An error occurred - speaking failed');
   }
+}
+////
+}
 }
 ////////////////////////////////////////////
 function phProcess() {
@@ -573,6 +576,3 @@ socket.on('chat font', function(msg){
     },error:function(r){}
   }); //bucketURL
 });
-////
-}
-}
