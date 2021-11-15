@@ -46,6 +46,7 @@ var json = {};
 var jsonAfter = {};
 var alreadyPlaying=false;
 var conscriptTextReady=false;
+var alreadyLoadedSpeechData = false;
 ////////////////////////////////////////////
 function loadFileURL(fileURL) {
   var result = null;
@@ -285,115 +286,113 @@ function escapeArray(arr) {
   return arrEsc;
 }
 ////////////////////////////////////////////
-function waitForElement(){
-if (typeof meSpeak === "undefined"){ setTimeout(waitForElement, 250); }
-else {
-////
-meSpeak.loadConfig('https://dwn.github.io/common/json/mespeak_config.json');
-meSpeak.loadVoice('https://dwn.github.io/common/json/en.json');
-////
 function phProcessHelper() {
-  do {
-    if (arrTxt===null || !arrTxt.length) {
-      const playEl = document.getElementsByClassName('play-element')[0];
-      if (playEl) playEl.src = 'img/play.png';
-      alreadyPlaying=false;
-      return;
-    }
-    txt=arrTxt.shift();
-    if (txt===null) return;
-    txt=txt.trim();
-  } while(txt==='');
-  try {
-    var uipa = '_' + txt + '_'; //Underscores allow replacement at beginning and end of word
-    for(var j in phonemeEsc) {
-      uipa = addEscaping(uipa);
-      for(var i in phonemeEsc[j]) {
-        uipa = uipa.split(phonemeEsc[j][i][0]).join(phonemeEsc[j][i][1]);
+    if (typeof meSpeak === "undefined") {
+      setTimeout(phProcessHelper, 250);
+    } else if (!alreadyLoadedSpeechData) {
+        meSpeak.loadConfig('https://dwn.github.io/common/json/mespeak_config.json');
+        meSpeak.loadVoice('https://dwn.github.io/common/json/en.json');
+        alreadyLoadedSpeechData=true;
+    } else {
+      do {
+        if (arrTxt===null || !arrTxt.length) {
+          const playEl = document.getElementsByClassName('play-element')[0];
+          if (playEl) playEl.src = 'img/play.png';
+          alreadyPlaying=false;
+          return;
+        }
+        txt=arrTxt.shift();
+        if (txt===null) return;
+        txt=txt.trim();
+      } while(txt==='');
+      try {
+        var uipa = '_' + txt + '_'; //Underscores allow replacement at beginning and end of word
+        for(var j in phonemeEsc) {
+          uipa = addEscaping(uipa);
+          for(var i in phonemeEsc[j]) {
+            uipa = uipa.split(phonemeEsc[j][i][0]).join(phonemeEsc[j][i][1]);
+          }
+          uipa = removeEscaping(uipa);
+        }
+        consoleEl = document.getElementById('console');
+        if (consoleEl) {
+          consoleEl.value += uipa + '\n';
+          consoleEl.scrollTop = consoleEl.scrollHeight;
+        }
+        var mappings = [
+         { 'src': /[0|!=]\//g, 'dest': 'qk' }, //Click - Exact sound not available
+         { 'src': /[0|!=]\/`/g, 'dest': 'qk' }, //Click - Exact sound not available
+         { 'src': /r\/`/g, 'dest': 'r' }, //Exact sound not available
+         { 'src': /k`/g, 'dest': 'k' }, //Exact sound not available
+         { 'src': /g`/g, 'dest': 'g' }, //Exact sound not available
+         { 'src': /n`/g, 'dest': 'N' }, //Exact sound not available
+         { 'src': /s`/g, 'dest': 'Sx' }, //Exact sound not available
+         { 'src': /z`/g, 'dest': 'Zx' }, //Exact sound not available
+         { 'src': /l`/g, 'dest': 'l' }, //Exact sound not available
+         { 'src': /u\//g, 'dest': 'U' }, //Exact sound not available
+         { 'src': /I\//g, 'dest': 'I' }, //Exact sound not available
+         { 'src': /U\//g, 'dest': 'U' }, //Exact sound not available
+         { 'src': /@\//g, 'dest': 'I' }, //Exact sound not available
+         { 'src': /3\//g, 'dest': '@' }, //Exact sound not available
+         { 'src': /&\//g, 'dest': '@' }, //Exact sound not available
+         { 'src': /J\//g, 'dest': 'gj' }, //Exact sound not available
+         { 'src': /G\//g, 'dest': 'qg' }, //Exact sound not available
+         { 'src': />\//g, 'dest': 'p' }, //Exact sound not available
+         { 'src': /B\//g, 'dest': 'blb' }, //Exact sound not available
+         { 'src': /f\//g, 'dest': 'fh' }, //Exact sound not available
+         { 'src': /p\//g, 'dest': 'hv' }, //Exact sound not available
+         { 'src': /j\//g, 'dest': 'j' }, //Exact sound not available
+         { 'src': /X\//g, 'dest': 'hX' }, //Exact sound not available
+         { 'src': /\?\//g, 'dest': 'hvw' }, //Exact sound not available
+         { 'src': /H\//g, 'dest': 'XX' }, //Exact sound not available
+         { 'src': /\<\//g, 'dest': 'Xhh' }, //Exact sound not available
+         { 'src': /h\//g, 'dest': 'hh' }, //Exact sound not available
+         { 'src': /K\//g, 'dest': 'zhl' }, //Exact sound not available
+         { 'src': /r\//g, 'dest': 'ѨѨѨѨѨ' }, //Placeholder for r
+         { 'src': /M\//g, 'dest': 'hr' }, //Exact sound not available
+         { 'src': /L\//g, 'dest': 'l' }, //Exact sound not available
+         { 'src': /\&/g, 'dest': 'Ea' }, //Exact sound not available
+         { 'src': /y/g, 'dest': 'UI' }, //Exact sound not available
+         { 'src': /1/g, 'dest': 'I' }, //Exact sound not available
+         { 'src': /M/g, 'dest': 'U' }, //Exact sound not available
+         { 'src': /Y/g, 'dest': 'U' }, //Exact sound not available
+         { 'src': /2/g, 'dest': 'U' }, //Exact sound not available
+         { 'src': /8/g, 'dest': 'U' }, //Exact sound not available
+         { 'src': /7/g, 'dest': 'U' }, //Exact sound not available
+         { 'src': /9/g, 'dest': 'oE' }, //Exact sound not available
+         { 'src': /O/g, 'dest': 'ao' }, //Exact sound not available
+         { 'src': /6/g, 'dest': 'ah' }, //Exact sound not available
+         { 'src': /A/g, 'dest': 'ah' }, //Exact sound not available
+         { 'src': /Q/g, 'dest': 'ao' }, //Exact sound not available
+         { 'src': /F/g, 'dest': 'm' }, //Exact sound not available
+         { 'src': /c/g, 'dest': 'kj' }, //Exact sound not available
+         { 'src': /\?/g, 'dest': '\'' },
+         { 'src': /J/g, 'dest': 'nj' },
+         { 'src': /r/g, 'dest': 'rlr' }, //Exact sound not available
+         { 'src': /R/g, 'dest': 'Xrlr' }, //Exact sound not available
+         { 'src': /4/g, 'dest': 'R' }, //Exact sound not available
+         { 'src': /C/g, 'dest': 'Sx' }, //Exact sound not available
+         { 'src': /G/g, 'dest': 'xR' }, //Exact sound not available
+         { 'src': /R/g, 'dest': 'XR' }, //Exact sound not available
+         { 'src': /K/g, 'dest': 'Sl' }, //Exact sound not available
+         { 'src': /P/g, 'dest': 'v' }, //Exact sound not available
+         { 'src': /L/g, 'dest': 'j' }, //Exact sound not available
+         { 'src': /ѨѨѨѨѨ/g, 'dest': '@r' }, //Evaluting r
+         { 'src': /@@/g, 'dest': '@' }, //Fixing any doubled schwas
+         { 'src': /,/g, 'dest': '____' }, //Pause on comma
+        ];
+        for (var i = 0; i < mappings.length; i++) {
+          uipa = uipa.replace(mappings[i].src, mappings[i].dest);
+        }
+        debug(uipa);
+        speakId = meSpeak.speak('[['+uipa+']]', { 'rawdata': 'mime' });
+        if (speakId == null) alert('An error occurred - speaking failed');
+        meSpeak.play(speakId, 1, phProcessHelper);
       }
-      uipa = removeEscaping(uipa);
+      catch(err) {
+        alert('An error occurred - speaking failed');
+      }
     }
-    consoleEl = document.getElementById('console');
-    if (consoleEl) {
-      consoleEl.value += uipa + '\n';
-      consoleEl.scrollTop = consoleEl.scrollHeight;
-    }
-    var mappings = [
-     { 'src': /[0|!=]\//g, 'dest': 'qk' }, //Click - Exact sound not available
-     { 'src': /[0|!=]\/`/g, 'dest': 'qk' }, //Click - Exact sound not available
-     { 'src': /r\/`/g, 'dest': 'r' }, //Exact sound not available
-     { 'src': /k`/g, 'dest': 'k' }, //Exact sound not available
-     { 'src': /g`/g, 'dest': 'g' }, //Exact sound not available
-     { 'src': /n`/g, 'dest': 'N' }, //Exact sound not available
-     { 'src': /s`/g, 'dest': 'Sx' }, //Exact sound not available
-     { 'src': /z`/g, 'dest': 'Zx' }, //Exact sound not available
-     { 'src': /l`/g, 'dest': 'l' }, //Exact sound not available
-     { 'src': /u\//g, 'dest': 'U' }, //Exact sound not available
-     { 'src': /I\//g, 'dest': 'I' }, //Exact sound not available
-     { 'src': /U\//g, 'dest': 'U' }, //Exact sound not available
-     { 'src': /@\//g, 'dest': 'I' }, //Exact sound not available
-     { 'src': /3\//g, 'dest': '@' }, //Exact sound not available
-     { 'src': /&\//g, 'dest': '@' }, //Exact sound not available
-     { 'src': /J\//g, 'dest': 'gj' }, //Exact sound not available
-     { 'src': /G\//g, 'dest': 'qg' }, //Exact sound not available
-     { 'src': />\//g, 'dest': 'p' }, //Exact sound not available
-     { 'src': /B\//g, 'dest': 'blb' }, //Exact sound not available
-     { 'src': /f\//g, 'dest': 'fh' }, //Exact sound not available
-     { 'src': /p\//g, 'dest': 'hv' }, //Exact sound not available
-     { 'src': /j\//g, 'dest': 'j' }, //Exact sound not available
-     { 'src': /X\//g, 'dest': 'hX' }, //Exact sound not available
-     { 'src': /\?\//g, 'dest': 'hvw' }, //Exact sound not available
-     { 'src': /H\//g, 'dest': 'XX' }, //Exact sound not available
-     { 'src': /\<\//g, 'dest': 'Xhh' }, //Exact sound not available
-     { 'src': /h\//g, 'dest': 'hh' }, //Exact sound not available
-     { 'src': /K\//g, 'dest': 'zhl' }, //Exact sound not available
-     { 'src': /r\//g, 'dest': 'ѨѨѨѨѨ' }, //Placeholder for r
-     { 'src': /M\//g, 'dest': 'hr' }, //Exact sound not available
-     { 'src': /L\//g, 'dest': 'l' }, //Exact sound not available
-     { 'src': /\&/g, 'dest': 'Ea' }, //Exact sound not available
-     { 'src': /y/g, 'dest': 'UI' }, //Exact sound not available
-     { 'src': /1/g, 'dest': 'I' }, //Exact sound not available
-     { 'src': /M/g, 'dest': 'U' }, //Exact sound not available
-     { 'src': /Y/g, 'dest': 'U' }, //Exact sound not available
-     { 'src': /2/g, 'dest': 'U' }, //Exact sound not available
-     { 'src': /8/g, 'dest': 'U' }, //Exact sound not available
-     { 'src': /7/g, 'dest': 'U' }, //Exact sound not available
-     { 'src': /9/g, 'dest': 'oE' }, //Exact sound not available
-     { 'src': /O/g, 'dest': 'ao' }, //Exact sound not available
-     { 'src': /6/g, 'dest': 'ah' }, //Exact sound not available
-     { 'src': /A/g, 'dest': 'ah' }, //Exact sound not available
-     { 'src': /Q/g, 'dest': 'ao' }, //Exact sound not available
-     { 'src': /F/g, 'dest': 'm' }, //Exact sound not available
-     { 'src': /c/g, 'dest': 'kj' }, //Exact sound not available
-     { 'src': /\?/g, 'dest': '\'' },
-     { 'src': /J/g, 'dest': 'nj' },
-     { 'src': /r/g, 'dest': 'rlr' }, //Exact sound not available
-     { 'src': /R/g, 'dest': 'Xrlr' }, //Exact sound not available
-     { 'src': /4/g, 'dest': 'R' }, //Exact sound not available
-     { 'src': /C/g, 'dest': 'Sx' }, //Exact sound not available
-     { 'src': /G/g, 'dest': 'xR' }, //Exact sound not available
-     { 'src': /R/g, 'dest': 'XR' }, //Exact sound not available
-     { 'src': /K/g, 'dest': 'Sl' }, //Exact sound not available
-     { 'src': /P/g, 'dest': 'v' }, //Exact sound not available
-     { 'src': /L/g, 'dest': 'j' }, //Exact sound not available
-     { 'src': /ѨѨѨѨѨ/g, 'dest': '@r' }, //Evaluting r
-     { 'src': /@@/g, 'dest': '@' }, //Fixing any doubled schwas
-     { 'src': /,/g, 'dest': '____' }, //Pause on comma
-    ];
-    for (var i = 0; i < mappings.length; i++) {
-      uipa = uipa.replace(mappings[i].src, mappings[i].dest);
-    }
-    debug(uipa);
-    speakId = meSpeak.speak('[['+uipa+']]', { 'rawdata': 'mime' });
-    if (speakId == null) alert('An error occurred - speaking failed');
-    meSpeak.play(speakId, 1, phProcessHelper);
-  }
-  catch(err) {
-    alert('An error occurred - speaking failed');
-  }
-}
-////
-}
 }
 ////////////////////////////////////////////
 function phProcess() {
