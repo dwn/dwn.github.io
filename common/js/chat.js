@@ -289,11 +289,12 @@ function escapeArray(arr) {
 function phProcessHelper() {
     if (typeof meSpeak === "undefined") {
       setTimeout(phProcessHelper, 250);
-    } else if (!alreadyLoadedSpeechData) {
+    } else {
+      if (!alreadyLoadedSpeechData) {
         meSpeak.loadConfig('https://dwn.github.io/common/json/mespeak_config.json');
         meSpeak.loadVoice('https://dwn.github.io/common/json/en.json');
         alreadyLoadedSpeechData=true;
-    } else {
+      }
       do {
         if (arrTxt===null || !arrTxt.length) {
           const playEl = document.getElementsByClassName('play-element')[0];
