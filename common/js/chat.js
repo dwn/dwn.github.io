@@ -292,8 +292,8 @@ function phProcessHelper() {
       if (!(meSpeak.isConfigLoaded() && meSpeak.isVoiceLoaded())) {
         meSpeak.loadConfig('https://dwn.github.io/common/json/mespeak_config.json');
         meSpeak.loadVoice('https://dwn.github.io/common/json/en.json');
-        debug('not yet loaded');
-        setTimeout(phProcessHelper, 200);
+        debug('Loading speech module');
+        // setTimeout(phProcessHelper, 200);
       } else {
         do {
           if (arrTxt===null || !arrTxt.length) {
