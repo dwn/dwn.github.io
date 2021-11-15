@@ -46,7 +46,6 @@ var json = {};
 var jsonAfter = {};
 var alreadyPlaying=false;
 var conscriptTextReady=false;
-var alreadyLoadedSpeechData = false;
 ////////////////////////////////////////////
 function loadFileURL(fileURL) {
   var result = null;
@@ -288,12 +287,13 @@ function escapeArray(arr) {
 ////////////////////////////////////////////
 function phProcessHelper() {
     if (typeof meSpeak === "undefined") {
-      setTimeout(phProcessHelper, 250);
+      setTimeout(phProcessHelper, 100);
     } else {
-      if (!alreadyLoadedSpeechData) {
+      if (!(meSpeak.isConfigLoaded() && meSpeak.isVoiceLoaded())) {
         meSpeak.loadConfig('https://dwn.github.io/common/json/mespeak_config.json');
         meSpeak.loadVoice('https://dwn.github.io/common/json/en.json');
-        alreadyLoadedSpeechData=true;
+      } else {
+        setTimeout(phProcessHelper, 100);
       }
       do {
         if (arrTxt===null || !arrTxt.length) {
