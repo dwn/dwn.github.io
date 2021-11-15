@@ -3,6 +3,10 @@
 ////////////////////////////////////////////
 if (typeof DEBUG!=='undefined' && DEBUG==1) {function debug(s){console.log(s);}} else {function debug(s){}}
 ////////////////////////////////////////////
+function waitForElement(){
+if (typeof meSpeak === "undefined"){ setTimeout(waitForElement, 250); }
+else {
+////
 meSpeak.loadConfig('https://dwn.github.io/common/json/mespeak_config.json');
 meSpeak.loadVoice('https://dwn.github.io/common/json/en.json');
 ////////////////////////////////////////////
@@ -569,3 +573,6 @@ socket.on('chat font', function(msg){
     },error:function(r){}
   }); //bucketURL
 });
+////
+}
+}
