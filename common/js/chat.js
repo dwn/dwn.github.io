@@ -287,7 +287,7 @@ function escapeArray(arr) {
 ////////////////////////////////////////////
 function phProcessInit() {
   if (typeof meSpeak === "undefined") {
-    setTimeout(phProcessHelper, 200);
+    setTimeout(phProcessInit, 200);
   } else {
     if (!(meSpeak.isConfigLoaded() && meSpeak.isVoiceLoaded())) {
       meSpeak.loadConfig('https://dwn.github.io/common/json/mespeak_config.json');
