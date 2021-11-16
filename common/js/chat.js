@@ -290,7 +290,7 @@ function phProcessInit() {
     setTimeout(phProcessInit, 200);
   } else {
     if (!meSpeak.isVoiceLoaded()) {
-      meSpeak.loadVoice('en/en-us');
+      meSpeak.loadVoice('en/en');
       debug('Loading speech module');
     }
   }
@@ -389,8 +389,6 @@ function phProcessHelper() {
     }
     debug(uipa);
     speakId = meSpeak.speak(uipa,null,phProcessHelper);
-    // if (speakId == null) alert('An error occurred - speaking failed');
-    // meSpeak.play(speakId, 1, phProcessHelper);
   }
   catch(err) {
     alert('An error occurred - speaking failed');
