@@ -289,9 +289,8 @@ function phProcessInit() {
   if (typeof meSpeak === "undefined") {
     setTimeout(phProcessInit, 200);
   } else {
-    if (!(meSpeak.isConfigLoaded() && meSpeak.isVoiceLoaded())) {
-      meSpeak.loadConfig('https://dwn.github.io/common/json/mespeak_config.json');
-      meSpeak.loadVoice('https://dwn.github.io/common/json/en.json');
+    if (!meSpeak.isVoiceLoaded()) {
+      meSpeak.loadVoice('en/en-us');
       debug('Loading speech module');
     }
   }
