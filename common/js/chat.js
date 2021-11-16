@@ -388,7 +388,7 @@ function phProcessHelper() {
       uipa = uipa.replace(mappings[i].src, mappings[i].dest);
     }
     debug(uipa);
-    speakId = meSpeak.speak('[['+uipa+']]');
+    speakId = meSpeak.speak(uipa);
     if (speakId == null) alert('An error occurred - speaking failed');
     meSpeak.play(speakId, 1, phProcessHelper);
   }
