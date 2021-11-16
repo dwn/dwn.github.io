@@ -13,7 +13,8 @@ $('#message-input').bind('keyup click focus paste', function() {
   str = str.substring(begin,end).trim();
   if (str.length>2) {
     k=0;
-    document.getElementById('search-result').innerText='';
+    var searchEl = document.getElementById('search-result');
+    if (searchEl) searchEl.innerText='';
     while((k=fullTxt.indexOf(str,k))>=0) {
       begin = fullTxt.lastIndexOf('\n',k);
       begin = (begin<0? 0 : begin);
