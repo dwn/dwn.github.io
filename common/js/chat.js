@@ -524,7 +524,6 @@ if (!uniqueUsername) {
 }
 ////////////////////////////////////////////
 $('form').submit(function(){
-alert('form submitted');
   var str=$('#message-input').val();
   if (!str) return false;
   str+='\n';
