@@ -164,7 +164,8 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
       var fontBasename = urlParts.pop() || urlParts.pop();
       fontBasename = fontBasename.split('?');
       var urlParams = fontBasename[1];
-      fontBasename = fontBasename[0];
+      fontBasename = urlParams.get('font'); //Font as query variable
+      if (!fontBasename) fontBasename = fontBasename[0]; //Font as URL param
       if (typeof setVisibility === "function") {
         setVisibility('select-selected',false);
         setVisibility('conscript-loading',true);
