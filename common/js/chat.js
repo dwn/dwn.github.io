@@ -163,9 +163,13 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
       var urlParts = window.location.href.split('/');
       const urlParams = new URLSearchParams(window.location.search);
       var fontBasename = urlParams.get('font'); //Font as query variable
-      if (!fontBasename && urlParts.length > 1) {
+      if (!fontBasename) {
+        if (urlParts.length > 1) {
         fontBasename = urlParts.pop() || urlParts.pop();
         fontBasename = fontBasename.split('?')[0]; //Font as URL param
+        } else {
+          return;
+        }
       }
       if (typeof setVisibility === "function") {
         setVisibility('select-selected',false);
