@@ -177,7 +177,9 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
         setVisibility('conscript-loading',true);
       }
       debug('Getting font');
-      dat = loadFileURL((bucketURL? bucketURL : 'https://dwn.github.io/common/lang/')+(titleEl? titleEl.innerHTML : fontBasename)+'.svg');
+      const fileURL = (bucketURL? bucketURL : 'https://dwn.github.io/common/lang/')+(titleEl? titleEl.innerHTML : fontBasename)+'.svg';
+      dat = loadFileURL(fileURL);
+      if (!dat) debug('Failed to get font at '+fileURL);
       var nameInput;
       if (typeof setVisibility === "function") {
         setVisibility('conscript-loading',false);
