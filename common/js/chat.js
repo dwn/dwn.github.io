@@ -168,6 +168,7 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
           fontBasename = urlParts.pop() || urlParts.pop();
           fontBasename = fontBasename.split('?')[0]; //Font as URL param
         } else {
+          debug('No font name given in query params nor in url');
           return;
         }
       }
@@ -175,6 +176,7 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
         setVisibility('select-selected',false);
         setVisibility('conscript-loading',true);
       }
+      debug('Getting font');
       dat = loadFileURL((bucketURL? bucketURL : 'https://dwn.github.io/common/lang/')+(titleEl? titleEl.innerHTML : fontBasename)+'.svg');
       var nameInput;
       if (typeof setVisibility === "function") {
