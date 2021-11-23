@@ -165,8 +165,8 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
       var fontBasename = urlParams.get('font'); //Font as query variable
       if (!fontBasename) {
         if (urlParts.length > 1) {
-        fontBasename = urlParts.pop() || urlParts.pop();
-        fontBasename = fontBasename.split('?')[0]; //Font as URL param
+          fontBasename = urlParts.pop() || urlParts.pop();
+          fontBasename = fontBasename.split('?')[0]; //Font as URL param
         } else {
           return;
         }
