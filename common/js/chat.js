@@ -160,6 +160,10 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
   var el;
   if (on) {
     if (!dat) { //Only called when font selected from title screen or when user on chat page
+      if (typeof setVisibility === "function") {
+        setVisibility('select-selected',false);
+        setVisibility('conscript-loading',true);
+      }
       var urlParts = window.location.href.split('/');
       urlParts = urlParts.filter(e => e && e!=='http:' && e!=='https:'); //Filter out null and protocol elements
       debug(urlParts);
@@ -175,10 +179,6 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
           debug('No font name given in query params nor in url');
           return;
         }
-      }
-      if (typeof setVisibility === "function") {
-        setVisibility('select-selected',false);
-        setVisibility('conscript-loading',true);
       }
       debug('Getting font');
       const fileURL = (bucketURL? bucketURL : 'https://dwn.github.io/common/lang/')+(titleEl? titleEl.innerHTML : fontBasename)+'.svg';
