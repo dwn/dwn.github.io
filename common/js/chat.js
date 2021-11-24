@@ -165,6 +165,7 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
       debug(urlParts);
       const urlParams = new URLSearchParams(window.location.search);
       var fontBasename = urlParams.get('font'); //Font as query variable
+      debug(fontBasename);
       if (!fontBasename) {
         if (urlParts.length > 1) {
           debug('Getting font name from url');
