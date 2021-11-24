@@ -162,6 +162,7 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
     if (!dat) { //Only called when font selected from title screen or when user on chat page
       var urlParts = window.location.href.split('/');
       urlParts = urlParts.filter(e => e && e!=='http:' && e!=='https:'); //Filter out null and protocol elements
+      debug(urlParts);
       const urlParams = new URLSearchParams(window.location.search);
       var fontBasename = urlParams.get('font'); //Font as query variable
       if (!fontBasename) {
