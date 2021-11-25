@@ -160,6 +160,7 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
   var el;
   if (on) {
     if (!dat) { //Only called when font selected from title screen or when user on chat page
+      debug('Getting font data');
       var urlParts = window.location.href.split('/');
       urlParts = urlParts.filter(e => e && e!=='http:' && e!=='https:'); //Filter out null and protocol elements
       const urlParams = new URLSearchParams(window.location.search);
