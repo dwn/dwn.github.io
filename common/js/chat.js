@@ -254,7 +254,7 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
     }
   } else {
     if (typeof setVisibility === "function") {
-      document.body.style.backgroundImage = 'url(img/continua.svg)';
+      document.body.style.backgroundImage = 'url(img/continua/continua-girl.jpg)';
       document.getElementById('page-container').style.backgroundColor = 'transparent';
       hideAll();
       setVisibility('menu',false);
