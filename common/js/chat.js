@@ -309,7 +309,7 @@ function phProcessHelper() {
   do {
     if (arrTxt===null || !arrTxt.length) {
       const playEl = document.getElementsByClassName('play-element')[0];
-      if (playEl) playEl.src = 'img/play.png';
+      if (playEl) playEl.src = 'img/icon/play.png';
       alreadyPlaying=false;
       return;
     }
@@ -408,7 +408,7 @@ function phProcess() {
   if (alreadyPlaying) return;
   alreadyPlaying=true;
   const playEl = document.getElementsByClassName('play-element')[0];
-  if (playEl) playEl.src = 'img/stop.png';
+  if (playEl) playEl.src = 'img/icon/stop.png';
   debug('PHONOLOGY');
   phonemeEsc = escapeArray(phoneme);
   arrTxt = txt.split('{br}')[0].split(/\r?\n/g); //Text {br} stops speech
