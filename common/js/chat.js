@@ -328,7 +328,7 @@ function phProcessHelper() {
     consoleEl = document.getElementById('console');
     if (consoleEl) {
       consoleEl.value += uipa + '\n';
-      consoleEl.scrollTop = consoleEl.scrollHeight;
+      consoleEl.scrollRight = consoleEl.scrollWidth;
     }
     var mappings = [
      { 'src': /[0|!=]\//g, 'dest': 'qk' }, //Click - Exact sound not available
@@ -559,7 +559,7 @@ socket.on('chat message', function(msg){
     ) + ">")
   .html("<div style='display:inline-block;height:70px;line-height:70px;font-family:latin;font-size:.7em'>"+
     shortUsername+"&nbsp;</div><div style='display:inline-block;position:relative;top:.6em'>"+msg+"</div>"));
-  window.scrollTo(0, document.body.scrollWidth);
+  window.scrollTo(0, document.body.scrollHeight);
   // say(msg);
 });
 ////////////////////////////////////////////
