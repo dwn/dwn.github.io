@@ -181,8 +181,7 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
       if (typeof setVisibility === "function") {
         setVisibility('conscript-loading',false);
         setVisibility('select-selected',true);
-        // nameInput = document.querySelector('.username-element').value;
-        nameInput=''; //TODO
+        nameInput = document.querySelector('.username-element').value;
       } else {
         const urlParams = new URLSearchParams(window.location.search);
         nameInput = urlParams.get('username');
