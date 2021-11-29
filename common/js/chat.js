@@ -559,7 +559,7 @@ socket.on('chat message', function(msg){
     ) + ">")
   .html("<div style='display:inline-block;height:70px;line-height:70px;font-family:latin;font-size:.7em'>"+
     shortUsername+"&nbsp;</div><div style='display:inline-block;position:relative;top:.6em'>"+msg+"</div>"));
-   window.scrollTo(500,0);
+  // window.scrollTo(500,0);
   // say(msg);
 });
 ////////////////////////////////////////////
