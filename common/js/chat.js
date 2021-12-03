@@ -558,9 +558,8 @@ socket.on('chat message', function(msg){
   .append($("<li style=font-family:'" +
     (shortUsername==='connected'? "Arial" : (username? username : "Arial")) +
     ';text-orientation:upright;writing-mode:' +
-    json['direction']==='down-right'? 'vertical-lr' :
-    json['direction']==='down-left'? 'vertical-rl' :
-    json['direction']==='right-down'? 'unset' +
+    (json['direction']==='down-right'? 'vertical-lr' :
+    json['direction']==='down-left'? 'vertical-rl' : 'horizontal-tb') +
     "'>").html("<div class='chat-username'>"+shortUsername+"&nbsp;</div><div>"+msg+"</div>"));
   window.scrollTo(0, document.body.scrollHeight);
   // say(msg);
