@@ -43,7 +43,7 @@ $(document).ready(function() {
       window.scrollTo(0, document.body.scrollHeight);
     }
   });
-}
+});
 ////////////////////////////////////////////
 var tmpTxt;
 var arrTxt;
@@ -184,6 +184,7 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
         setVisibility('conlang-loading',true);
       }
       const fileURL = (bucketURL? bucketURL : 'https://dwn.github.io/common/lang/')+(titleEl? titleEl.innerHTML : fontBasename)+'.svg';
+      if (fileURL.split('/').pop().slice(0,1)==='#') return; //Anchor address # should not be considered a font
       dat = loadFileURL(fileURL);
       if (!dat) { debug('Failed to get font at '+fileURL); return; }
       var nameInput;
