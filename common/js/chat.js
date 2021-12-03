@@ -3,39 +3,47 @@
 ////////////////////////////////////////////
 if (typeof DEBUG!=='undefined' && DEBUG==1) {function debug(s){console.log(s);}} else {function debug(s){}}
 ////////////////////////////////////////////
-$('#message-input').bind('keyup click focus paste', function() {
-  var k = this.selectionEnd;
-  var str = this.value;
-  var begin = str.lastIndexOf(' ',k-1);
-  begin = (begin<0? 0 : begin);
-  var end = str.indexOf(' ',k);
-  end = (end<0? str.length : end);
-  str = str.substring(begin,end).trim();
-  if (str.length>2) {
-    k=0;
-    var searchEl = document.getElementById('search-result');
-    if (searchEl) searchEl.innerText='';
-    while((k=fullTxt.indexOf(str,k))>=0) {
-      begin = fullTxt.lastIndexOf('\n',k);
-      begin = (begin<0? 0 : begin);
-      end = fullTxt.indexOf('\n',k);
-      end = (end<0? fullTxt.length : end);
-      var res = fullTxt.substring(begin,end).trim();
-      if (res===res.toUpperCase()) { //If all uppercase, include preceding line as well
-        begin = fullTxt.lastIndexOf('\n',begin-1);
+$(document).ready(function() {
+  // $(window).bind('keydown', function(event) {
+  //   debug('hotkey in iframe')
+  //   event.preventDefault();
+  //   if (event.ctrlKey || event.metaKey)
+  //     parent.$(parent.document).dispatchEvent(new KeyboardEvent('keydown', { key: 's',code: 'KeyS',ctrlKey: true}));
+  // });
+  $('#message-input').bind('keyup click focus paste', function() {
+    var k = this.selectionEnd;
+    var str = this.value;
+    var begin = str.lastIndexOf(' ',k-1);
+    begin = (begin<0? 0 : begin);
+    var end = str.indexOf(' ',k);
+    end = (end<0? str.length : end);
+    str = str.substring(begin,end).trim();
+    if (str.length>2) {
+      k=0;
+      var searchEl = document.getElementById('search-result');
+      if (searchEl) searchEl.innerText='';
+      while((k=fullTxt.indexOf(str,k))>=0) {
+        begin = fullTxt.lastIndexOf('\n',k);
         begin = (begin<0? 0 : begin);
-      }
-      else if (res===res.toLowerCase()) { //If all lowercase, include succeeding line as well
-        end = fullTxt.indexOf('\n',end+1);
+        end = fullTxt.indexOf('\n',k);
         end = (end<0? fullTxt.length : end);
+        var res = fullTxt.substring(begin,end).trim();
+        if (res===res.toUpperCase()) { //If all uppercase, include preceding line as well
+          begin = fullTxt.lastIndexOf('\n',begin-1);
+          begin = (begin<0? 0 : begin);
+        }
+        else if (res===res.toLowerCase()) { //If all lowercase, include succeeding line as well
+          end = fullTxt.indexOf('\n',end+1);
+          end = (end<0? fullTxt.length : end);
+        }
+        res = fullTxt.substring(begin,end).trim();
+        document.getElementById('search-result').innerText+=res+'\n';
+        k++;
       }
-      res = fullTxt.substring(begin,end).trim();
-      document.getElementById('search-result').innerText+=res+'\n';
-      k++;
+      window.scrollTo(0, document.body.scrollHeight);
     }
-    window.scrollTo(0, document.body.scrollHeight);
-  }
-});
+  });
+}
 ////////////////////////////////////////////
 var tmpTxt;
 var arrTxt;
@@ -176,8 +184,9 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
         setVisibility('conlang-loading',true);
       }
       const fileURL = (bucketURL? bucketURL : 'https://dwn.github.io/common/lang/')+(titleEl? titleEl.innerHTML : fontBasename)+'.svg';
+      if (fileURL.split('/').pop().slice(0,1)==='#') return; //Anchor address # should not be considered a font
       dat = loadFileURL(fileURL);
-      if (!dat) debug('Failed to get font at '+fileURL);
+      if (!dat) { debug('Failed to get font at '+fileURL); return; }
       var nameInput;
       if (typeof setVisibility === "function") {
         setVisibility('conlang-loading',false);
