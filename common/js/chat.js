@@ -483,7 +483,7 @@ function grProcess(txtIn='') {
   debug(txt);
   if (conlangTextReady) {
     const conlangTextEl = document.getElementById('conlang-text');
-    if (conlangTextEl) conlangTextEl.innerHTML = txt.replace(/⟨/g,"<span style='font-family:arial;font-size:.5em'>").replace(/⟩/g,'</span>');
+    if (conlangTextEl) conlangTextEl.innerHTML = txt.replace(/⟨/g,"<span style='font-family:arial;font-size:.5rem'>").replace(/⟩/g,'</span>');
   }
   json['conlang-text'] = txt;
   json['user-text']=json['user-text'].replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -552,8 +552,8 @@ socket.on('chat message', function(msg){
       "style='font:18px Helvetica,Arial'" :
       (username? "style='font-family:"+username+"'" : '')
     ) + ">")
-  .html("<div style='display:inline-block;height:70px;line-height:70px;font-family:latin;font-size:.7em'>"+
-    shortUsername+"&nbsp;</div><div style='display:inline-block;position:relative;top:.6em'>"+msg+"</div>"));
+  .html("<div style='display:inline-block;height:70px;line-height:70px;font-family:latin;font-size:.5rem'>"+
+    shortUsername+"&nbsp;</div><div style='display:inline-block;position:relative;top:.6rem'>"+msg+"</div>"));
   window.scrollTo(0, document.body.scrollHeight);
   // say(msg);
 });
