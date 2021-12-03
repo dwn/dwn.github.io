@@ -555,13 +555,13 @@ socket.on('chat message', function(msg){
     socket.emit('chat font', msg);
   }
   $('#messages')
-  .append($("<li "+
-    (shortUsername==='connected'?
-      "style='font:18px Helvetica,Arial'" :
-      (username? "style='font-family:"+username+"'" : '')
-    ) + ">")
-  .html("<div class='chat-username'>"+
-    shortUsername+"&nbsp;</div><div>"+msg+"</div>"));
+  .append($("<li style=font-family:'" +
+    (shortUsername==='connected'? "Arial" : (username? username : "Arial")) +
+    ';text-orientation:upright;writing-mode:' +
+    json['direction']==='down-right'? 'vertical-lr' :
+    json['direction']==='down-left'? 'vertical-rl' :
+    json['direction']==='right-down'? 'unset' +
+    "'>").html("<div class='chat-username'>"+shortUsername+"&nbsp;</div><div>"+msg+"</div>"));
   window.scrollTo(0, document.body.scrollHeight);
   // say(msg);
 });
