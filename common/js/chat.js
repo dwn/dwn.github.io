@@ -552,8 +552,8 @@ socket.on('chat message', function(msg){
       "style='font:18px Helvetica,Arial'" :
       (username? "style='font-family:"+username+"'" : '')
     ) + ">")
-  .html("<div style='display:inline-block;height:70px;line-height:70px;font-family:latin;font-size:1rem'>"+
-    shortUsername+"&nbsp;</div><div style='display:inline-block;position:relative;top:.6rem'>"+msg+"</div>"));
+  .html("<div class='chat-name'>"+
+    shortUsername+"&nbsp;</div><div>"+msg+"</div>"));
   window.scrollTo(0, document.body.scrollHeight);
   // say(msg);
 });
