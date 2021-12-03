@@ -552,7 +552,7 @@ socket.on('chat message', function(msg){
       "style='font:18px Helvetica,Arial'" :
       (username? "style='font-family:"+username+"'" : '')
     ) + ">")
-  .html("<div class='chat-name'>"+
+  .html("<div class='chat-username'>"+
     shortUsername+"&nbsp;</div><div>"+msg+"</div>"));
   window.scrollTo(0, document.body.scrollHeight);
   // say(msg);
