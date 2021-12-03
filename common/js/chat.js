@@ -33,6 +33,7 @@ $('#message-input').bind('keyup click focus paste', function() {
       document.getElementById('search-result').innerText+=res+'\n';
       k++;
     }
+    window.scrollTo(0, document.body.scrollHeight);
   }
 });
 ////////////////////////////////////////////
