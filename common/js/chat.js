@@ -46,7 +46,7 @@ var graphemeEsc;
 var json = {};
 var jsonAfter = {};
 var alreadyPlaying=false;
-var conscriptTextReady=false;
+var conlangTextReady=false;
 ////////////////////////////////////////////
 function loadFileURL(fileURL) {
   var result = null;
@@ -85,7 +85,7 @@ function nastyHack(key) { //Dollar sign followed by tick would crash the program
   return false;
 }
 function invalidCharacterCombo() {
-  return nastyHack('font-code') || nastyHack('kerning-map') || nastyHack('phoneme-map') || nastyHack('grapheme-map') || nastyHack('user-text') || nastyHack('conscript-text');
+  return nastyHack('font-code') || nastyHack('kerning-map') || nastyHack('phoneme-map') || nastyHack('grapheme-map') || nastyHack('user-text') || nastyHack('conlang-text');
 }
 ////////////////////////////////////////////
 function loadMap(title,mappingText) {
@@ -172,14 +172,14 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
       }
       if (typeof setVisibility === "function") {
         setVisibility('select-selected',false);
-        setVisibility('conscript-loading',true);
+        setVisibility('conlang-loading',true);
       }
       const fileURL = (bucketURL? bucketURL : 'https://dwn.github.io/common/lang/')+(titleEl? titleEl.innerHTML : fontBasename)+'.svg';
       dat = loadFileURL(fileURL);
       if (!dat) debug('Failed to get font at '+fileURL);
       var nameInput;
       if (typeof setVisibility === "function") {
-        setVisibility('conscript-loading',false);
+        setVisibility('conlang-loading',false);
         setVisibility('select-selected',true);
         nameInput = document.querySelector('.username-element').value;
       } else {
@@ -192,12 +192,12 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
     }
     dat = dat.split('<desc>');
     dat = dat[1].split('</desc>')[0];
-    json = JSON.parse(dat);
+    json = JSON.parse(dat); if (json['conscript-text']) { json['conlang-text']=json['conscript-text']; delete json['conscript-text']; } //Legacy fix: formerly called conscript-text
     jsonAfter['phoneme-map'] = json['phoneme-map'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
     jsonAfter['grapheme-map'] = json['grapheme-map'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
     jsonAfter['kerning-map'] = json['kerning-map'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
     jsonAfter['user-text'] = json['user-text'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
-    // jsonAfter['conscript-text'] = json['conscript-text'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
+    // jsonAfter['conlang-text'] = json['conlang-text'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
     jsonAfter['font-code'] = json['font-code'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
     jsonAfter['direction'] = json['direction'];
     jsonAfter['pen'] = json['pen'];
@@ -213,7 +213,7 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
       document.getElementById('grapheme-map').value = jsonAfter['grapheme-map'];
       document.getElementById('kerning-map').value = jsonAfter['kerning-map'];
       document.getElementById('user-text').value = jsonAfter['user-text'];
-      document.getElementById('conscript-text').value = jsonAfter['conscript-text'];
+      document.getElementById('conlang-text').value = jsonAfter['conlang-text'];
       document.getElementById('font-code').value = jsonAfter['font-code'];
       document.getElementById('direction').value = jsonAfter['direction'];
       document.getElementById('pen').value = jsonAfter['pen'];
@@ -245,12 +245,9 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
       document.body.style.backgroundColor = '#680068';
       hideAll();
       document.getElementById('page-container').style.backgroundColor = '#680068';
-      setVisibility('help',false);
-      setVisibility('chat-in-new-page',false);
       setVisibility('username',false);
-      setVisibility('donate',false);
       setVisibility('menu',true);
-      setVisibility('script',true);
+      setVisibility('notebook',true);
     }
   } else {
     if (typeof setVisibility === "function") {
@@ -258,10 +255,7 @@ function setAllData(on, titleEl = null, title = null, dat = null, bucketURL = nu
       document.getElementById('page-container').style.backgroundColor = 'transparent';
       hideAll();
       setVisibility('menu',false);
-      setVisibility('donate',true);
       setVisibility('username',true);
-      setVisibility('chat-in-new-page',true);
-      setVisibility('help',true);
     }
   }
   if (titleEl && title) {
@@ -486,13 +480,13 @@ function grProcess(txtIn='') {
   txt = txt.replace(/_⚠_/g,'\n');
   txt = txt.replace(/_/g,' ');
   debug(txt);
-  if (conscriptTextReady) {
-    const conscriptTextEl = document.getElementById('conscript-text');
-    if (conscriptTextEl) conscriptTextEl.innerHTML = txt.replace(/⟨/g,"<span style='font-family:arial;font-size:.5em'>").replace(/⟩/g,'</span>');
+  if (conlangTextReady) {
+    const conlangTextEl = document.getElementById('conlang-text');
+    if (conlangTextEl) conlangTextEl.innerHTML = txt.replace(/⟨/g,"<span style='font-family:arial;font-size:.5em'>").replace(/⟩/g,'</span>');
   }
-  json['conscript-text'] = txt;
+  json['conlang-text'] = txt;
   json['user-text']=json['user-text'].replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  json['conscript-text']=json['conscript-text'].replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  json['conlang-text']=json['conlang-text'].replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 ////////////////////////////////////////////
 phProcessInit();
@@ -536,7 +530,7 @@ $('form').submit(function(){
   if (!str) return false;
   str+='\n';
   grProcess(str);
-  socket.emit('chat message', uniqueUsername+':'+json['conscript-text']);
+  socket.emit('chat message', uniqueUsername+':'+json['conlang-text']);
   $('#message-input').val('');
   $('#message-input').focus();
   return false; //Non-refreshing submit
