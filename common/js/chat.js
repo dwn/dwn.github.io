@@ -550,13 +550,13 @@ socket.on('chat message', function(msg){
   var username = msg[0];
   msg.shift();
   msg = msg.join(':');
-  const shortUsername=username.split('_')[1]; //Without uid
+  const shortUsername=username.split('_').pop(); //Without uid
   if (shortUsername==='connected') {
     socket.emit('chat font', msg);
   }
   $('#messages')
   .append($("<li style='font-family:" +
-    (shortUsername==='connected'? '' : (username? username : '')) +
+    (shortUsername==='connected'? ';font-size:1rem' : (username? username : '')) +
     ';text-orientation:upright;writing-mode:' +
     (json['direction']==='down-right'? 'vertical-lr' :
     json['direction']==='down-left'? 'vertical-rl' : 'horizontal-tb') +
