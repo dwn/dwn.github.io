@@ -302,7 +302,7 @@ function phProcessInit() {
 function phProcessHelper() {
   do {
     if (arrTxt===null || !arrTxt.length) {
-      const playEl = document.getElementsByClassName('play-element')[0];
+      const playEl = document.querySelector('.play-element');
       if (playEl) playEl.src = 'img/icon/play.png';
       alreadyPlaying=false;
       return;
