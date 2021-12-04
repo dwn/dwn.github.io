@@ -3,6 +3,19 @@
 ////////////////////////////////////////////
 if (typeof DEBUG!=='undefined' && DEBUG==1) {function debug(s){console.log(s);}} else {function debug(s){}}
 ////////////////////////////////////////////
+var fullTxt = '';
+var tmpTxt;
+var arrTxt;
+var txt = '';
+var phoneme;
+var phonemeEsc;
+var grapheme;
+var graphemeEsc;
+var json = {};
+var jsonAfter = {};
+var alreadyPlaying=false;
+var conlangTextReady=false;
+////////////////////////////////////////////
 $(document).ready(function() {
   // $(window).bind('keydown', function(event) {
   //   debug('hotkey in iframe')
@@ -45,18 +58,6 @@ $(document).ready(function() {
     }
   });
 });
-////////////////////////////////////////////
-var tmpTxt;
-var arrTxt;
-var txt = '';
-var phoneme;
-var phonemeEsc;
-var grapheme;
-var graphemeEsc;
-var json = {};
-var jsonAfter = {};
-var alreadyPlaying=false;
-var conlangTextReady=false;
 ////////////////////////////////////////////
 function nastyHack(key) { //Dollar sign followed by tick would crash the program otherwise
   const s = json[key];
