@@ -143,25 +143,25 @@ function setAllData(on, titleEl = null, title = null, dat = null) { //(Title to 
   var el;
   if (on) {
     if (!dat) { //Only called when font selected from title screen or when user on chat page
-      let chatIframeSrc = document.getElementById('chat-iframe').src;
-      let fontBasename;
-      if (chatIframeSrc) {
-        let urlParts = chatIframeSrc.split('/');
-        urlParts = urlParts.filter(e => e && e!=='http:' && e!=='https:'); //Filter out null and protocol elements
-        const urlParams = new URLSearchParams(chatIframeSrc.search);
-        fontBasename = urlParams.get('font'); //Font as query variable
-        // debug(`setAllData~urlParts: ${urlParts}`);
-        // debug(`setAllData~urlParams: ${urlParams} (${urlParams.length})`);
-        if (!fontBasename && urlParts && urlParts.length > 1) {
-          debug('Getting font name from url');
-          fontBasename = urlParts.pop() || urlParts.pop();
-          fontBasename = fontBasename.split('?')[0]; //Font as URL param
-        }
-        if (typeof setVisibility === "function") {
-          setVisibility('select-selected',false);
-          setVisibility('conlang-loading',true);
-        }
-      }
+      // let chatIframeSrc = document.getElementById('chat-iframe').src;
+      // let fontBasename;
+      // if (chatIframeSrc) {
+      //   let urlParts = chatIframeSrc.split('/');
+      //   urlParts = urlParts.filter(e => e && e!=='http:' && e!=='https:'); //Filter out null and protocol elements
+      //   const urlParams = new URLSearchParams(chatIframeSrc.search);
+      //   fontBasename = urlParams.get('font'); //Font as query variable
+      //   // debug(`setAllData~urlParts: ${urlParts}`);
+      //   // debug(`setAllData~urlParams: ${urlParams} (${urlParams.length})`);
+      //   if (!fontBasename && urlParts && urlParts.length > 1) {
+      //     debug('Getting font name from url');
+      //     fontBasename = urlParts.pop() || urlParts.pop();
+      //     fontBasename = fontBasename.split('?')[0]; //Font as URL param
+      //   }
+      //   if (typeof setVisibility === "function") {
+      //     setVisibility('select-selected',false);
+      //     setVisibility('conlang-loading',true);
+      //   }
+      // }
       //Get lang file URL
       let langFileURL; $.ajax({async:false,type:'GET',dataType:'text',url:`/lang-file-url/${titleEl? titleEl.innerHTML : fontBasename}.svg`,success:function(r){langFileURL=r;},error:function(r){}});
       debug('setAllData~langFileURL: '+langFileURL);
