@@ -24,7 +24,7 @@ $(document).ready(function() {
   //     parent.$(parent.document).dispatchEvent(new KeyboardEvent('keydown', { key: 's',code: 'KeyS',ctrlKey: true}));
   // });
   $('#message-input').bind('keyup click focus paste', function() {
-    if (!fullTxt) console.log('message-input: fullTxt empty');
+    if (!fullTxt) debug('message-input: fullTxt empty');
     var k = this.selectionEnd;
     var str = this.value;
     var begin = str.lastIndexOf(' ',k-1);
@@ -148,19 +148,11 @@ function setAllData(on, titleEl = null, title = null, dat = null) { //(Title to 
       let langFileURL; $.ajax({async:false,type:'GET',dataType:'text',url:`/lang-file-url/${titleEl? titleEl.innerHTML : fontBasename}.svg`,success:function(r){langFileURL=r;},error:function(r){}});
       debug('setAllData~langFileURL: '+langFileURL);
       dat = loadFileURL(langFileURL);
-      var nameInput;
-      console.log(`myUsername: ${myUsername}`);
+      debug(`setAllData~myUser.username: ${myUser['username']}`);
       if (typeof setVisibility === "function") {
         setVisibility('conlang-loading',false);
         setVisibility('select-selected',true);
-        nameInput = document.querySelector('.username-element').value;
-      } else {
-        const urlParams = new URLSearchParams(window.location.search);
-        nameInput = urlParams.get('username');
       }
-      //Blocking Ajax unique-username -> myUsername
-      $.ajax({async:false,type:'GET',dataType:'text',url:'/unique-username?name='+(nameInput? nameInput : ''),
-        success:function(r){myUsername=r;},error:function(r){}});
     }
     if (!dat) { debug('Failed to get font at '+fileURL); return; }
     dat = dat.split('<desc>');
@@ -467,20 +459,13 @@ var arrLang=langList().split('\n');
 arrLang = arrLang.filter(function (el) { return el !== null && el !== ''; }); //Remove empty entries
 ////////////////////////////////////////////
 var socket = io();
-var uniqueUsername = decodeURIComponent(getParameterByName('username'));
-if (!uniqueUsername) {
-  //Okay to call this async since it cannot be used quickly
-  //Ajax unique-username -> uniqueUsername
-  $.ajax({type:'GET',dataType:'text',url:'/my-unique-username',
-    success:function(r){uniqueUsername=r;},error:function(r){}});
-}
 ////////////////////////////////////////////
 $('form').submit(function(){
   var str=$('#message-input').val();
   if (!str) return false;
   str+='\n';
   grProcess(str);
-  socket.emit('chat message', uniqueUsername+':'+json['conlang-text']);
+  socket.emit('chat message', myUser['username']+':'+json['conlang-text']);
   $('#message-input').val('');
   $('#message-input').focus();
   return false; //Non-refreshing submit
@@ -489,7 +474,7 @@ $('form').submit(function(){
 socket.on('chat message', function(msg){
   debug('chat message point A');
   msg = msg.split(':');
-  var username = msg[0];
+  let username = msg[0];
   msg.shift();
   msg = msg.join(':');
   const shortUsername=username.split('_').pop(); //Without uid
@@ -521,7 +506,7 @@ socket.on('chat font', function(msg){
   debug('setAllData 0');
   setAllData(true, null, null, null);
   debug(`Loading font from ${langFileURL}.otf`)
-  var newFont = new FontFace(username, `url(${langFileURL}.otf)`);
+  var newFont = new FontFace(myUser['username'], `url(${langFileURL}.otf)`);
   newFont.load().then(function(loadedFace) {
     setTimeout(function() { //Occasionally even after the font was successfully loaded, it needs a brief moment before adding
       document.fonts.add(loadedFace);
