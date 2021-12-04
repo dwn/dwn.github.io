@@ -485,7 +485,7 @@ socket.on('chat message', function(msg){
   debug('chat message point C');
   $('#messages')
   .append($("<li style='font-family:" +
-    (shortUsername==='connected'? ';font-size:1rem' : (shortUsername? shortUsername : '')) +
+    (shortUsername==='connected'? ';font-size:1rem' : (username? username : '')) +
     ';text-orientation:upright;writing-mode:' +
     (json['direction']==='down-right'? 'vertical-lr' :
     json['direction']==='down-left'? 'vertical-rl' : 'horizontal-tb') +
