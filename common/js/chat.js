@@ -54,7 +54,8 @@ $(document).ready(function() {
         document.getElementById('search-result').innerText+=res+'\n';
         k++;
       }
-      window.scrollTo(0, document.body.scrollHeight);
+      const chatEl = document.querySelector('#chat');
+      if (chatEl) chatEl.scrollTo(0,chatEl.scrollHeight);
     }
   });
 });
@@ -523,7 +524,7 @@ socket.on('chat message', function(msg){
     json['direction']==='down-left'? 'vertical-rl' : 'horizontal-tb') +
     "'>").html("<div class='chat-username'>"+shortUsername+"&nbsp;</div><div>"+msg+"</div>"));
   const chatEl = document.querySelector('#chat');
-  chatEl.scrollTo(0,chatEl.scrollHeight);
+  if (chatEl) chatEl.scrollTo(0,chatEl.scrollHeight);
   // say(msg);
 });
 ////////////////////////////////////////////
