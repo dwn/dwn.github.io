@@ -138,7 +138,7 @@ function loadGraphemeMap() {
   }
 }
 ////////////////////////////////////////////
-function setAllData(on, titleEl = null, title = null, dat = null) {
+function setAllData(on, titleEl = null, title = null, dat = null) { //(Title to assign, if not null)
   var el;
   if (on) {
     if (!dat) { //Only called when font selected from title screen or when user on chat page
@@ -229,6 +229,7 @@ function setAllData(on, titleEl = null, title = null, dat = null) {
     loadPhonemeMap();
     loadGraphemeMap();
     fullTxt = jsonAfter['user-text'];
+    if (!fullTxt) debug('setAllData: fullTxt failed to load');
     if (typeof setVisibility === "function") {
       document.body.style.backgroundImage = 'none';
       document.body.style.backgroundColor = '#680068';
@@ -532,6 +533,7 @@ socket.on('chat font', function(msg){
   
   let langFileURL; $.ajax({async:false,type:'GET',dataType:'text',url:`/lang-file-url/${langFileBasename}`,success:function(r){langFileURL=r;},error:function(r){}});
 
+  debug('setAllData 0');
   setAllData(true, null, null, null);
   debug(`Loading font from ${langFileURL}.otf`)
   var newFont = new FontFace(username, `url(${langFileURL}.otf)`);
