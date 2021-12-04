@@ -17,12 +17,6 @@ var alreadyPlaying=false;
 var conlangTextReady=false;
 ////////////////////////////////////////////
 $(document).ready(function() {
-  // $(window).bind('keydown', function(event) {
-  //   debug('hotkey in iframe')
-  //   event.preventDefault();
-  //   if (event.ctrlKey || event.metaKey)
-  //     parent.$(parent.document).dispatchEvent(new KeyboardEvent('keydown', { key: 's',code: 'KeyS',ctrlKey: true}));
-  // });
   $('#message-input').bind('keyup click focus paste', function() {
     if (!fullTxt) debug('message-input: fullTxt empty');
     var k = this.selectionEnd;
