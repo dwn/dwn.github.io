@@ -148,7 +148,7 @@ function setAllData(on, titleEl = null, title = null, dat = null) { //(Title to 
       let langFileURL; $.ajax({async:false,type:'GET',dataType:'text',url:`/lang-file-url/${titleEl? titleEl.innerHTML : fontBasename}.svg`,success:function(r){langFileURL=r;},error:function(r){}});
       debug('setAllData~langFileURL: '+langFileURL);
       dat = loadFileURL(langFileURL);
-      debug(`setAllData~myUser.username: ${myUser['username']}`);
+      debug(`setAllData~myUser.username: ${myUser.username}`);
       if (typeof setVisibility === "function") {
         setVisibility('conlang-loading',false);
         setVisibility('select-selected',true);
@@ -465,7 +465,7 @@ $('form').submit(function(){
   if (!str) return false;
   str+='\n';
   grProcess(str);
-  socket.emit('chat message', myUser['username']+':'+json['conlang-text']);
+  socket.emit('chat message', `${myUser.longId}:${json['conlang-text']}`;
   $('#message-input').val('');
   $('#message-input').focus();
   return false; //Non-refreshing submit
@@ -506,7 +506,7 @@ socket.on('chat font', function(msg){
   debug('setAllData 0');
   setAllData(true, null, null, null);
   debug(`Loading font from ${langFileURL}.otf`)
-  var newFont = new FontFace(myUser['username'], `url(${langFileURL}.otf)`);
+  var newFont = new FontFace(myUser.longId, `url(${langFileURL}.otf)`);
   newFont.load().then(function(loadedFace) {
     setTimeout(function() { //Occasionally even after the font was successfully loaded, it needs a brief moment before adding
       document.fonts.add(loadedFace);
