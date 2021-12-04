@@ -11,7 +11,7 @@ $(document).ready(function() {
   //     parent.$(parent.document).dispatchEvent(new KeyboardEvent('keydown', { key: 's',code: 'KeyS',ctrlKey: true}));
   // });
   $('#message-input').bind('keyup click focus paste', function() {
-    console.log('input');
+    if (!fullTxt) console.log('message-input: fullTxt empty');
     var k = this.selectionEnd;
     var str = this.value;
     var begin = str.lastIndexOf(' ',k-1);
