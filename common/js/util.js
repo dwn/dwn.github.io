@@ -33,3 +33,31 @@ function nthIndex(str, pat, k, n) {
   }
   return i;
 }
+////////////////////////////////////////////
+function loadFileURL(fileURL) {
+  var result = null;
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.open('GET', fileURL, false);
+  xmlhttp.send();
+  if (xmlhttp.status==200) {
+    result = xmlhttp.responseText;
+  }
+  return result;
+}
+////////////////////////////////////////////
+function getSelectedText() {
+  var userSelection='', ta;
+  if (window.getSelection && document.activeElement) {
+    if (document.activeElement.nodeName == 'TEXTAREA' ||
+        (document.activeElement.nodeName == 'INPUT' &&
+        document.activeElement.getAttribute('type').toLowerCase() == 'text')) {
+      ta = document.activeElement;
+      userSelection = ta.value.substring(ta.selectionStart, ta.selectionEnd);
+    } else {
+      userSelection = window.getSelection();
+    }
+  } else {
+    userSelection = document.getSelection();
+  }
+  return userSelection.toString();
+}
