@@ -17,8 +17,8 @@ var alreadyPlaying=false;
 var conlangTextReady=false;
 ////////////////////////////////////////////
 $(document).ready(function() {
-  $('#message-input').bind('keyup click focus paste', function() {
-    if (!fullTxt) debug('message-input: fullTxt empty');
+  $('#chat-message-input').bind('keyup click focus paste', function() {
+    if (!fullTxt) debug('chat-message-input: fullTxt empty');
     var k = this.selectionEnd;
     var str = this.value;
     var begin = str.lastIndexOf(' ',k-1);
@@ -28,7 +28,7 @@ $(document).ready(function() {
     str = str.substring(begin,end).trim();
     if (str.length>2) {
       k=0;
-      var searchEl = document.getElementById('search-result');
+      var searchEl = document.getElementById('chat-search-result');
       if (searchEl) searchEl.innerText='';
       while((k=fullTxt.indexOf(str,k))>=0) {
         begin = fullTxt.lastIndexOf('\n',k);
@@ -45,7 +45,7 @@ $(document).ready(function() {
           end = (end<0? fullTxt.length : end);
         }
         res = fullTxt.substring(begin,end).trim();
-        document.getElementById('search-result').innerText+=res+'\n';
+        document.getElementById('chat-search-result').innerText+=res+'\n';
         k++;
       }
       const chatEl = document.querySelector('#chat');
@@ -455,13 +455,13 @@ arrLang = arrLang.filter(function (el) { return el !== null && el !== ''; }); //
 var socket = io();
 ////////////////////////////////////////////
 $('form').submit(function(){
-  var str=$('#message-input').val();
+  var str=$('#chat-message-input').val();
   if (!str) return false;
   str+='\n';
   grProcess(str);
   socket.emit('chat message', `${myUser.longId}:${json['conlang-text']}`);
-  $('#message-input').val('');
-  $('#message-input').focus();
+  $('#chat-message-input').val('');
+  $('#chat-message-input').focus();
   return false; //Non-refreshing submit
 });
 ////////////////////////////////////////////
@@ -477,8 +477,8 @@ socket.on('chat message', function(msg){
     socket.emit('chat font', msg);
   }
   debug('chat message point C');
-  $('#messages')
-  .append($("<li style='font-family:" +
+  $('#chat-messages')
+  .append($("<li class='chat-message' style='font-family:" +
     (shortUsername==='connected'? ';font-size:1rem' : (username? username : '')) +
     ';text-orientation:upright;writing-mode:' +
     (json['direction']==='down-right'? 'vertical-lr' :
