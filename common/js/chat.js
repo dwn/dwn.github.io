@@ -465,7 +465,7 @@ $('form').submit(function(){
   if (!str) return false;
   str+='\n';
   grProcess(str);
-  socket.emit('chat message', `${myUser.longId}:${json['conlang-text']}`;
+  socket.emit('chat message', `${myUser.longId:json['conlang-text']}`;
   $('#message-input').val('');
   $('#message-input').focus();
   return false; //Non-refreshing submit
