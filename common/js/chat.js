@@ -488,7 +488,7 @@ socket.on('chat message', function(msg){
 socket.on('chat font', function(msg){
   debug(msg);
   msg = msg.split(':');
-  const username = msg[0];
+  const longId = msg[0];
   const langFileBasename = msg[1];
   
   let langFileURL; $.ajax({async:false,type:'GET',dataType:'text',url:`/lang-file-url/${langFileBasename}`,success:function(r){langFileURL=r;},error:function(r){}});
@@ -496,7 +496,7 @@ socket.on('chat font', function(msg){
   debug('setAllData 0');
   // setAllData(true, null, null, null);
   debug(`Loading font from ${langFileURL}.otf`)
-  var newFont = new FontFace(myUser.longId, `url(${langFileURL}.otf)`);
+  var newFont = new FontFace(longId, `url(${langFileURL}.otf)`);
   newFont.load().then(function(loadedFace) {
     setTimeout(function() { //Occasionally even after the font was successfully loaded, it needs a brief moment before adding
       document.fonts.add(loadedFace);
