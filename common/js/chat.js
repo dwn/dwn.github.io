@@ -468,22 +468,18 @@ $('form').submit(function(){
 socket.on('chat message', function(msg){
   debug('chat message point A');
   msg = msg.split(':');
-  let username = msg[0];
+  let longId = msg[0];
   msg.shift();
   msg = msg.join(':');
-  const shortUsername=username.split('_').pop(); //Without uid
+  const username=longId.split('_').pop();
   debug('chat message point B');
-  if (shortUsername==='connected') {
+  if (username==='connected') {
     socket.emit('chat font', msg);
   }
   debug('chat message point C');
   $('#chat-messages')
-  .append($("<li class='chat-message' style='font-family:" +
-    (shortUsername==='connected'? ';font-size:1rem' : (username? username : '')) +
-    ';text-orientation:upright;writing-mode:' +
-    (json['direction']==='down-right'? 'vertical-lr' :
-    json['direction']==='down-left'? 'vertical-rl' : 'horizontal-tb') +
-    "'>").html("<div class='chat-username'>"+shortUsername+"&nbsp;</div><div>"+msg+"</div>"));
+  .append($("<li class='chat-message'>")
+  .html(`<div class='chat-username'>${shortUsername}&nbsp;</div><div style='font-family:${shortUsername==='connected'? ';font-size:1rem' : (username? username : '')};text-orientation:upright;writing-mode:${json['direction']==='down-right'? 'vertical-lr': json['direction']==='down-left'? 'vertical-rl' : 'horizontal-tb'}'>${msg}</div>`));
   const chatEl = document.querySelector('#chat');
   if (chatEl) chatEl.scrollTo(0,chatEl.scrollHeight);
   // say(msg);
