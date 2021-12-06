@@ -479,7 +479,7 @@ socket.on('chat message', function(msg){
   debug('chat message point C');
   $('#chat-messages')
   .append($("<div class='chat-message'>")
-  .html(`<div class='chat-username'>${username}&nbsp;</div><div class='chat-message-text' style='font-family:${username==='connected'? ';font-size:1rem' : (longId? longId : '')};text-orientation:upright;writing-mode:${json['direction']==='down-right'? 'vertical-lr': json['direction']==='down-left'? 'vertical-rl' : 'horizontal-tb'}'>${username==='connected'? msg.split(/[:_]/g).join('<br>') : msg}</div>`));
+  .html(`<div class='chat-username'>${username}&nbsp;</div><div class='chat-message-text' style='font-family:${username==='connected'? ';font-size:1rem' : (longId? longId : '')};text-orientation:upright;writing-mode:${json['direction']==='down-right'? 'vertical-lr': json['direction']==='down-left'? 'vertical-rl' : 'horizontal-tb'}'>${username==='connected'? msg.split('_').join('<br>') : msg}</div>`));
   const chatEl = document.querySelector('#chat');
   if (chatEl) chatEl.scrollTo(0,chatEl.scrollHeight);
   // say(msg);
