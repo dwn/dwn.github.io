@@ -493,8 +493,6 @@ socket.on('chat font', function(msg){
   
   let langFileURL; $.ajax({async:false,type:'GET',dataType:'text',url:`/lang-file-url/${langFileBasename}`,success:function(r){langFileURL=r;},error:function(r){}});
 
-  debug('setAllData 0');
-  // setAllData(true, null, null, null);
   debug(`Loading font from ${langFileURL}.otf`)
   var newFont = new FontFace(longId, `url(${langFileURL}.otf)`);
   newFont.load().then(function(loadedFace) {
