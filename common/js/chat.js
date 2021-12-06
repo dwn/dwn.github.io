@@ -475,6 +475,7 @@ socket.on('chat message', function(msg){
   const username=longId.split('_').pop();
   debug('chat message point B');
   if (username==='connected') {
+    invalidateMessagesWithOldFont(myUser.lang);
     socket.emit('chat font', msg);
   }
   debug('chat message point C');
