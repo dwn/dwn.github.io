@@ -365,9 +365,9 @@ function grProcess(txtIn='') {
   debug('ORTHOGRAPHY');
   graphemeEsc = escapeArray(grapheme);
   json['user-text'] = txt;
-  txt = txt.replace(/\n/g,'_⚠_'); //Weird newline character hopefully no one else will use
+  txt = txt.replace(/\n/g,'_⚠_'); //Weird new-line character hopefully no one else will use
   txt = txt.replace(/ /g,'_');
-  if (txt[0]!=='_') txt='_'+txt;
+  if (txt[0]!=='_') txt='_'+txt; //Add new-word character to first word
   if (txt[txt.length-1]!=='_') txt=txt+'_';
   var runningSection=0;
   var skipping=false;
@@ -415,6 +415,7 @@ function grProcess(txtIn='') {
   }
   txt = txt.replace(/_⚠_/g,'\n');
   txt = txt.replace(/_/g,' ');
+  if (txt[0]===' ') txt=txt.slice(1); //Remove space resulting from new-word character added at beginning of text
   debug(txt);
   if (conlangTextReady) {
     const conlangTextEl = document.getElementById('conlang-text');
