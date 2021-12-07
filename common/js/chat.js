@@ -151,7 +151,8 @@ function setAllData(on, titleEl = null, title = null, dat = null) { //(Title to 
     if (!dat) { debug('Failed to get font at '+fileURL); return; }
     dat = dat.split('<desc>');
     dat = dat[1].split('</desc>')[0];
-    json = JSON.parse(dat); if (json['conscript-text']) { json['conlang-text']=json['conscript-text']; delete json['conscript-text']; } //Legacy fix: formerly called conscript-text
+    json = JSON.parse(dat);
+    if (json['conscript-text']) { json['conlang-text']=json['conscript-text']; delete json['conscript-text']; } //Legacy fix: formerly called conscript-text
     jsonAfter['phoneme-map'] = json['phoneme-map'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
     jsonAfter['grapheme-map'] = json['grapheme-map'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
     jsonAfter['kerning-map'] = json['kerning-map'].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
