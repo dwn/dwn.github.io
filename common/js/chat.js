@@ -134,7 +134,7 @@ function loadGraphemeMap() {
   }
 }
 ////////////////////////////////////////////
-function setAllData(on, titleEl = null, title = null, dat = null) { //(Title to assign, if not null)
+function setAllData(on, titleEl = null, newTitle = null, dat = null) {
   var el;
   if (on) {
     if (!dat) { //Only called when font selected from title screen or when user on chat page
@@ -219,8 +219,8 @@ function setAllData(on, titleEl = null, title = null, dat = null) { //(Title to 
       setVisibility('username',true);
     }
   }
-  if (titleEl && title) {
-    titleEl.innerHTML = title;
+  if (titleEl && newTitle) {
+    titleEl.innerHTML = newTitle;
   }
 }
 ////////////////////////////////////////////
