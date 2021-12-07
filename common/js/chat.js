@@ -54,6 +54,11 @@ $(document).ready(function() {
   });
 });
 ////////////////////////////////////////////
+function invalidateMessagesWithOldFont(longId) {
+  debug('invalidating old messages for '+longId)
+  let arrEl = $(`.chat-message-text[style*="${longId}"]`).css('font','1.25rem Arial').html('prior font').parent().css('color','rgba(35,35,35,.5)').css('text-shadow','none');
+}
+////////////////////////////////////////////
 function nastyHack(key) { //Dollar sign followed by tick would crash the program otherwise
   const s = json[key];
   if (s.includes('$`') || s.includes('$\\`')) {
