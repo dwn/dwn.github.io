@@ -425,7 +425,7 @@ function grProcess(txtIn='') {
   debug(txt);
   if (conlangTextReady) {
     const conlangTextEl = document.getElementById('conlang-text');
-    if (conlangTextEl) conlangTextEl.innerHTML = txt.replace(/⟨/g,"<span style='font-family:arial;font-size:1rem'>").replace(/⟩/g,'</span>');
+    if (conlangTextEl) conlangTextEl.innerHTML = txt.replace(/⟨/g,"<span style='font:1rem Arial'>").replace(/⟩/g,'</span>');
   }
   json['conlang-text'] = txt;
   json['user-text']=json['user-text'].replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -487,7 +487,7 @@ socket.on('chat message', function(msg){
   debug('chat message point C');
   $('#chat-messages')
   .append($("<div class='chat-message'>")
-  .html(`<div class='chat-username'>${username}&nbsp;</div><div class='chat-message-text' style='font${username==='connected'? '-size:1rem' : ':2.5rem '+longId};text-orientation:upright;writing-mode:${json['direction']==='down-right'? 'vertical-lr': json['direction']==='down-left'? 'vertical-rl' : 'horizontal-tb'}'>${username==='connected'? msg.split('_').slice(1).join('_').split(':').join('<br>') : msg}</div>`));
+  .html(`<div class='chat-username'>${username}&nbsp;</div><div class='chat-message-text' style='font${username==='connected'? '-size:1rem' : ':2.5rem '+longId};text-orientation:upright;writing-mode:${json['direction']==='down-right'? 'vertical-lr;letter-spacing:-.5rem': json['direction']==='down-left'? 'vertical-rl;letter-spacing:-.5rem' : 'horizontal-tb'}'>${username==='connected'? msg.split('_').slice(1).join('_').split(':').join('<br>') : msg}</div>`));
   const chatEl = document.querySelector('#chat');
   if (chatEl) chatEl.scrollTo(0,chatEl.scrollHeight);
   // say(msg);
