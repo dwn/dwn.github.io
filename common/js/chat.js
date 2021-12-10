@@ -485,9 +485,15 @@ socket.on('chat message', function(msg){
     socket.emit('chat font', msg);
   }
   debug('chat message point C');
+  const isConnecting = (username==='connected');
+  const isVertical = (json['direction']==='down-right' || json['direction']==='down-left');
+  const letterSpacing = (isConnecting && isVertical? '-.5rem' : '0');  
+  const font = (isConnecting? '1rem Arial' : `2.5rem ${longId}`;
+  const writingMode = (json['direction']==='down-right'? 'vertical-lr' : json['direction']==='down-left'? 'vertical-rl' : 'horizontal-tb');
+  msg = (isConnecting? msg.split('_').slice(1).join('_').split(':').join('<br>') : msg);
   $('#chat-messages')
   .append($("<div class='chat-message'>")
-  .html(`<div class='chat-username'>${username}&nbsp;</div><div class='chat-message-text' style='font${username==='connected'? '-size:1rem' : ':2.5rem '+longId};text-orientation:upright;writing-mode:${json['direction']==='down-right'? 'vertical-lr;letter-spacing:-.5rem': json['direction']==='down-left'? 'vertical-rl;letter-spacing:-.5rem' : 'horizontal-tb'}'>${username==='connected'? msg.split('_').slice(1).join('_').split(':').join('<br>') : msg}</div>`));
+  .html(`<div class='chat-username'>${username}&nbsp;</div><div class='chat-message-text' style='letter-spacing:${letterSpacing};font:${font};text-orientation:upright;writing-mode:${writingMode}}'>${msg}</div>`));
   const chatEl = document.querySelector('#chat');
   if (chatEl) chatEl.scrollTo(0,chatEl.scrollHeight);
   // say(msg);
