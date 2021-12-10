@@ -493,7 +493,7 @@ socket.on('chat message', function(msg){
   msg = (isConnecting? msg.split('_').slice(1).join('_').split(':').join('<br>') : msg);
   $('#chat-messages')
   .append($("<div class='chat-message'>")
-  .html(`<div class='chat-username'>${username}&nbsp;</div><div class='chat-message-text' style='letter-spacing:${letterSpacing};font:${font};text-orientation:upright;writing-mode:${writingMode}}'>${msg}</div>`));
+  .html(`<div class='chat-username'>${username}&nbsp;</div><div class='chat-message-text' style='letter-spacing:${letterSpacing};font:${font};text-orientation:upright;writing-mode:${writingMode}}'>${msg}</div>`);
   const chatEl = document.querySelector('#chat');
   if (chatEl) chatEl.scrollTo(0,chatEl.scrollHeight);
   // say(msg);
