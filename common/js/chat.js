@@ -487,8 +487,8 @@ socket.on('chat message', function(msg){
   debug('chat message point C');
   const isConnecting = (username==='connected');
   const isVertical = (json['direction']==='down-right' || json['direction']==='down-left');
-  const letterSpacing = (isConnecting && isVertical? '-.5rem' : '0');  
-  const font = (isConnecting? '1rem Arial' : `2.5rem ${longId}`);
+  const letterSpacing = (isConnecting && isVertical? '-.25rem' : '0');  
+  const font = (isConnecting? '1rem auto' : `2.5rem ${longId}`);
   const writingMode = (json['direction']==='down-right'? 'vertical-lr' : json['direction']==='down-left'? 'vertical-rl' : 'horizontal-tb');
   msg = (isConnecting? msg.split('_').slice(1).join('_').split(':').join('<br>') : msg);
   $('#chat-messages')
