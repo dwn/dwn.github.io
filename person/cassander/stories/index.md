@@ -4,7 +4,7 @@
 ---
 # - [Awakening the Island](awakening-the-island.html)
 ---
-# - [Venture](venture.html)
+# - [Something Ventured](something-ventured.html)
 ---
 # - [Nagku](nagku.html)
 ---
