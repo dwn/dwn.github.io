@@ -2,6 +2,8 @@
 
 # Stories
 ---
+# - [Awakening the Island](awakening-the-island.html)
+---
 # - [Venture](venture.html)
 ---
 # - [Nagku](nagku.html)
