@@ -11,5 +11,5 @@ No one but Nagku knows why this change of heart came about. Some of the tribe se
 
 | | |
 |-|-|
-![](../img/cassander-1.jpeg) | ![](../img/cassander-2.jpeg)
+![](../gallery/imgs/cassander-1.jpeg) | ![](../gallery/imgs/cassander-2.jpeg)
     
