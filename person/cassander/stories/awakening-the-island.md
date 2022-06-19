@@ -1,4 +1,4 @@
-# Awakening the island
+# Awakening the Island
 #### Cassander Garduna
 
 ## Island mentality
@@ -14,7 +14,7 @@ On Athlandrun, the island of the driftwood people, life is taken in stride and S
 “You said “when he first appeared” do you mean to say he doesn’t come from the island?”
 “He wouldn’t talk about his past or where he came from, but said only that the island itself brought him here, that it chose him to be its guardian, it’s avatar. I only know that several times we have seen large Annathari (stranger) ships unlike our own not far from shore. In a frenzy I would rally the warriors preparing for an invasion, but then all of a sudden a impenetrable fog would surround the island, I believe this Nagku’s work. I think he may be our greatest weapon, but at the same time if we can’t calm the beast he may be our undoing.
 
-## A jar of of sweet water
+## A jar of sweet water
 
 The next morning Migka gathered his council in a room beneath the earth. 
 “The storms are getting worse, something must be done” said Migka to the old faces before him.
