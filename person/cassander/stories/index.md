@@ -2,7 +2,7 @@
 
 # Stories
 ---
-# - [Awakening the Island](awakening-the-island.html)
+# - [A Jar of Sweet Water](a-jar-of-sweet-water.html)
 ---
 # - [Something Ventured](something-ventured.html)
 ---
