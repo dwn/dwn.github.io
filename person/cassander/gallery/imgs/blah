@@ -1,4 +1,0 @@
-# Rename all *.jpg to *.jpeg
-for file in *.jpg; do
-    mv -- "$file" "${file%.jpg}.jpeg"
-done
